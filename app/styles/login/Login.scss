@@ -1,0 +1,27 @@
+.login {
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
+  height: 100%;
+  @include background-image(url("https://upload.wikimedia.org/wikipedia/commons/f/f5/The_port_of_Singapore.jpg"));
+  @include filter(grayscale(50%));
+
+  .login-form {
+    width: 100%;
+    max-width: 320px;
+    opacity: 0.95;
+
+    .mui-form-group {
+      padding-top: 5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+}

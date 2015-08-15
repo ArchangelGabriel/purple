@@ -1,0 +1,35 @@
+.nav {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding: 0 10px;
+  width: 100%;
+  height: 65px;
+  background: #4a366d;
+  border-bottom: 1px solid darken(#ffffff, 15%);
+
+
+  .brand {
+    font-size: 1.3em;
+    font-weight: 700;
+  }
+
+  .navigation {
+
+  }
+
+  .link {
+    text-decoration: none;
+    color: white;
+    outline: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+}

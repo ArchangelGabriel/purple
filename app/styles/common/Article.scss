@@ -1,0 +1,14 @@
+.article {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+
+  > p > a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    > p > a {
+      text-decoration: underline;
+    }
+  }
+}

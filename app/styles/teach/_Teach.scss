@@ -1,0 +1,46 @@
+.teach {
+  width: 100%;
+  max-width: 720px;
+  margin: 10px auto;
+
+  > header {
+    text-align: center;
+  }
+
+  > main {
+
+    > form {
+      @include display(flex);
+      @include flex-direction(column);
+
+      .left-side {
+        @include flex(2);
+      }
+
+      .right-side {
+        @include flex(1);
+      }
+    }
+  }
+
+  > * {
+    padding: 10px;
+    background: white;
+    border-radius: 2px;
+    border: 1px solid darken(#ffffff, 15%);
+    margin-bottom: 10px;
+  }
+
+}
+
+.row {
+  @include display(flex);
+}
+
+.flex-1 {
+  @include flex(1);
+}
+
+.flex-2 {
+  @include flex(2);
+}

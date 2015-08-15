@@ -1,0 +1,27 @@
+.chat-button {
+  background: #ffffff;
+  color: darken(#ffffff, 80%);
+  border: 1px solid darken(#ffffff, 30%);
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 3px 6px 4px;
+  outline: 0;
+  margin: 5px 0;
+
+  &:hover {
+    border: 1px solid darken(#ffffff, 60%);
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  &.disabled {
+    background: #eeeeee;
+    color: #888888;
+  }
+
+  &:not(:first-child) {
+    margin-left: 5px;
+  }
+}

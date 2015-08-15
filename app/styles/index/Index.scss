@@ -1,0 +1,68 @@
+.index {
+  width: 100%;
+  max-width: 960px;
+  margin: 10px auto;
+  @include display(flex);
+  border: 1px solid darken(#ffffff, 15%);
+  border-radius: 2px;
+
+  > aside {
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+    @include flex(1);
+    padding: 10px;
+
+    > * {
+      margin-bottom: 10px;
+    }
+
+  }
+
+  > main {
+    @include flex(1.618);
+  }
+
+  > * {
+    background: white;
+
+    &:not(:last-child) {
+      border-right: 1px solid darken(#ffffff, 15%);
+    }
+  }
+}
+
+.button-group {
+  @include display(flex);
+
+  > .button {
+    height: 38px;
+    @include flex(1);
+  }
+}
+
+.listing {
+  @include display(flex);
+  @include flex-direction(column);
+  padding: 10px;
+
+  header {
+    font-weight: 700;
+  }
+
+  footer {
+    
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid darken(#ffffff, 15%);
+  }
+}
+
+.text {
+  cursor: text;
+}
+
+.pointer {
+  cursor: pointer;
+}
