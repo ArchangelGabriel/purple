@@ -15,7 +15,7 @@ var Login = require('../components/login/Login.js');
 var routes = (
   <Route handler={Main}>
     <Route name="messages" path="messages" handler={Messages} />
-    <Route name="parser" path="parser" handler={Parser} />
+    <Route name="message" path="/messages/:id" handler={Parser} />
     <Route name="erp" path="erp" handler={ERP} />
 
     <Route name="teach" path="teach" handler={Teach} />

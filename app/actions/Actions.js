@@ -1,8 +1,5 @@
 var Reflux = require('reflux');
 
-var Actions = Reflux.createActions({
-  "login": {children: ["completed", "failed"]},
-  "actions": {}
-});
+var Actions = Reflux.createActions(['login', 'fetchMessages']);
 
 module.exports = Actions;

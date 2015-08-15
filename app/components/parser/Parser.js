@@ -1,8 +1,18 @@
 var React = require('react');
 var Drag = require('../common/Drag');
+var Reflux = require('reflux');
+var MessageStore = require('../../stores/MessageStore.js');
 
 var Parser = React.createClass({
+  mixins: [Reflux.connect(MessageStore, 'messages')],
   render: function() {
+
+    var message = this.state.messages && this.state.messages.filter(function(message) {
+        return message.id === this.props.params.id;
+      }.bind(this))[0];
+
+    message && console.log(message.content);
+
     var wordList = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, veniam.".split(" ");
     return (
       <section className="parser">
@@ -22,8 +32,8 @@ var Parser = React.createClass({
           </div>
         </header>
         <main>
-          <h3>Lorem ipsum dolor sit.</h3>
-          {wordList.map(function(word) {
+          <h3>{message && message.subject}</h3>
+          {message && message.content.split("\n").map(function(word) {
             return (
               <Drag text={word} />
             )

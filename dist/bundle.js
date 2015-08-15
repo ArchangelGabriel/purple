@@ -21742,7 +21742,7 @@
 	  Route,
 	  { handler: Main },
 	  React.createElement(Route, { name: 'messages', path: 'messages', handler: Messages }),
-	  React.createElement(Route, { name: 'parser', path: 'parser', handler: Parser }),
+	  React.createElement(Route, { name: 'message', path: '/messages/:id', handler: Parser }),
 	  React.createElement(Route, { name: 'erp', path: 'erp', handler: ERP }),
 	  React.createElement(Route, { name: 'teach', path: 'teach', handler: Teach }),
 	  React.createElement(Route, { name: 'login', path: 'login', handler: Login }),
@@ -21761,12 +21761,17 @@
 
 	var React = __webpack_require__(5);
 	var Article = __webpack_require__(229);
+	var Reflux = __webpack_require__(206);
+	var MessageStore = __webpack_require__(242);
+	var Actions = __webpack_require__(205);
+	var Link = __webpack_require__(161).Link;
 
 	var Messages = React.createClass({
 	  displayName: 'Messages',
 
+	  mixins: [Reflux.connect(MessageStore, "messages")],
 	  render: function render() {
-	    var text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias architecto assumenda autem corporis cum eaque eligendi, error est explicabo facere ipsa ipsam iure, laboriosam libero modi odio pariatur perspiciatis quae quaerat quas sint totam unde vero voluptas voluptatem voluptates. Autem earum est pariatur repudiandae vel vero voluptate voluptates! Itaque?";
+	    var messages = this.state.messages;
 	    return React.createElement(
 	      'section',
 	      { className: 'messages' },
@@ -21775,106 +21780,33 @@
 	        null,
 	        'New messages to juangab31@gmail.com'
 	      ),
-	      React.createElement(
-	        'article',
-	        { className: 'message' },
-	        React.createElement(
-	          'header',
-	          null,
-	          React.createElement('i', { className: 'fa fa-archive' }),
-	          ' ',
+	      messages && messages.map(function (message, i) {
+	        return React.createElement(
+	          'article',
+	          { key: i, className: 'message' },
 	          React.createElement(
-	            'strong',
+	            'header',
 	            null,
-	            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	          )
-	        ),
-	        React.createElement(
-	          'main',
-	          null,
-	          React.createElement(Article, { text: text }),
+	            React.createElement('i', { className: 'fa fa-archive' }),
+	            ' ',
+	            React.createElement(
+	              'strong',
+	              null,
+	              message.subject
+	            )
+	          ),
 	          React.createElement(
-	            'button',
-	            { type: 'submit', className: 'mui-btn mui-btn-primary' },
-	            'View Message'
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'article',
-	        { className: 'message' },
-	        React.createElement(
-	          'header',
-	          null,
-	          React.createElement('i', { className: 'fa fa-archive' }),
-	          ' ',
-	          React.createElement(
-	            'strong',
+	            'main',
 	            null,
-	            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+	            React.createElement(Article, { text: message.content }),
+	            React.createElement(
+	              Link,
+	              { to: 'message', params: { id: message.id }, type: 'submit', className: 'mui-btn mui-btn-primary' },
+	              'View Message'
+	            )
 	          )
-	        ),
-	        React.createElement(
-	          'main',
-	          null,
-	          React.createElement(Article, { text: text }),
-	          React.createElement(
-	            'button',
-	            { type: 'submit', className: 'mui-btn mui-btn-primary' },
-	            'View Message'
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'article',
-	        { className: 'message' },
-	        React.createElement(
-	          'header',
-	          null,
-	          React.createElement('i', { className: 'fa fa-archive' }),
-	          ' ',
-	          React.createElement(
-	            'strong',
-	            null,
-	            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	          )
-	        ),
-	        React.createElement(
-	          'main',
-	          null,
-	          React.createElement(Article, { text: text }),
-	          React.createElement(
-	            'button',
-	            { type: 'submit', className: 'mui-btn mui-btn-primary' },
-	            'View Message'
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'article',
-	        { className: 'message' },
-	        React.createElement(
-	          'header',
-	          null,
-	          React.createElement('i', { className: 'fa fa-archive' }),
-	          ' ',
-	          React.createElement(
-	            'strong',
-	            null,
-	            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	          )
-	        ),
-	        React.createElement(
-	          'main',
-	          null,
-	          React.createElement(Article, { text: text }),
-	          React.createElement(
-	            'button',
-	            { type: 'submit', className: 'mui-btn mui-btn-primary' },
-	            'View Message'
-	          )
-	        )
-	      )
+	        );
+	      })
 	    );
 	  }
 	});
@@ -22025,14 +21957,11 @@
 /* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var Reflux = __webpack_require__(206);
 
-	var Actions = Reflux.createActions({
-	  "login": { children: ["completed", "failed"] },
-	  "actions": {}
-	});
+	var Actions = Reflux.createActions(['login', 'fetchMessages']);
 
 	module.exports = Actions;
 
@@ -23805,12 +23734,13 @@
 /* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(5);
+	var markdown = __webpack_require__(246).markdown;
 
 	var Article = React.createClass({
-	  displayName: "Article",
+	  displayName: 'Article',
 
 	  getInitialState: function getInitialState() {
 	    return {
@@ -23819,22 +23749,24 @@
 	  },
 	  render: function render() {
 	    return React.createElement(
-	      "article",
-	      { className: "article" },
+	      'article',
+	      { className: 'article' },
 	      !this.state.expanded && this.props.text.length > 140 ? React.createElement(
-	        "p",
-	        { className: "pointer", onClick: this.handleClick },
+	        'p',
+	        { className: 'pointer', onClick: this.handleClick },
 	        this.props.text.slice(0, 240),
-	        "... ",
+	        '... ',
 	        React.createElement(
-	          "a",
-	          { href: "javascript:void(0)" },
-	          "(more)"
+	          'a',
+	          { href: 'javascript:void(0)' },
+	          '(more)'
 	        )
 	      ) : React.createElement(
-	        "p",
-	        { className: "text" },
-	        this.props.text
+	        'p',
+	        { className: 'text' },
+	        React.DOM.div({ dangerouslySetInnerHTML: {
+	            __html: markdown.toHTML(this.props.text.toString())
+	          } })
 	      )
 	    );
 	  },
@@ -23972,11 +23904,21 @@
 
 	var React = __webpack_require__(5);
 	var Drag = __webpack_require__(234);
+	var Reflux = __webpack_require__(206);
+	var MessageStore = __webpack_require__(242);
 
 	var Parser = React.createClass({
 	  displayName: 'Parser',
 
+	  mixins: [Reflux.connect(MessageStore, 'messages')],
 	  render: function render() {
+
+	    var message = this.state.messages && this.state.messages.filter((function (message) {
+	      return message.id === this.props.params.id;
+	    }).bind(this))[0];
+
+	    message && console.log(message.content);
+
 	    var wordList = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, veniam.".split(" ");
 	    return React.createElement(
 	      'section',
@@ -24036,9 +23978,9 @@
 	        React.createElement(
 	          'h3',
 	          null,
-	          'Lorem ipsum dolor sit.'
+	          message && message.subject
 	        ),
-	        wordList.map(function (word) {
+	        message && message.content.split("\n").map(function (word) {
 	          return React.createElement(Drag, { text: word });
 	        })
 	      ),
@@ -25028,6 +24970,3617 @@
 	  /** Check JavaScript variable instance type */
 	  type: jqLiteType
 	};
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Reflux = __webpack_require__(206);
+	var Actions = __webpack_require__(205);
+	var request = __webpack_require__(243);
+
+	var MessageStore = Reflux.createStore({
+	  listenables: Actions,
+	  getInitialState: function getInitialState() {
+	    this.onFetchMessages();
+	  },
+	  onFetchMessages: function onFetchMessages() {
+	    request.get('http://mpa-hack.tendtoinfinity.com/api/messages').end((function (err, res) {
+	      if (res.ok) {
+	        this.trigger(res.body);
+	      }
+	    }).bind(this));
+	  }
+	});
+
+	module.exports = MessageStore;
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Module dependencies.
+	 */
+
+	'use strict';
+
+	var Emitter = __webpack_require__(244);
+	var reduce = __webpack_require__(245);
+
+	/**
+	 * Root reference for iframes.
+	 */
+
+	var root = 'undefined' == typeof window ? undefined || self : window;
+
+	/**
+	 * Noop.
+	 */
+
+	function noop() {};
+
+	/**
+	 * Check if `obj` is a host object,
+	 * we don't want to serialize these :)
+	 *
+	 * TODO: future proof, move to compoent land
+	 *
+	 * @param {Object} obj
+	 * @return {Boolean}
+	 * @api private
+	 */
+
+	function isHost(obj) {
+	  var str = ({}).toString.call(obj);
+
+	  switch (str) {
+	    case '[object File]':
+	    case '[object Blob]':
+	    case '[object FormData]':
+	      return true;
+	    default:
+	      return false;
+	  }
+	}
+
+	/**
+	 * Determine XHR.
+	 */
+
+	request.getXHR = function () {
+	  if (root.XMLHttpRequest && (!root.location || 'file:' != root.location.protocol || !root.ActiveXObject)) {
+	    return new XMLHttpRequest();
+	  } else {
+	    try {
+	      return new ActiveXObject('Microsoft.XMLHTTP');
+	    } catch (e) {}
+	    try {
+	      return new ActiveXObject('Msxml2.XMLHTTP.6.0');
+	    } catch (e) {}
+	    try {
+	      return new ActiveXObject('Msxml2.XMLHTTP.3.0');
+	    } catch (e) {}
+	    try {
+	      return new ActiveXObject('Msxml2.XMLHTTP');
+	    } catch (e) {}
+	  }
+	  return false;
+	};
+
+	/**
+	 * Removes leading and trailing whitespace, added to support IE.
+	 *
+	 * @param {String} s
+	 * @return {String}
+	 * @api private
+	 */
+
+	var trim = ''.trim ? function (s) {
+	  return s.trim();
+	} : function (s) {
+	  return s.replace(/(^\s*|\s*$)/g, '');
+	};
+
+	/**
+	 * Check if `obj` is an object.
+	 *
+	 * @param {Object} obj
+	 * @return {Boolean}
+	 * @api private
+	 */
+
+	function isObject(obj) {
+	  return obj === Object(obj);
+	}
+
+	/**
+	 * Serialize the given `obj`.
+	 *
+	 * @param {Object} obj
+	 * @return {String}
+	 * @api private
+	 */
+
+	function serialize(obj) {
+	  if (!isObject(obj)) return obj;
+	  var pairs = [];
+	  for (var key in obj) {
+	    if (null != obj[key]) {
+	      pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
+	    }
+	  }
+	  return pairs.join('&');
+	}
+
+	/**
+	 * Expose serialization method.
+	 */
+
+	request.serializeObject = serialize;
+
+	/**
+	 * Parse the given x-www-form-urlencoded `str`.
+	 *
+	 * @param {String} str
+	 * @return {Object}
+	 * @api private
+	 */
+
+	function parseString(str) {
+	  var obj = {};
+	  var pairs = str.split('&');
+	  var parts;
+	  var pair;
+
+	  for (var i = 0, len = pairs.length; i < len; ++i) {
+	    pair = pairs[i];
+	    parts = pair.split('=');
+	    obj[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+	  }
+
+	  return obj;
+	}
+
+	/**
+	 * Expose parser.
+	 */
+
+	request.parseString = parseString;
+
+	/**
+	 * Default MIME type map.
+	 *
+	 *     superagent.types.xml = 'application/xml';
+	 *
+	 */
+
+	request.types = {
+	  html: 'text/html',
+	  json: 'application/json',
+	  xml: 'application/xml',
+	  urlencoded: 'application/x-www-form-urlencoded',
+	  'form': 'application/x-www-form-urlencoded',
+	  'form-data': 'application/x-www-form-urlencoded'
+	};
+
+	/**
+	 * Default serialization map.
+	 *
+	 *     superagent.serialize['application/xml'] = function(obj){
+	 *       return 'generated xml here';
+	 *     };
+	 *
+	 */
+
+	request.serialize = {
+	  'application/x-www-form-urlencoded': serialize,
+	  'application/json': JSON.stringify
+	};
+
+	/**
+	 * Default parsers.
+	 *
+	 *     superagent.parse['application/xml'] = function(str){
+	 *       return { object parsed from str };
+	 *     };
+	 *
+	 */
+
+	request.parse = {
+	  'application/x-www-form-urlencoded': parseString,
+	  'application/json': JSON.parse
+	};
+
+	/**
+	 * Parse the given header `str` into
+	 * an object containing the mapped fields.
+	 *
+	 * @param {String} str
+	 * @return {Object}
+	 * @api private
+	 */
+
+	function parseHeader(str) {
+	  var lines = str.split(/\r?\n/);
+	  var fields = {};
+	  var index;
+	  var line;
+	  var field;
+	  var val;
+
+	  lines.pop(); // trailing CRLF
+
+	  for (var i = 0, len = lines.length; i < len; ++i) {
+	    line = lines[i];
+	    index = line.indexOf(':');
+	    field = line.slice(0, index).toLowerCase();
+	    val = trim(line.slice(index + 1));
+	    fields[field] = val;
+	  }
+
+	  return fields;
+	}
+
+	/**
+	 * Return the mime type for the given `str`.
+	 *
+	 * @param {String} str
+	 * @return {String}
+	 * @api private
+	 */
+
+	function type(str) {
+	  return str.split(/ *; */).shift();
+	};
+
+	/**
+	 * Return header field parameters.
+	 *
+	 * @param {String} str
+	 * @return {Object}
+	 * @api private
+	 */
+
+	function params(str) {
+	  return reduce(str.split(/ *; */), function (obj, str) {
+	    var parts = str.split(/ *= */),
+	        key = parts.shift(),
+	        val = parts.shift();
+
+	    if (key && val) obj[key] = val;
+	    return obj;
+	  }, {});
+	};
+
+	/**
+	 * Initialize a new `Response` with the given `xhr`.
+	 *
+	 *  - set flags (.ok, .error, etc)
+	 *  - parse header
+	 *
+	 * Examples:
+	 *
+	 *  Aliasing `superagent` as `request` is nice:
+	 *
+	 *      request = superagent;
+	 *
+	 *  We can use the promise-like API, or pass callbacks:
+	 *
+	 *      request.get('/').end(function(res){});
+	 *      request.get('/', function(res){});
+	 *
+	 *  Sending data can be chained:
+	 *
+	 *      request
+	 *        .post('/user')
+	 *        .send({ name: 'tj' })
+	 *        .end(function(res){});
+	 *
+	 *  Or passed to `.send()`:
+	 *
+	 *      request
+	 *        .post('/user')
+	 *        .send({ name: 'tj' }, function(res){});
+	 *
+	 *  Or passed to `.post()`:
+	 *
+	 *      request
+	 *        .post('/user', { name: 'tj' })
+	 *        .end(function(res){});
+	 *
+	 * Or further reduced to a single call for simple cases:
+	 *
+	 *      request
+	 *        .post('/user', { name: 'tj' }, function(res){});
+	 *
+	 * @param {XMLHTTPRequest} xhr
+	 * @param {Object} options
+	 * @api private
+	 */
+
+	function Response(req, options) {
+	  options = options || {};
+	  this.req = req;
+	  this.xhr = this.req.xhr;
+	  // responseText is accessible only if responseType is '' or 'text' and on older browsers
+	  this.text = this.req.method != 'HEAD' && (this.xhr.responseType === '' || this.xhr.responseType === 'text') || typeof this.xhr.responseType === 'undefined' ? this.xhr.responseText : null;
+	  this.statusText = this.req.xhr.statusText;
+	  this.setStatusProperties(this.xhr.status);
+	  this.header = this.headers = parseHeader(this.xhr.getAllResponseHeaders());
+	  // getAllResponseHeaders sometimes falsely returns "" for CORS requests, but
+	  // getResponseHeader still works. so we get content-type even if getting
+	  // other headers fails.
+	  this.header['content-type'] = this.xhr.getResponseHeader('content-type');
+	  this.setHeaderProperties(this.header);
+	  this.body = this.req.method != 'HEAD' ? this.parseBody(this.text ? this.text : this.xhr.response) : null;
+	}
+
+	/**
+	 * Get case-insensitive `field` value.
+	 *
+	 * @param {String} field
+	 * @return {String}
+	 * @api public
+	 */
+
+	Response.prototype.get = function (field) {
+	  return this.header[field.toLowerCase()];
+	};
+
+	/**
+	 * Set header related properties:
+	 *
+	 *   - `.type` the content type without params
+	 *
+	 * A response of "Content-Type: text/plain; charset=utf-8"
+	 * will provide you with a `.type` of "text/plain".
+	 *
+	 * @param {Object} header
+	 * @api private
+	 */
+
+	Response.prototype.setHeaderProperties = function (header) {
+	  // content-type
+	  var ct = this.header['content-type'] || '';
+	  this.type = type(ct);
+
+	  // params
+	  var obj = params(ct);
+	  for (var key in obj) this[key] = obj[key];
+	};
+
+	/**
+	 * Parse the given body `str`.
+	 *
+	 * Used for auto-parsing of bodies. Parsers
+	 * are defined on the `superagent.parse` object.
+	 *
+	 * @param {String} str
+	 * @return {Mixed}
+	 * @api private
+	 */
+
+	Response.prototype.parseBody = function (str) {
+	  var parse = request.parse[this.type];
+	  return parse && str && (str.length || str instanceof Object) ? parse(str) : null;
+	};
+
+	/**
+	 * Set flags such as `.ok` based on `status`.
+	 *
+	 * For example a 2xx response will give you a `.ok` of __true__
+	 * whereas 5xx will be __false__ and `.error` will be __true__. The
+	 * `.clientError` and `.serverError` are also available to be more
+	 * specific, and `.statusType` is the class of error ranging from 1..5
+	 * sometimes useful for mapping respond colors etc.
+	 *
+	 * "sugar" properties are also defined for common cases. Currently providing:
+	 *
+	 *   - .noContent
+	 *   - .badRequest
+	 *   - .unauthorized
+	 *   - .notAcceptable
+	 *   - .notFound
+	 *
+	 * @param {Number} status
+	 * @api private
+	 */
+
+	Response.prototype.setStatusProperties = function (status) {
+	  // handle IE9 bug: http://stackoverflow.com/questions/10046972/msie-returns-status-code-of-1223-for-ajax-request
+	  if (status === 1223) {
+	    status = 204;
+	  }
+
+	  var type = status / 100 | 0;
+
+	  // status / class
+	  this.status = status;
+	  this.statusType = type;
+
+	  // basics
+	  this.info = 1 == type;
+	  this.ok = 2 == type;
+	  this.clientError = 4 == type;
+	  this.serverError = 5 == type;
+	  this.error = 4 == type || 5 == type ? this.toError() : false;
+
+	  // sugar
+	  this.accepted = 202 == status;
+	  this.noContent = 204 == status;
+	  this.badRequest = 400 == status;
+	  this.unauthorized = 401 == status;
+	  this.notAcceptable = 406 == status;
+	  this.notFound = 404 == status;
+	  this.forbidden = 403 == status;
+	};
+
+	/**
+	 * Return an `Error` representative of this response.
+	 *
+	 * @return {Error}
+	 * @api public
+	 */
+
+	Response.prototype.toError = function () {
+	  var req = this.req;
+	  var method = req.method;
+	  var url = req.url;
+
+	  var msg = 'cannot ' + method + ' ' + url + ' (' + this.status + ')';
+	  var err = new Error(msg);
+	  err.status = this.status;
+	  err.method = method;
+	  err.url = url;
+
+	  return err;
+	};
+
+	/**
+	 * Expose `Response`.
+	 */
+
+	request.Response = Response;
+
+	/**
+	 * Initialize a new `Request` with the given `method` and `url`.
+	 *
+	 * @param {String} method
+	 * @param {String} url
+	 * @api public
+	 */
+
+	function Request(method, url) {
+	  var self = this;
+	  Emitter.call(this);
+	  this._query = this._query || [];
+	  this.method = method;
+	  this.url = url;
+	  this.header = {};
+	  this._header = {};
+	  this.on('end', function () {
+	    var err = null;
+	    var res = null;
+
+	    try {
+	      res = new Response(self);
+	    } catch (e) {
+	      err = new Error('Parser is unable to parse the response');
+	      err.parse = true;
+	      err.original = e;
+	      return self.callback(err);
+	    }
+
+	    self.emit('response', res);
+
+	    if (err) {
+	      return self.callback(err, res);
+	    }
+
+	    if (res.status >= 200 && res.status < 300) {
+	      return self.callback(err, res);
+	    }
+
+	    var new_err = new Error(res.statusText || 'Unsuccessful HTTP response');
+	    new_err.original = err;
+	    new_err.response = res;
+	    new_err.status = res.status;
+
+	    self.callback(new_err, res);
+	  });
+	}
+
+	/**
+	 * Mixin `Emitter`.
+	 */
+
+	Emitter(Request.prototype);
+
+	/**
+	 * Allow for extension
+	 */
+
+	Request.prototype.use = function (fn) {
+	  fn(this);
+	  return this;
+	};
+
+	/**
+	 * Set timeout to `ms`.
+	 *
+	 * @param {Number} ms
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.timeout = function (ms) {
+	  this._timeout = ms;
+	  return this;
+	};
+
+	/**
+	 * Clear previous timeout.
+	 *
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.clearTimeout = function () {
+	  this._timeout = 0;
+	  clearTimeout(this._timer);
+	  return this;
+	};
+
+	/**
+	 * Abort the request, and clear potential timeout.
+	 *
+	 * @return {Request}
+	 * @api public
+	 */
+
+	Request.prototype.abort = function () {
+	  if (this.aborted) return;
+	  this.aborted = true;
+	  this.xhr.abort();
+	  this.clearTimeout();
+	  this.emit('abort');
+	  return this;
+	};
+
+	/**
+	 * Set header `field` to `val`, or multiple fields with one object.
+	 *
+	 * Examples:
+	 *
+	 *      req.get('/')
+	 *        .set('Accept', 'application/json')
+	 *        .set('X-API-Key', 'foobar')
+	 *        .end(callback);
+	 *
+	 *      req.get('/')
+	 *        .set({ Accept: 'application/json', 'X-API-Key': 'foobar' })
+	 *        .end(callback);
+	 *
+	 * @param {String|Object} field
+	 * @param {String} val
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.set = function (field, val) {
+	  if (isObject(field)) {
+	    for (var key in field) {
+	      this.set(key, field[key]);
+	    }
+	    return this;
+	  }
+	  this._header[field.toLowerCase()] = val;
+	  this.header[field] = val;
+	  return this;
+	};
+
+	/**
+	 * Remove header `field`.
+	 *
+	 * Example:
+	 *
+	 *      req.get('/')
+	 *        .unset('User-Agent')
+	 *        .end(callback);
+	 *
+	 * @param {String} field
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.unset = function (field) {
+	  delete this._header[field.toLowerCase()];
+	  delete this.header[field];
+	  return this;
+	};
+
+	/**
+	 * Get case-insensitive header `field` value.
+	 *
+	 * @param {String} field
+	 * @return {String}
+	 * @api private
+	 */
+
+	Request.prototype.getHeader = function (field) {
+	  return this._header[field.toLowerCase()];
+	};
+
+	/**
+	 * Set Content-Type to `type`, mapping values from `request.types`.
+	 *
+	 * Examples:
+	 *
+	 *      superagent.types.xml = 'application/xml';
+	 *
+	 *      request.post('/')
+	 *        .type('xml')
+	 *        .send(xmlstring)
+	 *        .end(callback);
+	 *
+	 *      request.post('/')
+	 *        .type('application/xml')
+	 *        .send(xmlstring)
+	 *        .end(callback);
+	 *
+	 * @param {String} type
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.type = function (type) {
+	  this.set('Content-Type', request.types[type] || type);
+	  return this;
+	};
+
+	/**
+	 * Set Accept to `type`, mapping values from `request.types`.
+	 *
+	 * Examples:
+	 *
+	 *      superagent.types.json = 'application/json';
+	 *
+	 *      request.get('/agent')
+	 *        .accept('json')
+	 *        .end(callback);
+	 *
+	 *      request.get('/agent')
+	 *        .accept('application/json')
+	 *        .end(callback);
+	 *
+	 * @param {String} accept
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.accept = function (type) {
+	  this.set('Accept', request.types[type] || type);
+	  return this;
+	};
+
+	/**
+	 * Set Authorization field value with `user` and `pass`.
+	 *
+	 * @param {String} user
+	 * @param {String} pass
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.auth = function (user, pass) {
+	  var str = btoa(user + ':' + pass);
+	  this.set('Authorization', 'Basic ' + str);
+	  return this;
+	};
+
+	/**
+	* Add query-string `val`.
+	*
+	* Examples:
+	*
+	*   request.get('/shoes')
+	*     .query('size=10')
+	*     .query({ color: 'blue' })
+	*
+	* @param {Object|String} val
+	* @return {Request} for chaining
+	* @api public
+	*/
+
+	Request.prototype.query = function (val) {
+	  if ('string' != typeof val) val = serialize(val);
+	  if (val) this._query.push(val);
+	  return this;
+	};
+
+	/**
+	 * Write the field `name` and `val` for "multipart/form-data"
+	 * request bodies.
+	 *
+	 * ``` js
+	 * request.post('/upload')
+	 *   .field('foo', 'bar')
+	 *   .end(callback);
+	 * ```
+	 *
+	 * @param {String} name
+	 * @param {String|Blob|File} val
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.field = function (name, val) {
+	  if (!this._formData) this._formData = new root.FormData();
+	  this._formData.append(name, val);
+	  return this;
+	};
+
+	/**
+	 * Queue the given `file` as an attachment to the specified `field`,
+	 * with optional `filename`.
+	 *
+	 * ``` js
+	 * request.post('/upload')
+	 *   .attach(new Blob(['<a id="a"><b id="b">hey!</b></a>'], { type: "text/html"}))
+	 *   .end(callback);
+	 * ```
+	 *
+	 * @param {String} field
+	 * @param {Blob|File} file
+	 * @param {String} filename
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.attach = function (field, file, filename) {
+	  if (!this._formData) this._formData = new root.FormData();
+	  this._formData.append(field, file, filename);
+	  return this;
+	};
+
+	/**
+	 * Send `data`, defaulting the `.type()` to "json" when
+	 * an object is given.
+	 *
+	 * Examples:
+	 *
+	 *       // querystring
+	 *       request.get('/search')
+	 *         .end(callback)
+	 *
+	 *       // multiple data "writes"
+	 *       request.get('/search')
+	 *         .send({ search: 'query' })
+	 *         .send({ range: '1..5' })
+	 *         .send({ order: 'desc' })
+	 *         .end(callback)
+	 *
+	 *       // manual json
+	 *       request.post('/user')
+	 *         .type('json')
+	 *         .send('{"name":"tj"})
+	 *         .end(callback)
+	 *
+	 *       // auto json
+	 *       request.post('/user')
+	 *         .send({ name: 'tj' })
+	 *         .end(callback)
+	 *
+	 *       // manual x-www-form-urlencoded
+	 *       request.post('/user')
+	 *         .type('form')
+	 *         .send('name=tj')
+	 *         .end(callback)
+	 *
+	 *       // auto x-www-form-urlencoded
+	 *       request.post('/user')
+	 *         .type('form')
+	 *         .send({ name: 'tj' })
+	 *         .end(callback)
+	 *
+	 *       // defaults to x-www-form-urlencoded
+	  *      request.post('/user')
+	  *        .send('name=tobi')
+	  *        .send('species=ferret')
+	  *        .end(callback)
+	 *
+	 * @param {String|Object} data
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.send = function (data) {
+	  var obj = isObject(data);
+	  var type = this.getHeader('Content-Type');
+
+	  // merge
+	  if (obj && isObject(this._data)) {
+	    for (var key in data) {
+	      this._data[key] = data[key];
+	    }
+	  } else if ('string' == typeof data) {
+	    if (!type) this.type('form');
+	    type = this.getHeader('Content-Type');
+	    if ('application/x-www-form-urlencoded' == type) {
+	      this._data = this._data ? this._data + '&' + data : data;
+	    } else {
+	      this._data = (this._data || '') + data;
+	    }
+	  } else {
+	    this._data = data;
+	  }
+
+	  if (!obj || isHost(data)) return this;
+	  if (!type) this.type('json');
+	  return this;
+	};
+
+	/**
+	 * Invoke the callback with `err` and `res`
+	 * and handle arity check.
+	 *
+	 * @param {Error} err
+	 * @param {Response} res
+	 * @api private
+	 */
+
+	Request.prototype.callback = function (err, res) {
+	  var fn = this._callback;
+	  this.clearTimeout();
+	  fn(err, res);
+	};
+
+	/**
+	 * Invoke callback with x-domain error.
+	 *
+	 * @api private
+	 */
+
+	Request.prototype.crossDomainError = function () {
+	  var err = new Error('Origin is not allowed by Access-Control-Allow-Origin');
+	  err.crossDomain = true;
+	  this.callback(err);
+	};
+
+	/**
+	 * Invoke callback with timeout error.
+	 *
+	 * @api private
+	 */
+
+	Request.prototype.timeoutError = function () {
+	  var timeout = this._timeout;
+	  var err = new Error('timeout of ' + timeout + 'ms exceeded');
+	  err.timeout = timeout;
+	  this.callback(err);
+	};
+
+	/**
+	 * Enable transmission of cookies with x-domain requests.
+	 *
+	 * Note that for this to work the origin must not be
+	 * using "Access-Control-Allow-Origin" with a wildcard,
+	 * and also must set "Access-Control-Allow-Credentials"
+	 * to "true".
+	 *
+	 * @api public
+	 */
+
+	Request.prototype.withCredentials = function () {
+	  this._withCredentials = true;
+	  return this;
+	};
+
+	/**
+	 * Initiate request, invoking callback `fn(res)`
+	 * with an instanceof `Response`.
+	 *
+	 * @param {Function} fn
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.end = function (fn) {
+	  var self = this;
+	  var xhr = this.xhr = request.getXHR();
+	  var query = this._query.join('&');
+	  var timeout = this._timeout;
+	  var data = this._formData || this._data;
+
+	  // store callback
+	  this._callback = fn || noop;
+
+	  // state change
+	  xhr.onreadystatechange = function () {
+	    if (4 != xhr.readyState) return;
+
+	    // In IE9, reads to any property (e.g. status) off of an aborted XHR will
+	    // result in the error "Could not complete the operation due to error c00c023f"
+	    var status;
+	    try {
+	      status = xhr.status;
+	    } catch (e) {
+	      status = 0;
+	    }
+
+	    if (0 == status) {
+	      if (self.timedout) return self.timeoutError();
+	      if (self.aborted) return;
+	      return self.crossDomainError();
+	    }
+	    self.emit('end');
+	  };
+
+	  // progress
+	  var handleProgress = function handleProgress(e) {
+	    if (e.total > 0) {
+	      e.percent = e.loaded / e.total * 100;
+	    }
+	    self.emit('progress', e);
+	  };
+	  if (this.hasListeners('progress')) {
+	    xhr.onprogress = handleProgress;
+	  }
+	  try {
+	    if (xhr.upload && this.hasListeners('progress')) {
+	      xhr.upload.onprogress = handleProgress;
+	    }
+	  } catch (e) {}
+	  // Accessing xhr.upload fails in IE from a web worker, so just pretend it doesn't exist.
+	  // Reported here:
+	  // https://connect.microsoft.com/IE/feedback/details/837245/xmlhttprequest-upload-throws-invalid-argument-when-used-from-web-worker-context
+
+	  // timeout
+	  if (timeout && !this._timer) {
+	    this._timer = setTimeout(function () {
+	      self.timedout = true;
+	      self.abort();
+	    }, timeout);
+	  }
+
+	  // querystring
+	  if (query) {
+	    query = request.serializeObject(query);
+	    this.url += ~this.url.indexOf('?') ? '&' + query : '?' + query;
+	  }
+
+	  // initiate request
+	  xhr.open(this.method, this.url, true);
+
+	  // CORS
+	  if (this._withCredentials) xhr.withCredentials = true;
+
+	  // body
+	  if ('GET' != this.method && 'HEAD' != this.method && 'string' != typeof data && !isHost(data)) {
+	    // serialize stuff
+	    var contentType = this.getHeader('Content-Type');
+	    var serialize = request.serialize[contentType ? contentType.split(';')[0] : ''];
+	    if (serialize) data = serialize(data);
+	  }
+
+	  // set header fields
+	  for (var field in this.header) {
+	    if (null == this.header[field]) continue;
+	    xhr.setRequestHeader(field, this.header[field]);
+	  }
+
+	  // send stuff
+	  this.emit('request', this);
+	  xhr.send(data);
+	  return this;
+	};
+
+	/**
+	 * Faux promise support
+	 *
+	 * @param {Function} fulfill
+	 * @param {Function} reject
+	 * @return {Request}
+	 */
+
+	Request.prototype.then = function (fulfill, reject) {
+	  return this.end(function (err, res) {
+	    err ? reject(err) : fulfill(res);
+	  });
+	};
+
+	/**
+	 * Expose `Request`.
+	 */
+
+	request.Request = Request;
+
+	/**
+	 * Issue a request:
+	 *
+	 * Examples:
+	 *
+	 *    request('GET', '/users').end(callback)
+	 *    request('/users').end(callback)
+	 *    request('/users', callback)
+	 *
+	 * @param {String} method
+	 * @param {String|Function} url or callback
+	 * @return {Request}
+	 * @api public
+	 */
+
+	function request(method, url) {
+	  // callback
+	  if ('function' == typeof url) {
+	    return new Request('GET', method).end(url);
+	  }
+
+	  // url first
+	  if (1 == arguments.length) {
+	    return new Request('GET', method);
+	  }
+
+	  return new Request(method, url);
+	}
+
+	/**
+	 * GET `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.get = function (url, data, fn) {
+	  var req = request('GET', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.query(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * HEAD `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.head = function (url, data, fn) {
+	  var req = request('HEAD', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * DELETE `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.del = function (url, fn) {
+	  var req = request('DELETE', url);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * PATCH `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed} data
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.patch = function (url, data, fn) {
+	  var req = request('PATCH', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * POST `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed} data
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.post = function (url, data, fn) {
+	  var req = request('POST', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * PUT `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.put = function (url, data, fn) {
+	  var req = request('PUT', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * Expose `request`.
+	 */
+
+	module.exports = request;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports) {
+
+	
+	/**
+	 * Expose `Emitter`.
+	 */
+
+	"use strict";
+
+	module.exports = Emitter;
+
+	/**
+	 * Initialize a new `Emitter`.
+	 *
+	 * @api public
+	 */
+
+	function Emitter(obj) {
+	  if (obj) return mixin(obj);
+	};
+
+	/**
+	 * Mixin the emitter properties.
+	 *
+	 * @param {Object} obj
+	 * @return {Object}
+	 * @api private
+	 */
+
+	function mixin(obj) {
+	  for (var key in Emitter.prototype) {
+	    obj[key] = Emitter.prototype[key];
+	  }
+	  return obj;
+	}
+
+	/**
+	 * Listen on the given `event` with `fn`.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+
+	Emitter.prototype.on = Emitter.prototype.addEventListener = function (event, fn) {
+	  this._callbacks = this._callbacks || {};
+	  (this._callbacks[event] = this._callbacks[event] || []).push(fn);
+	  return this;
+	};
+
+	/**
+	 * Adds an `event` listener that will be invoked a single
+	 * time then automatically removed.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+
+	Emitter.prototype.once = function (event, fn) {
+	  var self = this;
+	  this._callbacks = this._callbacks || {};
+
+	  function on() {
+	    self.off(event, on);
+	    fn.apply(this, arguments);
+	  }
+
+	  on.fn = fn;
+	  this.on(event, on);
+	  return this;
+	};
+
+	/**
+	 * Remove the given callback for `event` or all
+	 * registered callbacks.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+
+	Emitter.prototype.off = Emitter.prototype.removeListener = Emitter.prototype.removeAllListeners = Emitter.prototype.removeEventListener = function (event, fn) {
+	  this._callbacks = this._callbacks || {};
+
+	  // all
+	  if (0 == arguments.length) {
+	    this._callbacks = {};
+	    return this;
+	  }
+
+	  // specific event
+	  var callbacks = this._callbacks[event];
+	  if (!callbacks) return this;
+
+	  // remove all handlers
+	  if (1 == arguments.length) {
+	    delete this._callbacks[event];
+	    return this;
+	  }
+
+	  // remove specific handler
+	  var cb;
+	  for (var i = 0; i < callbacks.length; i++) {
+	    cb = callbacks[i];
+	    if (cb === fn || cb.fn === fn) {
+	      callbacks.splice(i, 1);
+	      break;
+	    }
+	  }
+	  return this;
+	};
+
+	/**
+	 * Emit `event` with the given args.
+	 *
+	 * @param {String} event
+	 * @param {Mixed} ...
+	 * @return {Emitter}
+	 */
+
+	Emitter.prototype.emit = function (event) {
+	  this._callbacks = this._callbacks || {};
+	  var args = [].slice.call(arguments, 1),
+	      callbacks = this._callbacks[event];
+
+	  if (callbacks) {
+	    callbacks = callbacks.slice(0);
+	    for (var i = 0, len = callbacks.length; i < len; ++i) {
+	      callbacks[i].apply(this, args);
+	    }
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Return array of callbacks for `event`.
+	 *
+	 * @param {String} event
+	 * @return {Array}
+	 * @api public
+	 */
+
+	Emitter.prototype.listeners = function (event) {
+	  this._callbacks = this._callbacks || {};
+	  return this._callbacks[event] || [];
+	};
+
+	/**
+	 * Check if this emitter has `event` handlers.
+	 *
+	 * @param {String} event
+	 * @return {Boolean}
+	 * @api public
+	 */
+
+	Emitter.prototype.hasListeners = function (event) {
+	  return !!this.listeners(event).length;
+	};
+
+/***/ },
+/* 245 */
+/***/ function(module, exports) {
+
+	
+	/**
+	 * Reduce `arr` with `fn`.
+	 *
+	 * @param {Array} arr
+	 * @param {Function} fn
+	 * @param {Mixed} initial
+	 *
+	 * TODO: combatible error handling?
+	 */
+
+	"use strict";
+
+	module.exports = function (arr, fn, initial) {
+	  var idx = 0;
+	  var len = arr.length;
+	  var curr = arguments.length == 3 ? initial : arr[idx++];
+
+	  while (idx < len) {
+	    curr = fn.call(null, curr, arr[idx], ++idx, arr);
+	  }
+
+	  return curr;
+	};
+
+/***/ },
+/* 246 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// super simple module for the most common nodejs use case.
+	"use strict";
+
+	exports.markdown = __webpack_require__(247);
+	exports.parse = exports.markdown.toHTML;
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// Released under MIT license
+	// Copyright (c) 2009-2010 Dominic Baggott
+	// Copyright (c) 2009-2010 Ash Berlin
+	// Copyright (c) 2011 Christoph Dorn <christoph@christophdorn.com> (http://www.christophdorn.com)
+
+	"use strict";
+
+	(function (expose) {
+
+	  /**
+	   *  class Markdown
+	   *
+	   *  Markdown processing in Javascript done right. We have very particular views
+	   *  on what constitutes 'right' which include:
+	   *
+	   *  - produces well-formed HTML (this means that em and strong nesting is
+	   *    important)
+	   *
+	   *  - has an intermediate representation to allow processing of parsed data (We
+	   *    in fact have two, both as [JsonML]: a markdown tree and an HTML tree).
+	   *
+	   *  - is easily extensible to add new dialects without having to rewrite the
+	   *    entire parsing mechanics
+	   *
+	   *  - has a good test suite
+	   *
+	   *  This implementation fulfills all of these (except that the test suite could
+	   *  do with expanding to automatically run all the fixtures from other Markdown
+	   *  implementations.)
+	   *
+	   *  ##### Intermediate Representation
+	   *
+	   *  *TODO* Talk about this :) Its JsonML, but document the node names we use.
+	   *
+	   *  [JsonML]: http://jsonml.org/ "JSON Markup Language"
+	   **/
+	  var Markdown = expose.Markdown = function (dialect) {
+	    switch (typeof dialect) {
+	      case "undefined":
+	        this.dialect = Markdown.dialects.Gruber;
+	        break;
+	      case "object":
+	        this.dialect = dialect;
+	        break;
+	      default:
+	        if (dialect in Markdown.dialects) {
+	          this.dialect = Markdown.dialects[dialect];
+	        } else {
+	          throw new Error("Unknown Markdown dialect '" + String(dialect) + "'");
+	        }
+	        break;
+	    }
+	    this.em_state = [];
+	    this.strong_state = [];
+	    this.debug_indent = "";
+	  };
+
+	  /**
+	   *  parse( markdown, [dialect] ) -> JsonML
+	   *  - markdown (String): markdown string to parse
+	   *  - dialect (String | Dialect): the dialect to use, defaults to gruber
+	   *
+	   *  Parse `markdown` and return a markdown document as a Markdown.JsonML tree.
+	   **/
+	  expose.parse = function (source, dialect) {
+	    // dialect will default if undefined
+	    var md = new Markdown(dialect);
+	    return md.toTree(source);
+	  };
+
+	  /**
+	   *  toHTML( markdown, [dialect]  ) -> String
+	   *  toHTML( md_tree ) -> String
+	   *  - markdown (String): markdown string to parse
+	   *  - md_tree (Markdown.JsonML): parsed markdown tree
+	   *
+	   *  Take markdown (either as a string or as a JsonML tree) and run it through
+	   *  [[toHTMLTree]] then turn it into a well-formated HTML fragment.
+	   **/
+	  expose.toHTML = function toHTML(source, dialect, options) {
+	    var input = expose.toHTMLTree(source, dialect, options);
+
+	    return expose.renderJsonML(input);
+	  };
+
+	  /**
+	   *  toHTMLTree( markdown, [dialect] ) -> JsonML
+	   *  toHTMLTree( md_tree ) -> JsonML
+	   *  - markdown (String): markdown string to parse
+	   *  - dialect (String | Dialect): the dialect to use, defaults to gruber
+	   *  - md_tree (Markdown.JsonML): parsed markdown tree
+	   *
+	   *  Turn markdown into HTML, represented as a JsonML tree. If a string is given
+	   *  to this function, it is first parsed into a markdown tree by calling
+	   *  [[parse]].
+	   **/
+	  expose.toHTMLTree = function toHTMLTree(input, dialect, options) {
+	    // convert string input to an MD tree
+	    if (typeof input === "string") input = this.parse(input, dialect);
+
+	    // Now convert the MD tree to an HTML tree
+
+	    // remove references from the tree
+	    var attrs = extract_attr(input),
+	        refs = {};
+
+	    if (attrs && attrs.references) {
+	      refs = attrs.references;
+	    }
+
+	    var html = convert_tree_to_html(input, refs, options);
+	    merge_text_nodes(html);
+	    return html;
+	  };
+
+	  // For Spidermonkey based engines
+	  function mk_block_toSource() {
+	    return "Markdown.mk_block( " + uneval(this.toString()) + ", " + uneval(this.trailing) + ", " + uneval(this.lineNumber) + " )";
+	  }
+
+	  // node
+	  function mk_block_inspect() {
+	    var util = __webpack_require__(248);
+	    return "Markdown.mk_block( " + util.inspect(this.toString()) + ", " + util.inspect(this.trailing) + ", " + util.inspect(this.lineNumber) + " )";
+	  }
+
+	  var mk_block = Markdown.mk_block = function (block, trail, line) {
+	    // Be helpful for default case in tests.
+	    if (arguments.length == 1) trail = "\n\n";
+
+	    var s = new String(block);
+	    s.trailing = trail;
+	    // To make it clear its not just a string
+	    s.inspect = mk_block_inspect;
+	    s.toSource = mk_block_toSource;
+
+	    if (line != undefined) s.lineNumber = line;
+
+	    return s;
+	  };
+
+	  function count_lines(str) {
+	    var n = 0,
+	        i = -1;
+	    while ((i = str.indexOf("\n", i + 1)) !== -1) n++;
+	    return n;
+	  }
+
+	  // Internal - split source into rough blocks
+	  Markdown.prototype.split_blocks = function splitBlocks(input, startLine) {
+	    input = input.replace(/(\r\n|\n|\r)/g, "\n");
+	    // [\s\S] matches _anything_ (newline or space)
+	    // [^] is equivalent but doesn't work in IEs.
+	    var re = /([\s\S]+?)($|\n#|\n(?:\s*\n|$)+)/g,
+	        blocks = [],
+	        m;
+
+	    var line_no = 1;
+
+	    if ((m = /^(\s*\n)/.exec(input)) != null) {
+	      // skip (but count) leading blank lines
+	      line_no += count_lines(m[0]);
+	      re.lastIndex = m[0].length;
+	    }
+
+	    while ((m = re.exec(input)) !== null) {
+	      if (m[2] == "\n#") {
+	        m[2] = "\n";
+	        re.lastIndex--;
+	      }
+	      blocks.push(mk_block(m[1], m[2], line_no));
+	      line_no += count_lines(m[0]);
+	    }
+
+	    return blocks;
+	  };
+
+	  /**
+	   *  Markdown#processBlock( block, next ) -> undefined | [ JsonML, ... ]
+	   *  - block (String): the block to process
+	   *  - next (Array): the following blocks
+	   *
+	   * Process `block` and return an array of JsonML nodes representing `block`.
+	   *
+	   * It does this by asking each block level function in the dialect to process
+	   * the block until one can. Succesful handling is indicated by returning an
+	   * array (with zero or more JsonML nodes), failure by a false value.
+	   *
+	   * Blocks handlers are responsible for calling [[Markdown#processInline]]
+	   * themselves as appropriate.
+	   *
+	   * If the blocks were split incorrectly or adjacent blocks need collapsing you
+	   * can adjust `next` in place using shift/splice etc.
+	   *
+	   * If any of this default behaviour is not right for the dialect, you can
+	   * define a `__call__` method on the dialect that will get invoked to handle
+	   * the block processing.
+	   */
+	  Markdown.prototype.processBlock = function processBlock(block, next) {
+	    var cbs = this.dialect.block,
+	        ord = cbs.__order__;
+
+	    if ("__call__" in cbs) {
+	      return cbs.__call__.call(this, block, next);
+	    }
+
+	    for (var i = 0; i < ord.length; i++) {
+	      //D:this.debug( "Testing", ord[i] );
+	      var res = cbs[ord[i]].call(this, block, next);
+	      if (res) {
+	        //D:this.debug("  matched");
+	        if (!isArray(res) || res.length > 0 && !isArray(res[0])) this.debug(ord[i], "didn't return a proper array");
+	        //D:this.debug( "" );
+	        return res;
+	      }
+	    }
+
+	    // Uhoh! no match! Should we throw an error?
+	    return [];
+	  };
+
+	  Markdown.prototype.processInline = function processInline(block) {
+	    return this.dialect.inline.__call__.call(this, String(block));
+	  };
+
+	  /**
+	   *  Markdown#toTree( source ) -> JsonML
+	   *  - source (String): markdown source to parse
+	   *
+	   *  Parse `source` into a JsonML tree representing the markdown document.
+	   **/
+	  // custom_tree means set this.tree to `custom_tree` and restore old value on return
+	  Markdown.prototype.toTree = function toTree(source, custom_root) {
+	    var blocks = source instanceof Array ? source : this.split_blocks(source);
+
+	    // Make tree a member variable so its easier to mess with in extensions
+	    var old_tree = this.tree;
+	    try {
+	      this.tree = custom_root || this.tree || ["markdown"];
+
+	      blocks: while (blocks.length) {
+	        var b = this.processBlock(blocks.shift(), blocks);
+
+	        // Reference blocks and the like won't return any content
+	        if (!b.length) continue blocks;
+
+	        this.tree.push.apply(this.tree, b);
+	      }
+	      return this.tree;
+	    } finally {
+	      if (custom_root) {
+	        this.tree = old_tree;
+	      }
+	    }
+	  };
+
+	  // Noop by default
+	  Markdown.prototype.debug = function () {
+	    var args = Array.prototype.slice.call(arguments);
+	    args.unshift(this.debug_indent);
+	    if (typeof print !== "undefined") print.apply(print, args);
+	    if (typeof console !== "undefined" && typeof console.log !== "undefined") console.log.apply(null, args);
+	  };
+
+	  Markdown.prototype.loop_re_over_block = function (re, block, cb) {
+	    // Dont use /g regexps with this
+	    var m,
+	        b = block.valueOf();
+
+	    while (b.length && (m = re.exec(b)) != null) {
+	      b = b.substr(m[0].length);
+	      cb.call(this, m);
+	    }
+	    return b;
+	  };
+
+	  /**
+	   * Markdown.dialects
+	   *
+	   * Namespace of built-in dialects.
+	   **/
+	  Markdown.dialects = {};
+
+	  /**
+	   * Markdown.dialects.Gruber
+	   *
+	   * The default dialect that follows the rules set out by John Gruber's
+	   * markdown.pl as closely as possible. Well actually we follow the behaviour of
+	   * that script which in some places is not exactly what the syntax web page
+	   * says.
+	   **/
+	  Markdown.dialects.Gruber = {
+	    block: {
+	      atxHeader: function atxHeader(block, next) {
+	        var m = block.match(/^(#{1,6})\s*(.*?)\s*#*\s*(?:\n|$)/);
+
+	        if (!m) return undefined;
+
+	        var header = ["header", { level: m[1].length }];
+	        Array.prototype.push.apply(header, this.processInline(m[2]));
+
+	        if (m[0].length < block.length) next.unshift(mk_block(block.substr(m[0].length), block.trailing, block.lineNumber + 2));
+
+	        return [header];
+	      },
+
+	      setextHeader: function setextHeader(block, next) {
+	        var m = block.match(/^(.*)\n([-=])\2\2+(?:\n|$)/);
+
+	        if (!m) return undefined;
+
+	        var level = m[2] === "=" ? 1 : 2;
+	        var header = ["header", { level: level }, m[1]];
+
+	        if (m[0].length < block.length) next.unshift(mk_block(block.substr(m[0].length), block.trailing, block.lineNumber + 2));
+
+	        return [header];
+	      },
+
+	      code: function code(block, next) {
+	        // |    Foo
+	        // |bar
+	        // should be a code block followed by a paragraph. Fun
+	        //
+	        // There might also be adjacent code block to merge.
+
+	        var ret = [],
+	            re = /^(?: {0,3}\t| {4})(.*)\n?/,
+	            lines;
+
+	        // 4 spaces + content
+	        if (!block.match(re)) return undefined;
+
+	        block_search: do {
+	          // Now pull out the rest of the lines
+	          var b = this.loop_re_over_block(re, block.valueOf(), function (m) {
+	            ret.push(m[1]);
+	          });
+
+	          if (b.length) {
+	            // Case alluded to in first comment. push it back on as a new block
+	            next.unshift(mk_block(b, block.trailing));
+	            break block_search;
+	          } else if (next.length) {
+	            // Check the next block - it might be code too
+	            if (!next[0].match(re)) break block_search;
+
+	            // Pull how how many blanks lines follow - minus two to account for .join
+	            ret.push(block.trailing.replace(/[^\n]/g, "").substring(2));
+
+	            block = next.shift();
+	          } else {
+	            break block_search;
+	          }
+	        } while (true);
+
+	        return [["code_block", ret.join("\n")]];
+	      },
+
+	      horizRule: function horizRule(block, next) {
+	        // this needs to find any hr in the block to handle abutting blocks
+	        var m = block.match(/^(?:([\s\S]*?)\n)?[ \t]*([-_*])(?:[ \t]*\2){2,}[ \t]*(?:\n([\s\S]*))?$/);
+
+	        if (!m) {
+	          return undefined;
+	        }
+
+	        var jsonml = [["hr"]];
+
+	        // if there's a leading abutting block, process it
+	        if (m[1]) {
+	          jsonml.unshift.apply(jsonml, this.processBlock(m[1], []));
+	        }
+
+	        // if there's a trailing abutting block, stick it into next
+	        if (m[3]) {
+	          next.unshift(mk_block(m[3]));
+	        }
+
+	        return jsonml;
+	      },
+
+	      // There are two types of lists. Tight and loose. Tight lists have no whitespace
+	      // between the items (and result in text just in the <li>) and loose lists,
+	      // which have an empty line between list items, resulting in (one or more)
+	      // paragraphs inside the <li>.
+	      //
+	      // There are all sorts weird edge cases about the original markdown.pl's
+	      // handling of lists:
+	      //
+	      // * Nested lists are supposed to be indented by four chars per level. But
+	      //   if they aren't, you can get a nested list by indenting by less than
+	      //   four so long as the indent doesn't match an indent of an existing list
+	      //   item in the 'nest stack'.
+	      //
+	      // * The type of the list (bullet or number) is controlled just by the
+	      //    first item at the indent. Subsequent changes are ignored unless they
+	      //    are for nested lists
+	      //
+	      lists: (function () {
+	        // Use a closure to hide a few variables.
+	        var any_list = "[*+-]|\\d+\\.",
+	            bullet_list = /[*+-]/,
+	            number_list = /\d+\./,
+
+	        // Capture leading indent as it matters for determining nested lists.
+	        is_list_re = new RegExp("^( {0,3})(" + any_list + ")[ \t]+"),
+	            indent_re = "(?: {0,3}\\t| {4})";
+
+	        // TODO: Cache this regexp for certain depths.
+	        // Create a regexp suitable for matching an li for a given stack depth
+	        function regex_for_depth(depth) {
+
+	          return new RegExp(
+	          // m[1] = indent, m[2] = list_type
+	          "(?:^(" + indent_re + "{0," + depth + "} {0,3})(" + any_list + ")\\s+)|" +
+	          // m[3] = cont
+	          "(^" + indent_re + "{0," + (depth - 1) + "}[ ]{0,4})");
+	        }
+	        function expand_tab(input) {
+	          return input.replace(/ {0,3}\t/g, "    ");
+	        }
+
+	        // Add inline content `inline` to `li`. inline comes from processInline
+	        // so is an array of content
+	        function add(li, loose, inline, nl) {
+	          if (loose) {
+	            li.push(["para"].concat(inline));
+	            return;
+	          }
+	          // Hmmm, should this be any block level element or just paras?
+	          var add_to = li[li.length - 1] instanceof Array && li[li.length - 1][0] == "para" ? li[li.length - 1] : li;
+
+	          // If there is already some content in this list, add the new line in
+	          if (nl && li.length > 1) inline.unshift(nl);
+
+	          for (var i = 0; i < inline.length; i++) {
+	            var what = inline[i],
+	                is_str = typeof what == "string";
+	            if (is_str && add_to.length > 1 && typeof add_to[add_to.length - 1] == "string") {
+	              add_to[add_to.length - 1] += what;
+	            } else {
+	              add_to.push(what);
+	            }
+	          }
+	        }
+
+	        // contained means have an indent greater than the current one. On
+	        // *every* line in the block
+	        function get_contained_blocks(depth, blocks) {
+
+	          var re = new RegExp("^(" + indent_re + "{" + depth + "}.*?\\n?)*$"),
+	              replace = new RegExp("^" + indent_re + "{" + depth + "}", "gm"),
+	              ret = [];
+
+	          while (blocks.length > 0) {
+	            if (re.exec(blocks[0])) {
+	              var b = blocks.shift(),
+
+	              // Now remove that indent
+	              x = b.replace(replace, "");
+
+	              ret.push(mk_block(x, b.trailing, b.lineNumber));
+	            } else {
+	              break;
+	            }
+	          }
+	          return ret;
+	        }
+
+	        // passed to stack.forEach to turn list items up the stack into paras
+	        function paragraphify(s, i, stack) {
+	          var list = s.list;
+	          var last_li = list[list.length - 1];
+
+	          if (last_li[1] instanceof Array && last_li[1][0] == "para") {
+	            return;
+	          }
+	          if (i + 1 == stack.length) {
+	            // Last stack frame
+	            // Keep the same array, but replace the contents
+	            last_li.push(["para"].concat(last_li.splice(1, last_li.length - 1)));
+	          } else {
+	            var sublist = last_li.pop();
+	            last_li.push(["para"].concat(last_li.splice(1, last_li.length - 1)), sublist);
+	          }
+	        }
+
+	        // The matcher function
+	        return function (block, next) {
+	          var m = block.match(is_list_re);
+	          if (!m) return undefined;
+
+	          function make_list(m) {
+	            var list = bullet_list.exec(m[2]) ? ["bulletlist"] : ["numberlist"];
+
+	            stack.push({ list: list, indent: m[1] });
+	            return list;
+	          }
+
+	          var stack = [],
+	              // Stack of lists for nesting.
+	          list = make_list(m),
+	              last_li,
+	              loose = false,
+	              ret = [stack[0].list],
+	              i;
+
+	          // Loop to search over block looking for inner block elements and loose lists
+	          loose_search: while (true) {
+	            // Split into lines preserving new lines at end of line
+	            var lines = block.split(/(?=\n)/);
+
+	            // We have to grab all lines for a li and call processInline on them
+	            // once as there are some inline things that can span lines.
+	            var li_accumulate = "";
+
+	            // Loop over the lines in this block looking for tight lists.
+	            tight_search: for (var line_no = 0; line_no < lines.length; line_no++) {
+	              var nl = "",
+	                  l = lines[line_no].replace(/^\n/, function (n) {
+	                nl = n;return "";
+	              });
+
+	              // TODO: really should cache this
+	              var line_re = regex_for_depth(stack.length);
+
+	              m = l.match(line_re);
+	              //print( "line:", uneval(l), "\nline match:", uneval(m) );
+
+	              // We have a list item
+	              if (m[1] !== undefined) {
+	                // Process the previous list item, if any
+	                if (li_accumulate.length) {
+	                  add(last_li, loose, this.processInline(li_accumulate), nl);
+	                  // Loose mode will have been dealt with. Reset it
+	                  loose = false;
+	                  li_accumulate = "";
+	                }
+
+	                m[1] = expand_tab(m[1]);
+	                var wanted_depth = Math.floor(m[1].length / 4) + 1;
+	                //print( "want:", wanted_depth, "stack:", stack.length);
+	                if (wanted_depth > stack.length) {
+	                  // Deep enough for a nested list outright
+	                  //print ( "new nested list" );
+	                  list = make_list(m);
+	                  last_li.push(list);
+	                  last_li = list[1] = ["listitem"];
+	                } else {
+	                  // We aren't deep enough to be strictly a new level. This is
+	                  // where Md.pl goes nuts. If the indent matches a level in the
+	                  // stack, put it there, else put it one deeper then the
+	                  // wanted_depth deserves.
+	                  var found = false;
+	                  for (i = 0; i < stack.length; i++) {
+	                    if (stack[i].indent != m[1]) continue;
+	                    list = stack[i].list;
+	                    stack.splice(i + 1, stack.length - (i + 1));
+	                    found = true;
+	                    break;
+	                  }
+
+	                  if (!found) {
+	                    //print("not found. l:", uneval(l));
+	                    wanted_depth++;
+	                    if (wanted_depth <= stack.length) {
+	                      stack.splice(wanted_depth, stack.length - wanted_depth);
+	                      //print("Desired depth now", wanted_depth, "stack:", stack.length);
+	                      list = stack[wanted_depth - 1].list;
+	                      //print("list:", uneval(list) );
+	                    } else {
+	                        //print ("made new stack for messy indent");
+	                        list = make_list(m);
+	                        last_li.push(list);
+	                      }
+	                  }
+
+	                  //print( uneval(list), "last", list === stack[stack.length-1].list );
+	                  last_li = ["listitem"];
+	                  list.push(last_li);
+	                } // end depth of shenegains
+	                nl = "";
+	              }
+
+	              // Add content
+	              if (l.length > m[0].length) {
+	                li_accumulate += nl + l.substr(m[0].length);
+	              }
+	            } // tight_search
+
+	            if (li_accumulate.length) {
+	              add(last_li, loose, this.processInline(li_accumulate), nl);
+	              // Loose mode will have been dealt with. Reset it
+	              loose = false;
+	              li_accumulate = "";
+	            }
+
+	            // Look at the next block - we might have a loose list. Or an extra
+	            // paragraph for the current li
+	            var contained = get_contained_blocks(stack.length, next);
+
+	            // Deal with code blocks or properly nested lists
+	            if (contained.length > 0) {
+	              // Make sure all listitems up the stack are paragraphs
+	              forEach(stack, paragraphify, this);
+
+	              last_li.push.apply(last_li, this.toTree(contained, []));
+	            }
+
+	            var next_block = next[0] && next[0].valueOf() || "";
+
+	            if (next_block.match(is_list_re) || next_block.match(/^ /)) {
+	              block = next.shift();
+
+	              // Check for an HR following a list: features/lists/hr_abutting
+	              var hr = this.dialect.block.horizRule(block, next);
+
+	              if (hr) {
+	                ret.push.apply(ret, hr);
+	                break;
+	              }
+
+	              // Make sure all listitems up the stack are paragraphs
+	              forEach(stack, paragraphify, this);
+
+	              loose = true;
+	              continue loose_search;
+	            }
+	            break;
+	          } // loose_search
+
+	          return ret;
+	        };
+	      })(),
+
+	      blockquote: function blockquote(block, next) {
+	        if (!block.match(/^>/m)) return undefined;
+
+	        var jsonml = [];
+
+	        // separate out the leading abutting block, if any. I.e. in this case:
+	        //
+	        //  a
+	        //  > b
+	        //
+	        if (block[0] != ">") {
+	          var lines = block.split(/\n/),
+	              prev = [],
+	              line_no = block.lineNumber;
+
+	          // keep shifting lines until you find a crotchet
+	          while (lines.length && lines[0][0] != ">") {
+	            prev.push(lines.shift());
+	            line_no++;
+	          }
+
+	          var abutting = mk_block(prev.join("\n"), "\n", block.lineNumber);
+	          jsonml.push.apply(jsonml, this.processBlock(abutting, []));
+	          // reassemble new block of just block quotes!
+	          block = mk_block(lines.join("\n"), block.trailing, line_no);
+	        }
+
+	        // if the next block is also a blockquote merge it in
+	        while (next.length && next[0][0] == ">") {
+	          var b = next.shift();
+	          block = mk_block(block + block.trailing + b, b.trailing, block.lineNumber);
+	        }
+
+	        // Strip off the leading "> " and re-process as a block.
+	        var input = block.replace(/^> ?/gm, ""),
+	            old_tree = this.tree,
+	            processedBlock = this.toTree(input, ["blockquote"]),
+	            attr = extract_attr(processedBlock);
+
+	        // If any link references were found get rid of them
+	        if (attr && attr.references) {
+	          delete attr.references;
+	          // And then remove the attribute object if it's empty
+	          if (isEmpty(attr)) {
+	            processedBlock.splice(1, 1);
+	          }
+	        }
+
+	        jsonml.push(processedBlock);
+	        return jsonml;
+	      },
+
+	      referenceDefn: function referenceDefn(block, next) {
+	        var re = /^\s*\[(.*?)\]:\s*(\S+)(?:\s+(?:(['"])(.*?)\3|\((.*?)\)))?\n?/;
+	        // interesting matches are [ , ref_id, url, , title, title ]
+
+	        if (!block.match(re)) return undefined;
+
+	        // make an attribute node if it doesn't exist
+	        if (!extract_attr(this.tree)) {
+	          this.tree.splice(1, 0, {});
+	        }
+
+	        var attrs = extract_attr(this.tree);
+
+	        // make a references hash if it doesn't exist
+	        if (attrs.references === undefined) {
+	          attrs.references = {};
+	        }
+
+	        var b = this.loop_re_over_block(re, block, function (m) {
+
+	          if (m[2] && m[2][0] == "<" && m[2][m[2].length - 1] == ">") m[2] = m[2].substring(1, m[2].length - 1);
+
+	          var ref = attrs.references[m[1].toLowerCase()] = {
+	            href: m[2]
+	          };
+
+	          if (m[4] !== undefined) ref.title = m[4];else if (m[5] !== undefined) ref.title = m[5];
+	        });
+
+	        if (b.length) next.unshift(mk_block(b, block.trailing));
+
+	        return [];
+	      },
+
+	      para: function para(block, next) {
+	        // everything's a para!
+	        return [["para"].concat(this.processInline(block))];
+	      }
+	    }
+	  };
+
+	  Markdown.dialects.Gruber.inline = {
+
+	    __oneElement__: function oneElement(text, patterns_or_re, previous_nodes) {
+	      var m,
+	          res,
+	          lastIndex = 0;
+
+	      patterns_or_re = patterns_or_re || this.dialect.inline.__patterns__;
+	      var re = new RegExp("([\\s\\S]*?)(" + (patterns_or_re.source || patterns_or_re) + ")");
+
+	      m = re.exec(text);
+	      if (!m) {
+	        // Just boring text
+	        return [text.length, text];
+	      } else if (m[1]) {
+	        // Some un-interesting text matched. Return that first
+	        return [m[1].length, m[1]];
+	      }
+
+	      var res;
+	      if (m[2] in this.dialect.inline) {
+	        res = this.dialect.inline[m[2]].call(this, text.substr(m.index), m, previous_nodes || []);
+	      }
+	      // Default for now to make dev easier. just slurp special and output it.
+	      res = res || [m[2].length, m[2]];
+	      return res;
+	    },
+
+	    __call__: function inline(text, patterns) {
+
+	      var out = [],
+	          res;
+
+	      function add(x) {
+	        //D:self.debug("  adding output", uneval(x));
+	        if (typeof x == "string" && typeof out[out.length - 1] == "string") out[out.length - 1] += x;else out.push(x);
+	      }
+
+	      while (text.length > 0) {
+	        res = this.dialect.inline.__oneElement__.call(this, text, patterns, out);
+	        text = text.substr(res.shift());
+	        forEach(res, add);
+	      }
+
+	      return out;
+	    },
+
+	    // These characters are intersting elsewhere, so have rules for them so that
+	    // chunks of plain text blocks don't include them
+	    "]": function _() {},
+	    "}": function _() {},
+
+	    __escape__: /^\\[\\`\*_{}\[\]()#\+.!\-]/,
+
+	    "\\": function escaped(text) {
+	      // [ length of input processed, node/children to add... ]
+	      // Only esacape: \ ` * _ { } [ ] ( ) # * + - . !
+	      if (this.dialect.inline.__escape__.exec(text)) return [2, text.charAt(1)];else
+	        // Not an esacpe
+	        return [1, "\\"];
+	    },
+
+	    "![": function image(text) {
+
+	      // Unlike images, alt text is plain text only. no other elements are
+	      // allowed in there
+
+	      // ![Alt text](/path/to/img.jpg "Optional title")
+	      //      1          2            3       4         <--- captures
+	      var m = text.match(/^!\[(.*?)\][ \t]*\([ \t]*([^")]*?)(?:[ \t]+(["'])(.*?)\3)?[ \t]*\)/);
+
+	      if (m) {
+	        if (m[2] && m[2][0] == "<" && m[2][m[2].length - 1] == ">") m[2] = m[2].substring(1, m[2].length - 1);
+
+	        m[2] = this.dialect.inline.__call__.call(this, m[2], /\\/)[0];
+
+	        var attrs = { alt: m[1], href: m[2] || "" };
+	        if (m[4] !== undefined) attrs.title = m[4];
+
+	        return [m[0].length, ["img", attrs]];
+	      }
+
+	      // ![Alt text][id]
+	      m = text.match(/^!\[(.*?)\][ \t]*\[(.*?)\]/);
+
+	      if (m) {
+	        // We can't check if the reference is known here as it likely wont be
+	        // found till after. Check it in md tree->hmtl tree conversion
+	        return [m[0].length, ["img_ref", { alt: m[1], ref: m[2].toLowerCase(), original: m[0] }]];
+	      }
+
+	      // Just consume the '!['
+	      return [2, "!["];
+	    },
+
+	    "[": function link(text) {
+
+	      var orig = String(text);
+	      // Inline content is possible inside `link text`
+	      var res = Markdown.DialectHelpers.inline_until_char.call(this, text.substr(1), "]");
+
+	      // No closing ']' found. Just consume the [
+	      if (!res) return [1, "["];
+
+	      var consumed = 1 + res[0],
+	          children = res[1],
+	          link,
+	          attrs;
+
+	      // At this point the first [...] has been parsed. See what follows to find
+	      // out which kind of link we are (reference or direct url)
+	      text = text.substr(consumed);
+
+	      // [link text](/path/to/img.jpg "Optional title")
+	      //                 1            2       3         <--- captures
+	      // This will capture up to the last paren in the block. We then pull
+	      // back based on if there a matching ones in the url
+	      //    ([here](/url/(test))
+	      // The parens have to be balanced
+	      var m = text.match(/^\s*\([ \t]*([^"']*)(?:[ \t]+(["'])(.*?)\2)?[ \t]*\)/);
+	      if (m) {
+	        var url = m[1];
+	        consumed += m[0].length;
+
+	        if (url && url[0] == "<" && url[url.length - 1] == ">") url = url.substring(1, url.length - 1);
+
+	        // If there is a title we don't have to worry about parens in the url
+	        if (!m[3]) {
+	          var open_parens = 1; // One open that isn't in the capture
+	          for (var len = 0; len < url.length; len++) {
+	            switch (url[len]) {
+	              case "(":
+	                open_parens++;
+	                break;
+	              case ")":
+	                if (--open_parens == 0) {
+	                  consumed -= url.length - len;
+	                  url = url.substring(0, len);
+	                }
+	                break;
+	            }
+	          }
+	        }
+
+	        // Process escapes only
+	        url = this.dialect.inline.__call__.call(this, url, /\\/)[0];
+
+	        attrs = { href: url || "" };
+	        if (m[3] !== undefined) attrs.title = m[3];
+
+	        link = ["link", attrs].concat(children);
+	        return [consumed, link];
+	      }
+
+	      // [Alt text][id]
+	      // [Alt text] [id]
+	      m = text.match(/^\s*\[(.*?)\]/);
+
+	      if (m) {
+
+	        consumed += m[0].length;
+
+	        // [links][] uses links as its reference
+	        attrs = { ref: (m[1] || String(children)).toLowerCase(), original: orig.substr(0, consumed) };
+
+	        link = ["link_ref", attrs].concat(children);
+
+	        // We can't check if the reference is known here as it likely wont be
+	        // found till after. Check it in md tree->hmtl tree conversion.
+	        // Store the original so that conversion can revert if the ref isn't found.
+	        return [consumed, link];
+	      }
+
+	      // [id]
+	      // Only if id is plain (no formatting.)
+	      if (children.length == 1 && typeof children[0] == "string") {
+
+	        attrs = { ref: children[0].toLowerCase(), original: orig.substr(0, consumed) };
+	        link = ["link_ref", attrs, children[0]];
+	        return [consumed, link];
+	      }
+
+	      // Just consume the "["
+	      return [1, "["];
+	    },
+
+	    "<": function autoLink(text) {
+	      var m;
+
+	      if ((m = text.match(/^<(?:((https?|ftp|mailto):[^>]+)|(.*?@.*?\.[a-zA-Z]+))>/)) != null) {
+	        if (m[3]) {
+	          return [m[0].length, ["link", { href: "mailto:" + m[3] }, m[3]]];
+	        } else if (m[2] == "mailto") {
+	          return [m[0].length, ["link", { href: m[1] }, m[1].substr("mailto:".length)]];
+	        } else return [m[0].length, ["link", { href: m[1] }, m[1]]];
+	      }
+
+	      return [1, "<"];
+	    },
+
+	    "`": function inlineCode(text) {
+	      // Inline code block. as many backticks as you like to start it
+	      // Always skip over the opening ticks.
+	      var m = text.match(/(`+)(([\s\S]*?)\1)/);
+
+	      if (m && m[2]) return [m[1].length + m[2].length, ["inlinecode", m[3]]];else {
+	        // TODO: No matching end code found - warn!
+	        return [1, "`"];
+	      }
+	    },
+
+	    "  \n": function lineBreak(text) {
+	      return [3, ["linebreak"]];
+	    }
+
+	  };
+
+	  // Meta Helper/generator method for em and strong handling
+	  function strong_em(tag, md) {
+
+	    var state_slot = tag + "_state",
+	        other_slot = tag == "strong" ? "em_state" : "strong_state";
+
+	    function CloseTag(len) {
+	      this.len_after = len;
+	      this.name = "close_" + md;
+	    }
+
+	    return function (text, orig_match) {
+
+	      if (this[state_slot][0] == md) {
+	        // Most recent em is of this type
+	        //D:this.debug("closing", md);
+	        this[state_slot].shift();
+
+	        // "Consume" everything to go back to the recrusion in the else-block below
+	        return [text.length, new CloseTag(text.length - md.length)];
+	      } else {
+	        // Store a clone of the em/strong states
+	        var other = this[other_slot].slice(),
+	            state = this[state_slot].slice();
+
+	        this[state_slot].unshift(md);
+
+	        //D:this.debug_indent += "  ";
+
+	        // Recurse
+	        var res = this.processInline(text.substr(md.length));
+	        //D:this.debug_indent = this.debug_indent.substr(2);
+
+	        var last = res[res.length - 1];
+
+	        //D:this.debug("processInline from", tag + ": ", uneval( res ) );
+
+	        var check = this[state_slot].shift();
+	        if (last instanceof CloseTag) {
+	          res.pop();
+	          // We matched! Huzzah.
+	          var consumed = text.length - last.len_after;
+	          return [consumed, [tag].concat(res)];
+	        } else {
+	          // Restore the state of the other kind. We might have mistakenly closed it.
+	          this[other_slot] = other;
+	          this[state_slot] = state;
+
+	          // We can't reuse the processed result as it could have wrong parsing contexts in it.
+	          return [md.length, md];
+	        }
+	      }
+	    }; // End returned function
+	  }
+
+	  Markdown.dialects.Gruber.inline["**"] = strong_em("strong", "**");
+	  Markdown.dialects.Gruber.inline["__"] = strong_em("strong", "__");
+	  Markdown.dialects.Gruber.inline["*"] = strong_em("em", "*");
+	  Markdown.dialects.Gruber.inline["_"] = strong_em("em", "_");
+
+	  // Build default order from insertion order.
+	  Markdown.buildBlockOrder = function (d) {
+	    var ord = [];
+	    for (var i in d) {
+	      if (i == "__order__" || i == "__call__") continue;
+	      ord.push(i);
+	    }
+	    d.__order__ = ord;
+	  };
+
+	  // Build patterns for inline matcher
+	  Markdown.buildInlinePatterns = function (d) {
+	    var patterns = [];
+
+	    for (var i in d) {
+	      // __foo__ is reserved and not a pattern
+	      if (i.match(/^__.*__$/)) continue;
+	      var l = i.replace(/([\\.*+?|()\[\]{}])/g, "\\$1").replace(/\n/, "\\n");
+	      patterns.push(i.length == 1 ? l : "(?:" + l + ")");
+	    }
+
+	    patterns = patterns.join("|");
+	    d.__patterns__ = patterns;
+	    //print("patterns:", uneval( patterns ) );
+
+	    var fn = d.__call__;
+	    d.__call__ = function (text, pattern) {
+	      if (pattern != undefined) {
+	        return fn.call(this, text, pattern);
+	      } else {
+	        return fn.call(this, text, patterns);
+	      }
+	    };
+	  };
+
+	  Markdown.DialectHelpers = {};
+	  Markdown.DialectHelpers.inline_until_char = function (text, want) {
+	    var consumed = 0,
+	        nodes = [];
+
+	    while (true) {
+	      if (text.charAt(consumed) == want) {
+	        // Found the character we were looking for
+	        consumed++;
+	        return [consumed, nodes];
+	      }
+
+	      if (consumed >= text.length) {
+	        // No closing char found. Abort.
+	        return null;
+	      }
+
+	      var res = this.dialect.inline.__oneElement__.call(this, text.substr(consumed));
+	      consumed += res[0];
+	      // Add any returned nodes.
+	      nodes.push.apply(nodes, res.slice(1));
+	    }
+	  };
+
+	  // Helper function to make sub-classing a dialect easier
+	  Markdown.subclassDialect = function (d) {
+	    function Block() {}
+	    Block.prototype = d.block;
+	    function Inline() {}
+	    Inline.prototype = d.inline;
+
+	    return { block: new Block(), inline: new Inline() };
+	  };
+
+	  Markdown.buildBlockOrder(Markdown.dialects.Gruber.block);
+	  Markdown.buildInlinePatterns(Markdown.dialects.Gruber.inline);
+
+	  Markdown.dialects.Maruku = Markdown.subclassDialect(Markdown.dialects.Gruber);
+
+	  Markdown.dialects.Maruku.processMetaHash = function processMetaHash(meta_string) {
+	    var meta = split_meta_hash(meta_string),
+	        attr = {};
+
+	    for (var i = 0; i < meta.length; ++i) {
+	      // id: #foo
+	      if (/^#/.test(meta[i])) {
+	        attr.id = meta[i].substring(1);
+	      }
+	      // class: .foo
+	      else if (/^\./.test(meta[i])) {
+	          // if class already exists, append the new one
+	          if (attr["class"]) {
+	            attr["class"] = attr["class"] + meta[i].replace(/./, " ");
+	          } else {
+	            attr["class"] = meta[i].substring(1);
+	          }
+	        }
+	        // attribute: foo=bar
+	        else if (/\=/.test(meta[i])) {
+	            var s = meta[i].split(/\=/);
+	            attr[s[0]] = s[1];
+	          }
+	    }
+
+	    return attr;
+	  };
+
+	  function split_meta_hash(meta_string) {
+	    var meta = meta_string.split(""),
+	        parts = [""],
+	        in_quotes = false;
+
+	    while (meta.length) {
+	      var letter = meta.shift();
+	      switch (letter) {
+	        case " ":
+	          // if we're in a quoted section, keep it
+	          if (in_quotes) {
+	            parts[parts.length - 1] += letter;
+	          }
+	          // otherwise make a new part
+	          else {
+	              parts.push("");
+	            }
+	          break;
+	        case "'":
+	        case '"':
+	          // reverse the quotes and move straight on
+	          in_quotes = !in_quotes;
+	          break;
+	        case "\\":
+	          // shift off the next letter to be used straight away.
+	          // it was escaped so we'll keep it whatever it is
+	          letter = meta.shift();
+	        default:
+	          parts[parts.length - 1] += letter;
+	          break;
+	      }
+	    }
+
+	    return parts;
+	  }
+
+	  Markdown.dialects.Maruku.block.document_meta = function document_meta(block, next) {
+	    // we're only interested in the first block
+	    if (block.lineNumber > 1) return undefined;
+
+	    // document_meta blocks consist of one or more lines of `Key: Value\n`
+	    if (!block.match(/^(?:\w+:.*\n)*\w+:.*$/)) return undefined;
+
+	    // make an attribute node if it doesn't exist
+	    if (!extract_attr(this.tree)) {
+	      this.tree.splice(1, 0, {});
+	    }
+
+	    var pairs = block.split(/\n/);
+	    for (p in pairs) {
+	      var m = pairs[p].match(/(\w+):\s*(.*)$/),
+	          key = m[1].toLowerCase(),
+	          value = m[2];
+
+	      this.tree[1][key] = value;
+	    }
+
+	    // document_meta produces no content!
+	    return [];
+	  };
+
+	  Markdown.dialects.Maruku.block.block_meta = function block_meta(block, next) {
+	    // check if the last line of the block is an meta hash
+	    var m = block.match(/(^|\n) {0,3}\{:\s*((?:\\\}|[^\}])*)\s*\}$/);
+	    if (!m) return undefined;
+
+	    // process the meta hash
+	    var attr = this.dialect.processMetaHash(m[2]);
+
+	    var hash;
+
+	    // if we matched ^ then we need to apply meta to the previous block
+	    if (m[1] === "") {
+	      var node = this.tree[this.tree.length - 1];
+	      hash = extract_attr(node);
+
+	      // if the node is a string (rather than JsonML), bail
+	      if (typeof node === "string") return undefined;
+
+	      // create the attribute hash if it doesn't exist
+	      if (!hash) {
+	        hash = {};
+	        node.splice(1, 0, hash);
+	      }
+
+	      // add the attributes in
+	      for (a in attr) {
+	        hash[a] = attr[a];
+	      }
+
+	      // return nothing so the meta hash is removed
+	      return [];
+	    }
+
+	    // pull the meta hash off the block and process what's left
+	    var b = block.replace(/\n.*$/, ""),
+	        result = this.processBlock(b, []);
+
+	    // get or make the attributes hash
+	    hash = extract_attr(result[0]);
+	    if (!hash) {
+	      hash = {};
+	      result[0].splice(1, 0, hash);
+	    }
+
+	    // attach the attributes to the block
+	    for (a in attr) {
+	      hash[a] = attr[a];
+	    }
+
+	    return result;
+	  };
+
+	  Markdown.dialects.Maruku.block.definition_list = function definition_list(block, next) {
+	    // one or more terms followed by one or more definitions, in a single block
+	    var tight = /^((?:[^\s:].*\n)+):\s+([\s\S]+)$/,
+	        list = ["dl"],
+	        i,
+	        m;
+
+	    // see if we're dealing with a tight or loose block
+	    if (m = block.match(tight)) {
+	      // pull subsequent tight DL blocks out of `next`
+	      var blocks = [block];
+	      while (next.length && tight.exec(next[0])) {
+	        blocks.push(next.shift());
+	      }
+
+	      for (var b = 0; b < blocks.length; ++b) {
+	        var m = blocks[b].match(tight),
+	            terms = m[1].replace(/\n$/, "").split(/\n/),
+	            defns = m[2].split(/\n:\s+/);
+
+	        // print( uneval( m ) );
+
+	        for (i = 0; i < terms.length; ++i) {
+	          list.push(["dt", terms[i]]);
+	        }
+
+	        for (i = 0; i < defns.length; ++i) {
+	          // run inline processing over the definition
+	          list.push(["dd"].concat(this.processInline(defns[i].replace(/(\n)\s+/, "$1"))));
+	        }
+	      }
+	    } else {
+	      return undefined;
+	    }
+
+	    return [list];
+	  };
+
+	  // splits on unescaped instances of @ch. If @ch is not a character the result
+	  // can be unpredictable
+
+	  Markdown.dialects.Maruku.block.table = function table(block, next) {
+
+	    var _split_on_unescaped = function _split_on_unescaped(s, ch) {
+	      ch = ch || '\\s';
+	      if (ch.match(/^[\\|\[\]{}?*.+^$]$/)) {
+	        ch = '\\' + ch;
+	      }
+	      var res = [],
+	          r = new RegExp('^((?:\\\\.|[^\\\\' + ch + '])*)' + ch + '(.*)'),
+	          m;
+	      while (m = s.match(r)) {
+	        res.push(m[1]);
+	        s = m[2];
+	      }
+	      res.push(s);
+	      return res;
+	    };
+
+	    var leading_pipe = /^ {0,3}\|(.+)\n {0,3}\|\s*([\-:]+[\-| :]*)\n((?:\s*\|.*(?:\n|$))*)(?=\n|$)/,
+
+	    // find at least an unescaped pipe in each line
+	    no_leading_pipe = /^ {0,3}(\S(?:\\.|[^\\|])*\|.*)\n {0,3}([\-:]+\s*\|[\-| :]*)\n((?:(?:\\.|[^\\|])*\|.*(?:\n|$))*)(?=\n|$)/,
+	        i,
+	        m;
+	    if (m = block.match(leading_pipe)) {
+	      // remove leading pipes in contents
+	      // (header and horizontal rule already have the leading pipe left out)
+	      m[3] = m[3].replace(/^\s*\|/gm, '');
+	    } else if (!(m = block.match(no_leading_pipe))) {
+	      return undefined;
+	    }
+
+	    var table = ["table", ["thead", ["tr"]], ["tbody"]];
+
+	    // remove trailing pipes, then split on pipes
+	    // (no escaped pipes are allowed in horizontal rule)
+	    m[2] = m[2].replace(/\|\s*$/, '').split('|');
+
+	    // process alignment
+	    var html_attrs = [];
+	    forEach(m[2], function (s) {
+	      if (s.match(/^\s*-+:\s*$/)) html_attrs.push({ align: "right" });else if (s.match(/^\s*:-+\s*$/)) html_attrs.push({ align: "left" });else if (s.match(/^\s*:-+:\s*$/)) html_attrs.push({ align: "center" });else html_attrs.push({});
+	    });
+
+	    // now for the header, avoid escaped pipes
+	    m[1] = _split_on_unescaped(m[1].replace(/\|\s*$/, ''), '|');
+	    for (i = 0; i < m[1].length; i++) {
+	      table[1][1].push(['th', html_attrs[i] || {}].concat(this.processInline(m[1][i].trim())));
+	    }
+
+	    // now for body contents
+	    forEach(m[3].replace(/\|\s*$/mg, '').split('\n'), function (row) {
+	      var html_row = ['tr'];
+	      row = _split_on_unescaped(row, '|');
+	      for (i = 0; i < row.length; i++) {
+	        html_row.push(['td', html_attrs[i] || {}].concat(this.processInline(row[i].trim())));
+	      }
+	      table[2].push(html_row);
+	    }, this);
+
+	    return [table];
+	  };
+
+	  Markdown.dialects.Maruku.inline["{:"] = function inline_meta(text, matches, out) {
+	    if (!out.length) {
+	      return [2, "{:"];
+	    }
+
+	    // get the preceeding element
+	    var before = out[out.length - 1];
+
+	    if (typeof before === "string") {
+	      return [2, "{:"];
+	    }
+
+	    // match a meta hash
+	    var m = text.match(/^\{:\s*((?:\\\}|[^\}])*)\s*\}/);
+
+	    // no match, false alarm
+	    if (!m) {
+	      return [2, "{:"];
+	    }
+
+	    // attach the attributes to the preceeding element
+	    var meta = this.dialect.processMetaHash(m[1]),
+	        attr = extract_attr(before);
+
+	    if (!attr) {
+	      attr = {};
+	      before.splice(1, 0, attr);
+	    }
+
+	    for (var k in meta) {
+	      attr[k] = meta[k];
+	    }
+
+	    // cut out the string and replace it with nothing
+	    return [m[0].length, ""];
+	  };
+
+	  Markdown.dialects.Maruku.inline.__escape__ = /^\\[\\`\*_{}\[\]()#\+.!\-|:]/;
+
+	  Markdown.buildBlockOrder(Markdown.dialects.Maruku.block);
+	  Markdown.buildInlinePatterns(Markdown.dialects.Maruku.inline);
+
+	  var isArray = Array.isArray || function (obj) {
+	    return Object.prototype.toString.call(obj) == "[object Array]";
+	  };
+
+	  var forEach;
+	  // Don't mess with Array.prototype. Its not friendly
+	  if (Array.prototype.forEach) {
+	    forEach = function (arr, cb, thisp) {
+	      return arr.forEach(cb, thisp);
+	    };
+	  } else {
+	    forEach = function (arr, cb, thisp) {
+	      for (var i = 0; i < arr.length; i++) {
+	        cb.call(thisp || arr, arr[i], i, arr);
+	      }
+	    };
+	  }
+
+	  var isEmpty = function isEmpty(obj) {
+	    for (var key in obj) {
+	      if (hasOwnProperty.call(obj, key)) {
+	        return false;
+	      }
+	    }
+
+	    return true;
+	  };
+
+	  function extract_attr(jsonml) {
+	    return isArray(jsonml) && jsonml.length > 1 && typeof jsonml[1] === "object" && !isArray(jsonml[1]) ? jsonml[1] : undefined;
+	  }
+
+	  /**
+	   *  renderJsonML( jsonml[, options] ) -> String
+	   *  - jsonml (Array): JsonML array to render to XML
+	   *  - options (Object): options
+	   *
+	   *  Converts the given JsonML into well-formed XML.
+	   *
+	   *  The options currently understood are:
+	   *
+	   *  - root (Boolean): wether or not the root node should be included in the
+	   *    output, or just its children. The default `false` is to not include the
+	   *    root itself.
+	   */
+	  expose.renderJsonML = function (jsonml, options) {
+	    options = options || {};
+	    // include the root element in the rendered output?
+	    options.root = options.root || false;
+
+	    var content = [];
+
+	    if (options.root) {
+	      content.push(render_tree(jsonml));
+	    } else {
+	      jsonml.shift(); // get rid of the tag
+	      if (jsonml.length && typeof jsonml[0] === "object" && !(jsonml[0] instanceof Array)) {
+	        jsonml.shift(); // get rid of the attributes
+	      }
+
+	      while (jsonml.length) {
+	        content.push(render_tree(jsonml.shift()));
+	      }
+	    }
+
+	    return content.join("\n\n");
+	  };
+
+	  function escapeHTML(text) {
+	    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+	  }
+
+	  function render_tree(jsonml) {
+	    // basic case
+	    if (typeof jsonml === "string") {
+	      return escapeHTML(jsonml);
+	    }
+
+	    var tag = jsonml.shift(),
+	        attributes = {},
+	        content = [];
+
+	    if (jsonml.length && typeof jsonml[0] === "object" && !(jsonml[0] instanceof Array)) {
+	      attributes = jsonml.shift();
+	    }
+
+	    while (jsonml.length) {
+	      content.push(render_tree(jsonml.shift()));
+	    }
+
+	    var tag_attrs = "";
+	    for (var a in attributes) {
+	      tag_attrs += " " + a + '="' + escapeHTML(attributes[a]) + '"';
+	    }
+
+	    // be careful about adding whitespace here for inline elements
+	    if (tag == "img" || tag == "br" || tag == "hr") {
+	      return "<" + tag + tag_attrs + "/>";
+	    } else {
+	      return "<" + tag + tag_attrs + ">" + content.join("") + "</" + tag + ">";
+	    }
+	  }
+
+	  function convert_tree_to_html(tree, references, options) {
+	    var i;
+	    options = options || {};
+
+	    // shallow clone
+	    var jsonml = tree.slice(0);
+
+	    if (typeof options.preprocessTreeNode === "function") {
+	      jsonml = options.preprocessTreeNode(jsonml, references);
+	    }
+
+	    // Clone attributes if they exist
+	    var attrs = extract_attr(jsonml);
+	    if (attrs) {
+	      jsonml[1] = {};
+	      for (i in attrs) {
+	        jsonml[1][i] = attrs[i];
+	      }
+	      attrs = jsonml[1];
+	    }
+
+	    // basic case
+	    if (typeof jsonml === "string") {
+	      return jsonml;
+	    }
+
+	    // convert this node
+	    switch (jsonml[0]) {
+	      case "header":
+	        jsonml[0] = "h" + jsonml[1].level;
+	        delete jsonml[1].level;
+	        break;
+	      case "bulletlist":
+	        jsonml[0] = "ul";
+	        break;
+	      case "numberlist":
+	        jsonml[0] = "ol";
+	        break;
+	      case "listitem":
+	        jsonml[0] = "li";
+	        break;
+	      case "para":
+	        jsonml[0] = "p";
+	        break;
+	      case "markdown":
+	        jsonml[0] = "html";
+	        if (attrs) delete attrs.references;
+	        break;
+	      case "code_block":
+	        jsonml[0] = "pre";
+	        i = attrs ? 2 : 1;
+	        var code = ["code"];
+	        code.push.apply(code, jsonml.splice(i, jsonml.length - i));
+	        jsonml[i] = code;
+	        break;
+	      case "inlinecode":
+	        jsonml[0] = "code";
+	        break;
+	      case "img":
+	        jsonml[1].src = jsonml[1].href;
+	        delete jsonml[1].href;
+	        break;
+	      case "linebreak":
+	        jsonml[0] = "br";
+	        break;
+	      case "link":
+	        jsonml[0] = "a";
+	        break;
+	      case "link_ref":
+	        jsonml[0] = "a";
+
+	        // grab this ref and clean up the attribute node
+	        var ref = references[attrs.ref];
+
+	        // if the reference exists, make the link
+	        if (ref) {
+	          delete attrs.ref;
+
+	          // add in the href and title, if present
+	          attrs.href = ref.href;
+	          if (ref.title) {
+	            attrs.title = ref.title;
+	          }
+
+	          // get rid of the unneeded original text
+	          delete attrs.original;
+	        }
+	        // the reference doesn't exist, so revert to plain text
+	        else {
+	            return attrs.original;
+	          }
+	        break;
+	      case "img_ref":
+	        jsonml[0] = "img";
+
+	        // grab this ref and clean up the attribute node
+	        var ref = references[attrs.ref];
+
+	        // if the reference exists, make the link
+	        if (ref) {
+	          delete attrs.ref;
+
+	          // add in the href and title, if present
+	          attrs.src = ref.href;
+	          if (ref.title) {
+	            attrs.title = ref.title;
+	          }
+
+	          // get rid of the unneeded original text
+	          delete attrs.original;
+	        }
+	        // the reference doesn't exist, so revert to plain text
+	        else {
+	            return attrs.original;
+	          }
+	        break;
+	    }
+
+	    // convert all the children
+	    i = 1;
+
+	    // deal with the attribute node, if it exists
+	    if (attrs) {
+	      // if there are keys, skip over it
+	      for (var key in jsonml[1]) {
+	        i = 2;
+	        break;
+	      }
+	      // if there aren't, remove it
+	      if (i === 1) {
+	        jsonml.splice(i, 1);
+	      }
+	    }
+
+	    for (; i < jsonml.length; ++i) {
+	      jsonml[i] = convert_tree_to_html(jsonml[i], references, options);
+	    }
+
+	    return jsonml;
+	  }
+
+	  // merges adjacent text nodes into a single node
+	  function merge_text_nodes(jsonml) {
+	    // skip the tag name and attribute hash
+	    var i = extract_attr(jsonml) ? 2 : 1;
+
+	    while (i < jsonml.length) {
+	      // if it's a string check the next item too
+	      if (typeof jsonml[i] === "string") {
+	        if (i + 1 < jsonml.length && typeof jsonml[i + 1] === "string") {
+	          // merge the second string into the first and remove it
+	          jsonml[i] += jsonml.splice(i + 1, 1)[0];
+	        } else {
+	          ++i;
+	        }
+	      }
+	      // if it's not a string recurse
+	      else {
+	          merge_text_nodes(jsonml[i]);
+	          ++i;
+	        }
+	    }
+	  }
+	})((function () {
+	  if (false) {
+	    window.markdown = {};
+	    return window.markdown;
+	  } else {
+	    return exports;
+	  }
+	})());
+	/*jshint browser:true, devel:true */
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+	//
+	// Permission is hereby granted, free of charge, to any person obtaining a
+	// copy of this software and associated documentation files (the
+	// "Software"), to deal in the Software without restriction, including
+	// without limitation the rights to use, copy, modify, merge, publish,
+	// distribute, sublicense, and/or sell copies of the Software, and to permit
+	// persons to whom the Software is furnished to do so, subject to the
+	// following conditions:
+	//
+	// The above copyright notice and this permission notice shall be included
+	// in all copies or substantial portions of the Software.
+	//
+	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+	// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+	'use strict';
+
+	var formatRegExp = /%[sdj%]/g;
+	exports.format = function (f) {
+	  if (!isString(f)) {
+	    var objects = [];
+	    for (var i = 0; i < arguments.length; i++) {
+	      objects.push(inspect(arguments[i]));
+	    }
+	    return objects.join(' ');
+	  }
+
+	  var i = 1;
+	  var args = arguments;
+	  var len = args.length;
+	  var str = String(f).replace(formatRegExp, function (x) {
+	    if (x === '%%') return '%';
+	    if (i >= len) return x;
+	    switch (x) {
+	      case '%s':
+	        return String(args[i++]);
+	      case '%d':
+	        return Number(args[i++]);
+	      case '%j':
+	        try {
+	          return JSON.stringify(args[i++]);
+	        } catch (_) {
+	          return '[Circular]';
+	        }
+	      default:
+	        return x;
+	    }
+	  });
+	  for (var x = args[i]; i < len; x = args[++i]) {
+	    if (isNull(x) || !isObject(x)) {
+	      str += ' ' + x;
+	    } else {
+	      str += ' ' + inspect(x);
+	    }
+	  }
+	  return str;
+	};
+
+	// Mark that a method should not be used.
+	// Returns a modified function which warns once by default.
+	// If --no-deprecation is set, then it is a no-op.
+	exports.deprecate = function (fn, msg) {
+	  // Allow for deprecating things in the process of starting up.
+	  if (isUndefined(global.process)) {
+	    return function () {
+	      return exports.deprecate(fn, msg).apply(this, arguments);
+	    };
+	  }
+
+	  if (process.noDeprecation === true) {
+	    return fn;
+	  }
+
+	  var warned = false;
+	  function deprecated() {
+	    if (!warned) {
+	      if (process.throwDeprecation) {
+	        throw new Error(msg);
+	      } else if (process.traceDeprecation) {
+	        console.trace(msg);
+	      } else {
+	        console.error(msg);
+	      }
+	      warned = true;
+	    }
+	    return fn.apply(this, arguments);
+	  }
+
+	  return deprecated;
+	};
+
+	var debugs = {};
+	var debugEnviron;
+	exports.debuglog = function (set) {
+	  if (isUndefined(debugEnviron)) debugEnviron = process.env.NODE_DEBUG || '';
+	  set = set.toUpperCase();
+	  if (!debugs[set]) {
+	    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
+	      var pid = process.pid;
+	      debugs[set] = function () {
+	        var msg = exports.format.apply(exports, arguments);
+	        console.error('%s %d: %s', set, pid, msg);
+	      };
+	    } else {
+	      debugs[set] = function () {};
+	    }
+	  }
+	  return debugs[set];
+	};
+
+	/**
+	 * Echos the value of a value. Trys to print the value out
+	 * in the best way possible given the different types.
+	 *
+	 * @param {Object} obj The object to print out.
+	 * @param {Object} opts Optional options object that alters the output.
+	 */
+	/* legacy: obj, showHidden, depth, colors*/
+	function inspect(obj, opts) {
+	  // default options
+	  var ctx = {
+	    seen: [],
+	    stylize: stylizeNoColor
+	  };
+	  // legacy...
+	  if (arguments.length >= 3) ctx.depth = arguments[2];
+	  if (arguments.length >= 4) ctx.colors = arguments[3];
+	  if (isBoolean(opts)) {
+	    // legacy...
+	    ctx.showHidden = opts;
+	  } else if (opts) {
+	    // got an "options" object
+	    exports._extend(ctx, opts);
+	  }
+	  // set default options
+	  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
+	  if (isUndefined(ctx.depth)) ctx.depth = 2;
+	  if (isUndefined(ctx.colors)) ctx.colors = false;
+	  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
+	  if (ctx.colors) ctx.stylize = stylizeWithColor;
+	  return formatValue(ctx, obj, ctx.depth);
+	}
+	exports.inspect = inspect;
+
+	// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+	inspect.colors = {
+	  'bold': [1, 22],
+	  'italic': [3, 23],
+	  'underline': [4, 24],
+	  'inverse': [7, 27],
+	  'white': [37, 39],
+	  'grey': [90, 39],
+	  'black': [30, 39],
+	  'blue': [34, 39],
+	  'cyan': [36, 39],
+	  'green': [32, 39],
+	  'magenta': [35, 39],
+	  'red': [31, 39],
+	  'yellow': [33, 39]
+	};
+
+	// Don't use 'blue' not visible on cmd.exe
+	inspect.styles = {
+	  'special': 'cyan',
+	  'number': 'yellow',
+	  'boolean': 'yellow',
+	  'undefined': 'grey',
+	  'null': 'bold',
+	  'string': 'green',
+	  'date': 'magenta',
+	  // "name": intentionally not styling
+	  'regexp': 'red'
+	};
+
+	function stylizeWithColor(str, styleType) {
+	  var style = inspect.styles[styleType];
+
+	  if (style) {
+	    return '\u001b[' + inspect.colors[style][0] + 'm' + str + '\u001b[' + inspect.colors[style][1] + 'm';
+	  } else {
+	    return str;
+	  }
+	}
+
+	function stylizeNoColor(str, styleType) {
+	  return str;
+	}
+
+	function arrayToHash(array) {
+	  var hash = {};
+
+	  array.forEach(function (val, idx) {
+	    hash[val] = true;
+	  });
+
+	  return hash;
+	}
+
+	function formatValue(ctx, value, recurseTimes) {
+	  // Provide a hook for user-specified inspect functions.
+	  // Check that value is an object with an inspect function on it
+	  if (ctx.customInspect && value && isFunction(value.inspect) &&
+	  // Filter out the util module, it's inspect function is special
+	  value.inspect !== exports.inspect &&
+	  // Also filter out any prototype objects using the circular check.
+	  !(value.constructor && value.constructor.prototype === value)) {
+	    var ret = value.inspect(recurseTimes, ctx);
+	    if (!isString(ret)) {
+	      ret = formatValue(ctx, ret, recurseTimes);
+	    }
+	    return ret;
+	  }
+
+	  // Primitive types cannot have properties
+	  var primitive = formatPrimitive(ctx, value);
+	  if (primitive) {
+	    return primitive;
+	  }
+
+	  // Look up the keys of the object.
+	  var keys = Object.keys(value);
+	  var visibleKeys = arrayToHash(keys);
+
+	  if (ctx.showHidden) {
+	    keys = Object.getOwnPropertyNames(value);
+	  }
+
+	  // IE doesn't make error fields non-enumerable
+	  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
+	  if (isError(value) && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
+	    return formatError(value);
+	  }
+
+	  // Some type of object without properties can be shortcutted.
+	  if (keys.length === 0) {
+	    if (isFunction(value)) {
+	      var name = value.name ? ': ' + value.name : '';
+	      return ctx.stylize('[Function' + name + ']', 'special');
+	    }
+	    if (isRegExp(value)) {
+	      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+	    }
+	    if (isDate(value)) {
+	      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+	    }
+	    if (isError(value)) {
+	      return formatError(value);
+	    }
+	  }
+
+	  var base = '',
+	      array = false,
+	      braces = ['{', '}'];
+
+	  // Make Array say that they are Array
+	  if (isArray(value)) {
+	    array = true;
+	    braces = ['[', ']'];
+	  }
+
+	  // Make functions say that they are functions
+	  if (isFunction(value)) {
+	    var n = value.name ? ': ' + value.name : '';
+	    base = ' [Function' + n + ']';
+	  }
+
+	  // Make RegExps say that they are RegExps
+	  if (isRegExp(value)) {
+	    base = ' ' + RegExp.prototype.toString.call(value);
+	  }
+
+	  // Make dates with properties first say the date
+	  if (isDate(value)) {
+	    base = ' ' + Date.prototype.toUTCString.call(value);
+	  }
+
+	  // Make error with message first say the error
+	  if (isError(value)) {
+	    base = ' ' + formatError(value);
+	  }
+
+	  if (keys.length === 0 && (!array || value.length == 0)) {
+	    return braces[0] + base + braces[1];
+	  }
+
+	  if (recurseTimes < 0) {
+	    if (isRegExp(value)) {
+	      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+	    } else {
+	      return ctx.stylize('[Object]', 'special');
+	    }
+	  }
+
+	  ctx.seen.push(value);
+
+	  var output;
+	  if (array) {
+	    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
+	  } else {
+	    output = keys.map(function (key) {
+	      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
+	    });
+	  }
+
+	  ctx.seen.pop();
+
+	  return reduceToSingleString(output, base, braces);
+	}
+
+	function formatPrimitive(ctx, value) {
+	  if (isUndefined(value)) return ctx.stylize('undefined', 'undefined');
+	  if (isString(value)) {
+	    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '').replace(/'/g, "\\'").replace(/\\"/g, '"') + '\'';
+	    return ctx.stylize(simple, 'string');
+	  }
+	  if (isNumber(value)) return ctx.stylize('' + value, 'number');
+	  if (isBoolean(value)) return ctx.stylize('' + value, 'boolean');
+	  // For some reason typeof null is "object", so special case here.
+	  if (isNull(value)) return ctx.stylize('null', 'null');
+	}
+
+	function formatError(value) {
+	  return '[' + Error.prototype.toString.call(value) + ']';
+	}
+
+	function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
+	  var output = [];
+	  for (var i = 0, l = value.length; i < l; ++i) {
+	    if (hasOwnProperty(value, String(i))) {
+	      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys, String(i), true));
+	    } else {
+	      output.push('');
+	    }
+	  }
+	  keys.forEach(function (key) {
+	    if (!key.match(/^\d+$/)) {
+	      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys, key, true));
+	    }
+	  });
+	  return output;
+	}
+
+	function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
+	  var name, str, desc;
+	  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+	  if (desc.get) {
+	    if (desc.set) {
+	      str = ctx.stylize('[Getter/Setter]', 'special');
+	    } else {
+	      str = ctx.stylize('[Getter]', 'special');
+	    }
+	  } else {
+	    if (desc.set) {
+	      str = ctx.stylize('[Setter]', 'special');
+	    }
+	  }
+	  if (!hasOwnProperty(visibleKeys, key)) {
+	    name = '[' + key + ']';
+	  }
+	  if (!str) {
+	    if (ctx.seen.indexOf(desc.value) < 0) {
+	      if (isNull(recurseTimes)) {
+	        str = formatValue(ctx, desc.value, null);
+	      } else {
+	        str = formatValue(ctx, desc.value, recurseTimes - 1);
+	      }
+	      if (str.indexOf('\n') > -1) {
+	        if (array) {
+	          str = str.split('\n').map(function (line) {
+	            return '  ' + line;
+	          }).join('\n').substr(2);
+	        } else {
+	          str = '\n' + str.split('\n').map(function (line) {
+	            return '   ' + line;
+	          }).join('\n');
+	        }
+	      }
+	    } else {
+	      str = ctx.stylize('[Circular]', 'special');
+	    }
+	  }
+	  if (isUndefined(name)) {
+	    if (array && key.match(/^\d+$/)) {
+	      return str;
+	    }
+	    name = JSON.stringify('' + key);
+	    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
+	      name = name.substr(1, name.length - 2);
+	      name = ctx.stylize(name, 'name');
+	    } else {
+	      name = name.replace(/'/g, "\\'").replace(/\\"/g, '"').replace(/(^"|"$)/g, "'");
+	      name = ctx.stylize(name, 'string');
+	    }
+	  }
+
+	  return name + ': ' + str;
+	}
+
+	function reduceToSingleString(output, base, braces) {
+	  var numLinesEst = 0;
+	  var length = output.reduce(function (prev, cur) {
+	    numLinesEst++;
+	    if (cur.indexOf('\n') >= 0) numLinesEst++;
+	    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
+	  }, 0);
+
+	  if (length > 60) {
+	    return braces[0] + (base === '' ? '' : base + '\n ') + ' ' + output.join(',\n  ') + ' ' + braces[1];
+	  }
+
+	  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+	}
+
+	// NOTE: These type checking functions intentionally don't use `instanceof`
+	// because it is fragile and can be easily faked with `Object.create()`.
+	function isArray(ar) {
+	  return Array.isArray(ar);
+	}
+	exports.isArray = isArray;
+
+	function isBoolean(arg) {
+	  return typeof arg === 'boolean';
+	}
+	exports.isBoolean = isBoolean;
+
+	function isNull(arg) {
+	  return arg === null;
+	}
+	exports.isNull = isNull;
+
+	function isNullOrUndefined(arg) {
+	  return arg == null;
+	}
+	exports.isNullOrUndefined = isNullOrUndefined;
+
+	function isNumber(arg) {
+	  return typeof arg === 'number';
+	}
+	exports.isNumber = isNumber;
+
+	function isString(arg) {
+	  return typeof arg === 'string';
+	}
+	exports.isString = isString;
+
+	function isSymbol(arg) {
+	  return typeof arg === 'symbol';
+	}
+	exports.isSymbol = isSymbol;
+
+	function isUndefined(arg) {
+	  return arg === void 0;
+	}
+	exports.isUndefined = isUndefined;
+
+	function isRegExp(re) {
+	  return isObject(re) && objectToString(re) === '[object RegExp]';
+	}
+	exports.isRegExp = isRegExp;
+
+	function isObject(arg) {
+	  return typeof arg === 'object' && arg !== null;
+	}
+	exports.isObject = isObject;
+
+	function isDate(d) {
+	  return isObject(d) && objectToString(d) === '[object Date]';
+	}
+	exports.isDate = isDate;
+
+	function isError(e) {
+	  return isObject(e) && (objectToString(e) === '[object Error]' || e instanceof Error);
+	}
+	exports.isError = isError;
+
+	function isFunction(arg) {
+	  return typeof arg === 'function';
+	}
+	exports.isFunction = isFunction;
+
+	function isPrimitive(arg) {
+	  return arg === null || typeof arg === 'boolean' || typeof arg === 'number' || typeof arg === 'string' || typeof arg === 'symbol' || // ES6 symbol
+	  typeof arg === 'undefined';
+	}
+	exports.isPrimitive = isPrimitive;
+
+	exports.isBuffer = __webpack_require__(249);
+
+	function objectToString(o) {
+	  return Object.prototype.toString.call(o);
+	}
+
+	function pad(n) {
+	  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+	}
+
+	var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+	// 26 Feb 16:19:34
+	function timestamp() {
+	  var d = new Date();
+	  var time = [pad(d.getHours()), pad(d.getMinutes()), pad(d.getSeconds())].join(':');
+	  return [d.getDate(), months[d.getMonth()], time].join(' ');
+	}
+
+	// log is just a thin wrapper to console.log that prepends a timestamp
+	exports.log = function () {
+	  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+	};
+
+	/**
+	 * Inherit the prototype methods from one constructor into another.
+	 *
+	 * The Function.prototype.inherits from lang.js rewritten as a standalone
+	 * function (not on Function.prototype). NOTE: If this file is to be loaded
+	 * during bootstrapping this function needs to be rewritten using some native
+	 * functions as prototype setup using normal JavaScript does not work as
+	 * expected during bootstrapping (see mirror.js in r114903).
+	 *
+	 * @param {function} ctor Constructor function which needs to inherit the
+	 *     prototype.
+	 * @param {function} superCtor Constructor function to inherit prototype from.
+	 */
+	exports.inherits = __webpack_require__(250);
+
+	exports._extend = function (origin, add) {
+	  // Don't do anything if add isn't an object
+	  if (!add || !isObject(add)) return origin;
+
+	  var keys = Object.keys(add);
+	  var i = keys.length;
+	  while (i--) {
+	    origin[keys[i]] = add[keys[i]];
+	  }
+	  return origin;
+	};
+
+	function hasOwnProperty(obj, prop) {
+	  return Object.prototype.hasOwnProperty.call(obj, prop);
+	}
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(7)))
+
+/***/ },
+/* 249 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function isBuffer(arg) {
+	  return arg && typeof arg === 'object' && typeof arg.copy === 'function' && typeof arg.fill === 'function' && typeof arg.readUInt8 === 'function';
+	};
+
+/***/ },
+/* 250 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	if (typeof Object.create === 'function') {
+	  // implementation from standard node.js 'util' module
+	  module.exports = function inherits(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    ctor.prototype = Object.create(superCtor.prototype, {
+	      constructor: {
+	        value: ctor,
+	        enumerable: false,
+	        writable: true,
+	        configurable: true
+	      }
+	    });
+	  };
+	} else {
+	  // old school shim for old browsers
+	  module.exports = function inherits(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    var TempCtor = function TempCtor() {};
+	    TempCtor.prototype = superCtor.prototype;
+	    ctor.prototype = new TempCtor();
+	    ctor.prototype.constructor = ctor;
+	  };
+	}
 
 /***/ }
 /******/ ]);

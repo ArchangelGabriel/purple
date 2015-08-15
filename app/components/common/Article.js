@@ -1,4 +1,5 @@
 var React = require('react');
+var markdown = require('markdown').markdown;
 
 var Article = React.createClass({
   getInitialState: function() {
@@ -12,7 +13,9 @@ var Article = React.createClass({
         {!this.state.expanded && this.props.text.length > 140 ? (
           <p className="pointer" onClick={this.handleClick}>{this.props.text.slice(0, 240)}... <a href="javascript:void(0)">(more)</a></p>
         ) : (
-          <p className="text">{this.props.text}</p>
+          <p className="text">{React.DOM.div({ dangerouslySetInnerHTML: {
+            __html: markdown.toHTML(this.props.text.toString())
+          } })}</p>
         )}
       </article>
     )

@@ -1,15 +1,21 @@
 var Reflux = require('reflux');
 var Actions = require('../actions/Actions.js');
+var request = require('superagent');
 
 var MessageStore = Reflux.createStore({
-
-});
-
-var AuthStore = Reflux.createStore({
   listenables: Actions,
-  onLogin: function(phoneNumber, password) {},
-  onLoginCompleted: function() {},
-  onLoginFailed: function() {}
+  getInitialState: function() {
+    this.onFetchMessages();
+  },
+  onFetchMessages: function() {
+    request
+      .get('http://mpa-hack.tendtoinfinity.com/api/messages')
+      .end(function(err, res) {
+        if (res.ok) {
+          this.trigger(res.body);
+        }
+      }.bind(this))
+  }
 });
 
-module.exports = AuthStore;
+module.exports = MessageStore;
