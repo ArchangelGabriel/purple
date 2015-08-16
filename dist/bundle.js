@@ -90,7 +90,7 @@
 
 
 	// module
-	exports.push([module.id, "article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {\n  display: block; }\n\naudio, canvas, video {\n  display: inline-block; }\n\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n[hidden], template {\n  display: none; }\n\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%; }\n\nbody {\n  margin: 0; }\n\na {\n  background: transparent; }\n\na:focus {\n  outline: thin dotted; }\n\na:active, a:hover {\n  outline: 0; }\n\nh1 {\n  font-size: 2em;\n  margin: .67em 0; }\n\nabbr[title] {\n  border-bottom: 1px dotted; }\n\nb, strong {\n  font-weight: 700; }\n\ndfn {\n  font-style: italic; }\n\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\nmark {\n  background: #ff0;\n  color: #000; }\n\ncode, kbd, pre, samp {\n  font-family: monospace,serif;\n  font-size: 1em; }\n\npre {\n  white-space: pre-wrap; }\n\nq {\n  quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n\nsmall {\n  font-size: 80%; }\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -.5em; }\n\nsub {\n  bottom: -.25em; }\n\nimg {\n  border: 0; }\n\nsvg:not(:root) {\n  overflow: hidden; }\n\nfigure {\n  margin: 0; }\n\nfieldset {\n  border: 1px solid silver;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\nlegend {\n  border: 0;\n  padding: 0; }\n\nbutton, input, select, textarea {\n  font-family: inherit;\n  font-size: 100%;\n  margin: 0; }\n\nbutton, input {\n  line-height: normal; }\n\nbutton, select {\n  text-transform: none; }\n\nbutton, html input[type=button], input[type=reset], input[type=submit] {\n  -webkit-appearance: button;\n  cursor: pointer; }\n\nbutton[disabled], html input[disabled] {\n  cursor: default; }\n\ninput[type=checkbox], input[type=radio] {\n  box-sizing: border-box;\n  padding: 0; }\n\ninput[type=search] {\n  -webkit-appearance: textfield;\n  box-sizing: content-box; }\n\ninput[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\ntextarea {\n  overflow: auto;\n  vertical-align: top; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nhtml {\n  box-sizing: border-box; }\n\n*,\n*::after,\n*::before {\n  box-sizing: inherit; }\n\n/**\n * MUI Colors module\n */\n/**\n * MUI Buttons\n */\n.mui-btn {\n  animation-duration: 0.0001s;\n  animation-name: mui-node-inserted;\n  font-weight: 500;\n  font-size: 14px;\n  line-height: 18px;\n  color: rgba(0, 0, 0, 0.87);\n  text-transform: uppercase;\n  transition: all 0.2s ease-in-out;\n  display: inline-block;\n  height: 36px;\n  padding: 0 26px;\n  margin-top: 6px;\n  margin-bottom: 6px;\n  border: none;\n  border-radius: 2px;\n  cursor: pointer;\n  touch-action: manipulation;\n  background-image: none;\n  text-align: center;\n  line-height: 36px;\n  vertical-align: middle;\n  white-space: nowrap;\n  user-select: none;\n  position: relative;\n  overflow: hidden; }\n  .mui-btn.mui-text-black {\n    color: rgba(0, 0, 0, 0.87); }\n  .mui-btn.mui-text-white {\n    color: white; }\n  .mui-btn.mui-text-accent {\n    color: rgba(255, 64, 129, 0.87); }\n  .mui-btn:hover,\n  .mui-btn:focus,\n  .mui-btn:active {\n    outline: 0;\n    text-decoration: none;\n    color: rgba(0, 0, 0, 0.87); }\n  .mui-btn:hover,\n  .mui-btn:focus {\n    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2); }\n  .mui-btn:active {\n    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }\n  .mui-btn:disabled,\n  .mui-btn.mui-disabled {\n    cursor: not-allowed;\n    pointer-events: none;\n    opacity: 0.60;\n    box-shadow: none; }\n\n.mui-btn + .mui-btn {\n  margin-left: 8px; }\n\n.mui-btn-lg {\n  height: 54px;\n  line-height: 54px; }\n\n.mui-btn-flat {\n  background-color: transparent; }\n  .mui-btn-flat:hover,\n  .mui-btn-flat:focus,\n  .mui-btn-flat:active {\n    box-shadow: none;\n    background-color: #f2f2f2; }\n\n.mui-btn-raised, .mui-btn-floating {\n  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2); }\n  .mui-btn-raised:active, .mui-btn-floating:active {\n    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }\n\n.mui-btn-default {\n  color: rgba(0, 0, 0, 0.87);\n  background-color: #FFF; }\n  .mui-btn-default:hover,\n  .mui-btn-default:focus,\n  .mui-btn-default:active,\n  .mui-open > .mui-btn-default.mui-dropdown-toggle {\n    color: rgba(0, 0, 0, 0.87);\n    background-color: white; }\n  .mui-btn-default[disabled],\n  .mui-btn-default[disabled]:hover,\n  .mui-btn-default[disabled]:focus,\n  .mui-btn-default[disabled]:active,\n  fieldset[disabled] .mui-btn-default,\n  fieldset[disabled] .mui-btn-default:hover,\n  fieldset[disabled] .mui-btn-default:focus,\n  fieldset[disabled] .mui-btn-default:active {\n    color: rgba(0, 0, 0, 0.87);\n    background-color: #FFF; }\n  .mui-btn-default.mui-btn-flat {\n    color: rgba(0, 0, 0, 0.87);\n    background-color: transparent; }\n    .mui-btn-default.mui-btn-flat:hover,\n    .mui-btn-default.mui-btn-flat:focus,\n    .mui-btn-default.mui-btn-flat:active,\n    .mui-open > .mui-btn-default.mui-btn-flat.mui-dropdown-toggle {\n      color: rgba(0, 0, 0, 0.87);\n      background-color: #f2f2f2; }\n    .mui-btn-default.mui-btn-flat[disabled],\n    .mui-btn-default.mui-btn-flat[disabled]:hover,\n    .mui-btn-default.mui-btn-flat[disabled]:focus,\n    .mui-btn-default.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat:active {\n      color: rgba(0, 0, 0, 0.87);\n      background-color: transparent; }\n\n.mui-btn-primary {\n  color: #FFF;\n  background-color: #2196F3; }\n  .mui-btn-primary:hover,\n  .mui-btn-primary:focus,\n  .mui-btn-primary:active,\n  .mui-open > .mui-btn-primary.mui-dropdown-toggle {\n    color: #FFF;\n    background-color: #39a1f4; }\n  .mui-btn-primary[disabled],\n  .mui-btn-primary[disabled]:hover,\n  .mui-btn-primary[disabled]:focus,\n  .mui-btn-primary[disabled]:active,\n  fieldset[disabled] .mui-btn-primary,\n  fieldset[disabled] .mui-btn-primary:hover,\n  fieldset[disabled] .mui-btn-primary:focus,\n  fieldset[disabled] .mui-btn-primary:active {\n    color: #FFF;\n    background-color: #2196F3; }\n  .mui-btn-primary.mui-btn-flat {\n    color: #2196F3;\n    background-color: transparent; }\n    .mui-btn-primary.mui-btn-flat:hover,\n    .mui-btn-primary.mui-btn-flat:focus,\n    .mui-btn-primary.mui-btn-flat:active,\n    .mui-open > .mui-btn-primary.mui-btn-flat.mui-dropdown-toggle {\n      color: #2196F3;\n      background-color: #f2f2f2; }\n    .mui-btn-primary.mui-btn-flat[disabled],\n    .mui-btn-primary.mui-btn-flat[disabled]:hover,\n    .mui-btn-primary.mui-btn-flat[disabled]:focus,\n    .mui-btn-primary.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat:active {\n      color: #2196F3;\n      background-color: transparent; }\n\n.mui-btn-danger {\n  color: #FFF;\n  background-color: #F44336; }\n  .mui-btn-danger:hover,\n  .mui-btn-danger:focus,\n  .mui-btn-danger:active,\n  .mui-open > .mui-btn-danger.mui-dropdown-toggle {\n    color: #FFF;\n    background-color: #f55a4e; }\n  .mui-btn-danger[disabled],\n  .mui-btn-danger[disabled]:hover,\n  .mui-btn-danger[disabled]:focus,\n  .mui-btn-danger[disabled]:active,\n  fieldset[disabled] .mui-btn-danger,\n  fieldset[disabled] .mui-btn-danger:hover,\n  fieldset[disabled] .mui-btn-danger:focus,\n  fieldset[disabled] .mui-btn-danger:active {\n    color: #FFF;\n    background-color: #F44336; }\n  .mui-btn-danger.mui-btn-flat {\n    color: #F44336;\n    background-color: transparent; }\n    .mui-btn-danger.mui-btn-flat:hover,\n    .mui-btn-danger.mui-btn-flat:focus,\n    .mui-btn-danger.mui-btn-flat:active,\n    .mui-open > .mui-btn-danger.mui-btn-flat.mui-dropdown-toggle {\n      color: #F44336;\n      background-color: #f2f2f2; }\n    .mui-btn-danger.mui-btn-flat[disabled],\n    .mui-btn-danger.mui-btn-flat[disabled]:hover,\n    .mui-btn-danger.mui-btn-flat[disabled]:focus,\n    .mui-btn-danger.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat:active {\n      color: #F44336;\n      background-color: transparent; }\n\n.mui-btn-accent {\n  color: #FFF;\n  background-color: #FF4081; }\n  .mui-btn-accent:hover,\n  .mui-btn-accent:focus,\n  .mui-btn-accent:active,\n  .mui-open > .mui-btn-accent.mui-dropdown-toggle {\n    color: #FFF;\n    background-color: #ff5a92; }\n  .mui-btn-accent[disabled],\n  .mui-btn-accent[disabled]:hover,\n  .mui-btn-accent[disabled]:focus,\n  .mui-btn-accent[disabled]:active,\n  fieldset[disabled] .mui-btn-accent,\n  fieldset[disabled] .mui-btn-accent:hover,\n  fieldset[disabled] .mui-btn-accent:focus,\n  fieldset[disabled] .mui-btn-accent:active {\n    color: #FFF;\n    background-color: #FF4081; }\n  .mui-btn-accent.mui-btn-flat {\n    color: #FF4081;\n    background-color: transparent; }\n    .mui-btn-accent.mui-btn-flat:hover,\n    .mui-btn-accent.mui-btn-flat:focus,\n    .mui-btn-accent.mui-btn-flat:active,\n    .mui-open > .mui-btn-accent.mui-btn-flat.mui-dropdown-toggle {\n      color: #FF4081;\n      background-color: #f2f2f2; }\n    .mui-btn-accent.mui-btn-flat[disabled],\n    .mui-btn-accent.mui-btn-flat[disabled]:hover,\n    .mui-btn-accent.mui-btn-flat[disabled]:focus,\n    .mui-btn-accent.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat:active {\n      color: #FF4081;\n      background-color: transparent; }\n\n.mui-btn-floating {\n  position: relative;\n  z-index: 1;\n  width: 55px;\n  height: 55px;\n  line-height: 55px;\n  padding: 0;\n  border-radius: 50%;\n  color: #FFF;\n  background-color: #FF4081; }\n  .mui-btn-floating:hover,\n  .mui-btn-floating:focus,\n  .mui-btn-floating:active {\n    color: #FFF;\n    background-color: #ff5a92; }\n\n.mui-btn-floating-mini {\n  width: 40px;\n  height: 40px;\n  line-height: 40px; }\n\n/**\n * MUI Form styles\n * \n */\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 10px;\n  font-size: 21px;\n  color: rgba(0, 0, 0, 0.87);\n  line-height: inherit;\n  border: 0; }\n\ninput[type=\"search\"] {\n  box-sizing: border-box; }\n\ninput[type=\"file\"]:focus,\ninput[type=\"radio\"]:focus,\ninput[type=\"checkbox\"]:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\ninput[type=\"radio\"]:disabled,\ninput[type=\"checkbox\"]:disabled {\n  cursor: not-allowed; }\n\n.mui-form-control {\n  animation-duration: 0.0001s;\n  animation-name: mui-node-inserted;\n  display: block;\n  background-color: transparent;\n  color: rgba(0, 0, 0, 0.87);\n  border: none;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.26);\n  outline: none;\n  height: 32px;\n  width: 100%;\n  font-size: 16px;\n  padding: 0;\n  box-shadow: none;\n  border-radius: 0px;\n  background-image: none; }\n  .mui-form-control:focus {\n    border-color: #2196F3;\n    border-width: 2px; }\n  .mui-form-control:disabled,\n  .mui-form-control:read-only {\n    cursor: not-allowed;\n    background-color: transparent;\n    opacity: 1; }\n  .mui-form-control::placeholder {\n    color: rgba(0, 0, 0, 0.26);\n    opacity: 1; }\n\ntextarea.mui-form-control {\n  height: auto; }\n\ninput.mui-form-control:focus {\n  height: 33px;\n  margin-bottom: -1px; }\n\ninput[type=\"search\"] {\n  -webkit-appearance: none; }\n\n.mui-form-group {\n  display: block;\n  width: 100%;\n  padding-top: 15px;\n  margin-bottom: 20px;\n  position: relative; }\n  .mui-form-group > label {\n    position: absolute;\n    top: 0;\n    display: block;\n    width: 100%;\n    color: rgba(0, 0, 0, 0.54);\n    font-size: 12px;\n    font-weight: 400;\n    line-height: 15px;\n    overflow-x: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap; }\n  .mui-form-group > .mui-form-floating-label {\n    position: absolute;\n    top: 15px;\n    font-size: 16px;\n    line-height: 32px;\n    color: rgba(0, 0, 0, 0.26);\n    text-overflow: clip;\n    cursor: text;\n    pointer-events: none; }\n  .mui-form-group > textarea {\n    padding-top: 5px;\n    min-height: 64px; }\n  .mui-form-group > .mui-form-control {\n    display: block; }\n  .mui-form-group > .mui-form-control:focus ~ label {\n    color: #2196F3; }\n  .mui-form-group[data-mui-wrap-label=\"true\"] {\n    display: table;\n    padding-top: 0px; }\n    .mui-form-group[data-mui-wrap-label=\"true\"] > label:not(.mui-form-floating-label) {\n      display: table-header-group;\n      position: static;\n      white-space: normal;\n      overflow-x: visible; }\n\n.mui-form-control:focus ~ .mui-form-floating-label {\n  top: 0px;\n  font-size: 12px;\n  line-height: 15px;\n  text-overflow: ellipsis; }\n\n.mui-form-control:not(:focus).mui-not-empty ~ .mui-form-floating-label,\n.mui-form-control:not(:focus)[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty) ~ .mui-form-floating-label,\n.mui-form-control:not(:focus):not(:empty):not(.mui-empty):not(.mui-not-empty) ~ .mui-form-floating-label {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px;\n  line-height: 15px;\n  top: 0px;\n  text-overflow: ellipsis; }\n\n.mui-radio,\n.mui-checkbox {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px; }\n  .mui-radio > label,\n  .mui-checkbox > label {\n    min-height: 20px;\n    padding-left: 20px;\n    margin-bottom: 0;\n    font-weight: normal;\n    cursor: pointer; }\n\n.mui-radio > label > input[type=\"radio\"],\n.mui-radio-inline > label > input[type=\"radio\"],\n.mui-checkbox > label > input[type=\"checkbox\"],\n.mui-checkbox-inline > label > input[type=\"checkbox\"] {\n  position: absolute;\n  margin-left: -20px;\n  margin-top: 4px; }\n\n.mui-radio + .mui-radio,\n.mui-checkbox + .mui-checkbox {\n  margin-top: -5px; }\n\n.mui-radio-inline,\n.mui-checkbox-inline {\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  vertical-align: middle;\n  font-weight: normal;\n  cursor: pointer; }\n  .mui-radio-inline > input[type=\"radio\"],\n  .mui-radio-inline > input[type=\"checkbox\"],\n  .mui-radio-inline > label > input[type=\"radio\"],\n  .mui-radio-inline > label > input[type=\"checkbox\"],\n  .mui-checkbox-inline > input[type=\"radio\"],\n  .mui-checkbox-inline > input[type=\"checkbox\"],\n  .mui-checkbox-inline > label > input[type=\"radio\"],\n  .mui-checkbox-inline > label > input[type=\"checkbox\"] {\n    margin: 4px 0 0;\n    line-height: normal; }\n\n.mui-radio-inline + .mui-radio-inline,\n.mui-checkbox-inline + .mui-checkbox-inline {\n  margin-top: 0;\n  margin-left: 10px; }\n\n.mui-select {\n  position: relative; }\n  .mui-select:focus {\n    outline: 0; }\n    .mui-select:focus > select {\n      height: 33px;\n      margin-bottom: -1px;\n      border-color: #2196F3;\n      border-width: 2px; }\n  .mui-select > select {\n    animation-duration: 0.0001s;\n    animation-name: mui-node-inserted;\n    display: block;\n    height: 32px;\n    width: 100%;\n    appearance: none;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    outline: none;\n    border: none;\n    border-bottom: 1px solid rgba(0, 0, 0, 0.26);\n    border-radius: 0px;\n    box-shadow: none;\n    background-color: transparent;\n    background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuMjQpOyIvPjwvc3ZnPg==\");\n    background-repeat: no-repeat;\n    background-position: right center;\n    cursor: pointer;\n    color: rgba(0, 0, 0, 0.87);\n    font-size: 16px;\n    padding: 0 25px 0 0; }\n    .mui-select > select::-ms-expand {\n      display: none; }\n    .mui-select > select:focus {\n      outline: 0;\n      height: 33px;\n      margin-bottom: -1px;\n      border-color: #2196F3;\n      border-width: 2px; }\n    .mui-select > select:disabled {\n      color: rgba(0, 0, 0, 0.26);\n      cursor: not-allowed;\n      background-color: transparent;\n      opacity: 1; }\n\n.mui-select-menu {\n  position: absolute;\n  z-index: 1;\n  min-width: 100%;\n  overflow-y: auto;\n  padding: 8px 0;\n  background-color: #FFF;\n  font-size: 16px; }\n  .mui-select-menu > div {\n    padding: 0 22px;\n    height: 42px;\n    line-height: 42px;\n    cursor: pointer;\n    white-space: nowrap; }\n    .mui-select-menu > div:hover {\n      background-color: #E0E0E0; }\n    .mui-select-menu > div[selected] {\n      background-color: #EEEEEE; }\n\n@media (min-width: 768px) {\n  .mui-form-inline > * {\n    vertical-align: bottom; }\n  .mui-form-inline > .mui-form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .mui-form-inline > .mui-form-control,\n  .mui-form-inline > .mui-form-group > .mui-form-group {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle; }\n  .mui-form-inline > .mui-radio,\n  .mui-form-inline > .mui-checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle; }\n    .mui-form-inline > .mui-radio > label,\n    .mui-form-inline > .mui-checkbox > label {\n      padding-left: 0; }\n  .mui-form-inline > .mui-radio > label > input[type=\"radio\"],\n  .mui-form-inline > .mui-checkbox > label > input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0; }\n  .mui-form-inline > .mui-select {\n    display: inline-block; }\n  .mui-form-inline > .mui-btn {\n    margin-bottom: 0;\n    margin-top: 0; } }\n\n.mui-form-control:invalid:not(:focus):not(:required),\n.mui-form-control:invalid:not(:focus):required.mui-not-empty,\n.mui-form-control:invalid:not(:focus):required.mui-empty.mui-dirty,\n.mui-form-control:invalid:not(:focus):required[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty),\n.mui-form-control:invalid:not(:focus):required:not(:empty):not(.mui-empty):not(.mui-not-empty) {\n  border-color: #F44336;\n  border-width: 2px; }\n\ninput.mui-form-control:invalid:not(:focus):not(:required),\ninput.mui-form-control:invalid:not(:focus):required.mui-not-empty,\ninput.mui-form-control:invalid:not(:focus):required.mui-empty.mui-dirty,\ninput.mui-form-control:invalid:not(:focus):required[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty),\ninput.mui-form-control:invalid:not(:focus):required:not(:empty):not(.mui-empty):not(.mui-not-empty) {\n  height: 33px;\n  margin-bottom: -1px; }\n\n.mui-form-group > .mui-form-control:invalid:not(:focus):not(:required) ~ label,\n.mui-form-group > .mui-form-control:invalid:not(:focus):required.mui-not-empty ~ label,\n.mui-form-group > .mui-form-control:invalid:not(:focus):required[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty) ~ label,\n.mui-form-group > .mui-form-control:invalid:not(:focus):required:not(:empty):not(.mui-empty):not(.mui-not-empty) ~ label {\n  color: #F44336; }\n\n.mui-form-group > .mui-form-control:invalid:not(:focus):required.mui-empty.mui-dirty ~ label:not(.mui-form-floating-label) {\n  color: #F44336; }\n\n/**\n * MUI Panel module\n */\n.mui-panel {\n  padding: 15px;\n  margin-bottom: 20px;\n  border-radius: 0;\n  background-color: #FFF;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0px 2px 0 rgba(0, 0, 0, 0.12); }\n  .mui-panel:before,\n  .mui-panel:after {\n    content: \" \";\n    display: table; }\n  .mui-panel:after {\n    clear: both; }\n\n.like-button {\n  background: #ffffff;\n  color: #333333;\n  border: 1px solid #b3b3b3;\n  border-radius: 3px;\n  cursor: pointer;\n  padding: 3px 6px 4px;\n  outline: 0;\n  margin: 5px 0; }\n  .like-button:hover {\n    border: 1px solid #666666; }\n  .like-button:active {\n    opacity: 0.5; }\n  .like-button.disabled {\n    background: #eeeeee;\n    color: #888888; }\n  .like-button:not(:first-child) {\n    margin-left: 5px; }\n\n.article {\n  font-family: 'EB Garamond', serif;\n  font-size: 17px; }\n  .article > p > a {\n    text-decoration: none; }\n  .article:hover > p > a {\n    text-decoration: underline; }\n\n.chat-button {\n  background: #ffffff;\n  color: #333333;\n  border: 1px solid #b3b3b3;\n  border-radius: 3px;\n  cursor: pointer;\n  padding: 3px 6px 4px;\n  outline: 0;\n  margin: 5px 0; }\n  .chat-button:hover {\n    border: 1px solid #666666; }\n  .chat-button:active {\n    opacity: 0.5; }\n  .chat-button.disabled {\n    background: #eeeeee;\n    color: #888888; }\n  .chat-button:not(:first-child) {\n    margin-left: 5px; }\n\n.drag {\n  display: inline-block;\n  cursor: pointer;\n  margin-right: 0.2em; }\n\n.nav {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -moz-box-align: center;\n  box-align: center;\n  -webkit-align-items: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  -o-align-items: center;\n  align-items: center;\n  -ms-flex-align: center;\n  -webkit-box-pack: justify;\n  -moz-box-pack: justify;\n  box-pack: justify;\n  -webkit-justify-content: space-between;\n  -moz-justify-content: space-between;\n  -ms-justify-content: space-between;\n  -o-justify-content: space-between;\n  justify-content: space-between;\n  -ms-flex-pack: justify;\n  padding: 0 10px;\n  width: 100%;\n  height: 65px;\n  background: #4a366d;\n  border-bottom: 1px solid #d9d9d9; }\n  .nav .brand {\n    font-size: 1.3em;\n    font-weight: 700; }\n  .nav .link {\n    text-decoration: none;\n    color: white;\n    outline: 0; }\n    .nav .link:hover {\n      text-decoration: underline; }\n    .nav .link:not(:last-child) {\n      margin-right: 10px; }\n\n.index {\n  width: 100%;\n  max-width: 960px;\n  margin: 10px auto;\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  border: 1px solid #d9d9d9;\n  border-radius: 2px; }\n  .index > aside {\n    display: -webkit-box;\n    display: -moz-box;\n    display: box;\n    display: -webkit-flex;\n    display: -moz-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -moz-box-orient: vertical;\n    box-orient: vertical;\n    -webkit-box-direction: normal;\n    -moz-box-direction: normal;\n    box-direction: normal;\n    -webkit-flex-direction: column;\n    -moz-flex-direction: column;\n    flex-direction: column;\n    -ms-flex-direction: column;\n    -webkit-box-pack: start;\n    -moz-box-pack: start;\n    box-pack: start;\n    -webkit-justify-content: flex-start;\n    -moz-justify-content: flex-start;\n    -ms-justify-content: flex-start;\n    -o-justify-content: flex-start;\n    justify-content: flex-start;\n    -ms-flex-pack: start;\n    -webkit-box-flex: 1;\n    -moz-box-flex: 1;\n    box-flex: 1;\n    -webkit-flex: 1;\n    -moz-flex: 1;\n    -ms-flex: 1;\n    flex: 1;\n    padding: 10px; }\n    .index > aside > * {\n      margin-bottom: 10px; }\n  .index > main {\n    -webkit-box-flex: 1.618;\n    -moz-box-flex: 1.618;\n    box-flex: 1.618;\n    -webkit-flex: 1.618;\n    -moz-flex: 1.618;\n    -ms-flex: 1.618;\n    flex: 1.618; }\n  .index > * {\n    background: white; }\n    .index > *:not(:last-child) {\n      border-right: 1px solid #d9d9d9; }\n\n.button-group {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .button-group > .button {\n    height: 38px;\n    -webkit-box-flex: 1;\n    -moz-box-flex: 1;\n    box-flex: 1;\n    -webkit-flex: 1;\n    -moz-flex: 1;\n    -ms-flex: 1;\n    flex: 1; }\n\n.listing {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -moz-box-orient: vertical;\n  box-orient: vertical;\n  -webkit-box-direction: normal;\n  -moz-box-direction: normal;\n  box-direction: normal;\n  -webkit-flex-direction: column;\n  -moz-flex-direction: column;\n  flex-direction: column;\n  -ms-flex-direction: column;\n  padding: 10px; }\n  .listing header {\n    font-weight: 700; }\n  .listing:not(:last-child) {\n    border-bottom: 1px solid #d9d9d9; }\n\n.text {\n  cursor: text; }\n\n.pointer {\n  cursor: pointer; }\n\n.teach {\n  width: 100%;\n  max-width: 720px;\n  margin: 10px auto; }\n  .teach > header {\n    text-align: center; }\n  .teach > main > form {\n    display: -webkit-box;\n    display: -moz-box;\n    display: box;\n    display: -webkit-flex;\n    display: -moz-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -moz-box-orient: vertical;\n    box-orient: vertical;\n    -webkit-box-direction: normal;\n    -moz-box-direction: normal;\n    box-direction: normal;\n    -webkit-flex-direction: column;\n    -moz-flex-direction: column;\n    flex-direction: column;\n    -ms-flex-direction: column; }\n    .teach > main > form .left-side {\n      -webkit-box-flex: 2;\n      -moz-box-flex: 2;\n      box-flex: 2;\n      -webkit-flex: 2;\n      -moz-flex: 2;\n      -ms-flex: 2;\n      flex: 2; }\n    .teach > main > form .right-side {\n      -webkit-box-flex: 1;\n      -moz-box-flex: 1;\n      box-flex: 1;\n      -webkit-flex: 1;\n      -moz-flex: 1;\n      -ms-flex: 1;\n      flex: 1; }\n  .teach > * {\n    padding: 10px;\n    background: white;\n    border-radius: 2px;\n    border: 1px solid #d9d9d9;\n    margin-bottom: 10px; }\n\n.row {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex; }\n\n.flex-1 {\n  -webkit-box-flex: 1;\n  -moz-box-flex: 1;\n  box-flex: 1;\n  -webkit-flex: 1;\n  -moz-flex: 1;\n  -ms-flex: 1;\n  flex: 1; }\n\n.flex-2 {\n  -webkit-box-flex: 2;\n  -moz-box-flex: 2;\n  box-flex: 2;\n  -webkit-flex: 2;\n  -moz-flex: 2;\n  -ms-flex: 2;\n  flex: 2; }\n\n.login {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -moz-box-pack: center;\n  box-pack: center;\n  -webkit-justify-content: center;\n  -moz-justify-content: center;\n  -ms-justify-content: center;\n  -o-justify-content: center;\n  justify-content: center;\n  -ms-flex-pack: center;\n  -webkit-box-align: center;\n  -moz-box-align: center;\n  box-align: center;\n  -webkit-align-items: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  -o-align-items: center;\n  align-items: center;\n  -ms-flex-align: center;\n  height: 100%;\n  background-image: url(\"https://upload.wikimedia.org/wikipedia/commons/f/f5/The_port_of_Singapore.jpg\");\n  background-image: url(\"https://upload.wikimedia.org/wikipedia/commons/f/f5/The_port_of_Singapore.jpg\");\n  -webkit-filter: grayscale(50%);\n  filter: grayscale(50%); }\n  .login .login-form {\n    width: 100%;\n    max-width: 320px;\n    opacity: 0.95; }\n    .login .login-form .mui-form-group {\n      padding-top: 5px;\n      margin-bottom: 10px; }\n  .login .center {\n    text-align: center; }\n  .login .full-width {\n    width: 100%; }\n\n.messages {\n  width: 100%;\n  height: 100%;\n  max-width: 960px;\n  margin: 0 auto;\n  padding: 20px; }\n\n.message {\n  border: 1px solid #d9d9d9;\n  border-radius: 2px;\n  margin-bottom: 20px;\n  padding: 20px 20px 10px; }\n\n.parser {\n  width: 100%;\n  height: 100%;\n  max-width: 960px;\n  margin: 0 auto;\n  padding: 20px; }\n\n.from-profile {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -moz-box-align: center;\n  box-align: center;\n  -webkit-align-items: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  -o-align-items: center;\n  align-items: center;\n  -ms-flex-align: center;\n  -webkit-box-pack: justify;\n  -moz-box-pack: justify;\n  box-pack: justify;\n  -webkit-justify-content: space-between;\n  -moz-justify-content: space-between;\n  -ms-justify-content: space-between;\n  -o-justify-content: space-between;\n  justify-content: space-between;\n  -ms-flex-pack: justify; }\n  .from-profile .left, .from-profile .right {\n    display: -webkit-box;\n    display: -moz-box;\n    display: box;\n    display: -webkit-flex;\n    display: -moz-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -moz-box-align: center;\n    box-align: center;\n    -webkit-align-items: center;\n    -moz-align-items: center;\n    -ms-align-items: center;\n    -o-align-items: center;\n    align-items: center;\n    -ms-flex-align: center; }\n  .from-profile > .left > *, .from-profile > .right > * {\n    margin-right: 10px; }\n\n.from-profile-img {\n  border-radius: 20px;\n  width: 40px;\n  height: 40px;\n  background: url(\"https://lh5.googleusercontent.com/-zEgFJOorJ_Q/AAAAAAAAAAI/AAAAAAAAAAA/pWho2pWCoUg/s64-c/photo.jpg\"), no-repeat, center, center, fixed;\n  background: url(\"https://lh5.googleusercontent.com/-zEgFJOorJ_Q/AAAAAAAAAAI/AAAAAAAAAAA/pWho2pWCoUg/s64-c/photo.jpg\"), no-repeat, center, center, fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.from-profile-email {\n  color: gray; }\n\n.erp {\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  background: #cccccc; }\n\nhtml, body {\n  font-family: 'Lato', sans-serif;\n  box-sizing: border-box;\n  width: 100%;\n  height: 100%; }\n\n*, *:before, *:after {\n  box-sizing: inherit; }\n\n.tutori {\n  width: inherit;\n  height: inherit; }\n", ""]);
+	exports.push([module.id, "article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {\n  display: block; }\n\naudio, canvas, video {\n  display: inline-block; }\n\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n[hidden], template {\n  display: none; }\n\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%; }\n\nbody {\n  margin: 0; }\n\na {\n  background: transparent; }\n\na:focus {\n  outline: thin dotted; }\n\na:active, a:hover {\n  outline: 0; }\n\nh1 {\n  font-size: 2em;\n  margin: .67em 0; }\n\nabbr[title] {\n  border-bottom: 1px dotted; }\n\nb, strong {\n  font-weight: 700; }\n\ndfn {\n  font-style: italic; }\n\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\nmark {\n  background: #ff0;\n  color: #000; }\n\ncode, kbd, pre, samp {\n  font-family: monospace,serif;\n  font-size: 1em; }\n\npre {\n  white-space: pre-wrap; }\n\nq {\n  quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\"; }\n\nsmall {\n  font-size: 80%; }\n\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -.5em; }\n\nsub {\n  bottom: -.25em; }\n\nimg {\n  border: 0; }\n\nsvg:not(:root) {\n  overflow: hidden; }\n\nfigure {\n  margin: 0; }\n\nfieldset {\n  border: 1px solid silver;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\nlegend {\n  border: 0;\n  padding: 0; }\n\nbutton, input, select, textarea {\n  font-family: inherit;\n  font-size: 100%;\n  margin: 0; }\n\nbutton, input {\n  line-height: normal; }\n\nbutton, select {\n  text-transform: none; }\n\nbutton, html input[type=button], input[type=reset], input[type=submit] {\n  -webkit-appearance: button;\n  cursor: pointer; }\n\nbutton[disabled], html input[disabled] {\n  cursor: default; }\n\ninput[type=checkbox], input[type=radio] {\n  box-sizing: border-box;\n  padding: 0; }\n\ninput[type=search] {\n  -webkit-appearance: textfield;\n  box-sizing: content-box; }\n\ninput[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\ntextarea {\n  overflow: auto;\n  vertical-align: top; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nhtml {\n  box-sizing: border-box; }\n\n*,\n*::after,\n*::before {\n  box-sizing: inherit; }\n\n/**\n * MUI Colors module\n */\n/**\n * MUI Buttons\n */\n.mui-btn {\n  animation-duration: 0.0001s;\n  animation-name: mui-node-inserted;\n  font-weight: 500;\n  font-size: 14px;\n  line-height: 18px;\n  color: rgba(0, 0, 0, 0.87);\n  text-transform: uppercase;\n  transition: all 0.2s ease-in-out;\n  display: inline-block;\n  height: 36px;\n  padding: 0 26px;\n  margin-top: 6px;\n  margin-bottom: 6px;\n  border: none;\n  border-radius: 2px;\n  cursor: pointer;\n  touch-action: manipulation;\n  background-image: none;\n  text-align: center;\n  line-height: 36px;\n  vertical-align: middle;\n  white-space: nowrap;\n  user-select: none;\n  position: relative;\n  overflow: hidden; }\n  .mui-btn.mui-text-black {\n    color: rgba(0, 0, 0, 0.87); }\n  .mui-btn.mui-text-white {\n    color: white; }\n  .mui-btn.mui-text-accent {\n    color: rgba(255, 64, 129, 0.87); }\n  .mui-btn:hover,\n  .mui-btn:focus,\n  .mui-btn:active {\n    outline: 0;\n    text-decoration: none;\n    color: rgba(0, 0, 0, 0.87); }\n  .mui-btn:hover,\n  .mui-btn:focus {\n    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2); }\n  .mui-btn:active {\n    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }\n  .mui-btn:disabled,\n  .mui-btn.mui-disabled {\n    cursor: not-allowed;\n    pointer-events: none;\n    opacity: 0.60;\n    box-shadow: none; }\n\n.mui-btn + .mui-btn {\n  margin-left: 8px; }\n\n.mui-btn-lg {\n  height: 54px;\n  line-height: 54px; }\n\n.mui-btn-flat {\n  background-color: transparent; }\n  .mui-btn-flat:hover,\n  .mui-btn-flat:focus,\n  .mui-btn-flat:active {\n    box-shadow: none;\n    background-color: #f2f2f2; }\n\n.mui-btn-raised, .mui-btn-floating {\n  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2); }\n  .mui-btn-raised:active, .mui-btn-floating:active {\n    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }\n\n.mui-btn-default {\n  color: rgba(0, 0, 0, 0.87);\n  background-color: #FFF; }\n  .mui-btn-default:hover,\n  .mui-btn-default:focus,\n  .mui-btn-default:active,\n  .mui-open > .mui-btn-default.mui-dropdown-toggle {\n    color: rgba(0, 0, 0, 0.87);\n    background-color: white; }\n  .mui-btn-default[disabled],\n  .mui-btn-default[disabled]:hover,\n  .mui-btn-default[disabled]:focus,\n  .mui-btn-default[disabled]:active,\n  fieldset[disabled] .mui-btn-default,\n  fieldset[disabled] .mui-btn-default:hover,\n  fieldset[disabled] .mui-btn-default:focus,\n  fieldset[disabled] .mui-btn-default:active {\n    color: rgba(0, 0, 0, 0.87);\n    background-color: #FFF; }\n  .mui-btn-default.mui-btn-flat {\n    color: rgba(0, 0, 0, 0.87);\n    background-color: transparent; }\n    .mui-btn-default.mui-btn-flat:hover,\n    .mui-btn-default.mui-btn-flat:focus,\n    .mui-btn-default.mui-btn-flat:active,\n    .mui-open > .mui-btn-default.mui-btn-flat.mui-dropdown-toggle {\n      color: rgba(0, 0, 0, 0.87);\n      background-color: #f2f2f2; }\n    .mui-btn-default.mui-btn-flat[disabled],\n    .mui-btn-default.mui-btn-flat[disabled]:hover,\n    .mui-btn-default.mui-btn-flat[disabled]:focus,\n    .mui-btn-default.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-default.mui-btn-flat:active {\n      color: rgba(0, 0, 0, 0.87);\n      background-color: transparent; }\n\n.mui-btn-primary {\n  color: #FFF;\n  background-color: #2196F3; }\n  .mui-btn-primary:hover,\n  .mui-btn-primary:focus,\n  .mui-btn-primary:active,\n  .mui-open > .mui-btn-primary.mui-dropdown-toggle {\n    color: #FFF;\n    background-color: #39a1f4; }\n  .mui-btn-primary[disabled],\n  .mui-btn-primary[disabled]:hover,\n  .mui-btn-primary[disabled]:focus,\n  .mui-btn-primary[disabled]:active,\n  fieldset[disabled] .mui-btn-primary,\n  fieldset[disabled] .mui-btn-primary:hover,\n  fieldset[disabled] .mui-btn-primary:focus,\n  fieldset[disabled] .mui-btn-primary:active {\n    color: #FFF;\n    background-color: #2196F3; }\n  .mui-btn-primary.mui-btn-flat {\n    color: #2196F3;\n    background-color: transparent; }\n    .mui-btn-primary.mui-btn-flat:hover,\n    .mui-btn-primary.mui-btn-flat:focus,\n    .mui-btn-primary.mui-btn-flat:active,\n    .mui-open > .mui-btn-primary.mui-btn-flat.mui-dropdown-toggle {\n      color: #2196F3;\n      background-color: #f2f2f2; }\n    .mui-btn-primary.mui-btn-flat[disabled],\n    .mui-btn-primary.mui-btn-flat[disabled]:hover,\n    .mui-btn-primary.mui-btn-flat[disabled]:focus,\n    .mui-btn-primary.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-primary.mui-btn-flat:active {\n      color: #2196F3;\n      background-color: transparent; }\n\n.mui-btn-danger {\n  color: #FFF;\n  background-color: #F44336; }\n  .mui-btn-danger:hover,\n  .mui-btn-danger:focus,\n  .mui-btn-danger:active,\n  .mui-open > .mui-btn-danger.mui-dropdown-toggle {\n    color: #FFF;\n    background-color: #f55a4e; }\n  .mui-btn-danger[disabled],\n  .mui-btn-danger[disabled]:hover,\n  .mui-btn-danger[disabled]:focus,\n  .mui-btn-danger[disabled]:active,\n  fieldset[disabled] .mui-btn-danger,\n  fieldset[disabled] .mui-btn-danger:hover,\n  fieldset[disabled] .mui-btn-danger:focus,\n  fieldset[disabled] .mui-btn-danger:active {\n    color: #FFF;\n    background-color: #F44336; }\n  .mui-btn-danger.mui-btn-flat {\n    color: #F44336;\n    background-color: transparent; }\n    .mui-btn-danger.mui-btn-flat:hover,\n    .mui-btn-danger.mui-btn-flat:focus,\n    .mui-btn-danger.mui-btn-flat:active,\n    .mui-open > .mui-btn-danger.mui-btn-flat.mui-dropdown-toggle {\n      color: #F44336;\n      background-color: #f2f2f2; }\n    .mui-btn-danger.mui-btn-flat[disabled],\n    .mui-btn-danger.mui-btn-flat[disabled]:hover,\n    .mui-btn-danger.mui-btn-flat[disabled]:focus,\n    .mui-btn-danger.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-danger.mui-btn-flat:active {\n      color: #F44336;\n      background-color: transparent; }\n\n.mui-btn-accent {\n  color: #FFF;\n  background-color: #FF4081; }\n  .mui-btn-accent:hover,\n  .mui-btn-accent:focus,\n  .mui-btn-accent:active,\n  .mui-open > .mui-btn-accent.mui-dropdown-toggle {\n    color: #FFF;\n    background-color: #ff5a92; }\n  .mui-btn-accent[disabled],\n  .mui-btn-accent[disabled]:hover,\n  .mui-btn-accent[disabled]:focus,\n  .mui-btn-accent[disabled]:active,\n  fieldset[disabled] .mui-btn-accent,\n  fieldset[disabled] .mui-btn-accent:hover,\n  fieldset[disabled] .mui-btn-accent:focus,\n  fieldset[disabled] .mui-btn-accent:active {\n    color: #FFF;\n    background-color: #FF4081; }\n  .mui-btn-accent.mui-btn-flat {\n    color: #FF4081;\n    background-color: transparent; }\n    .mui-btn-accent.mui-btn-flat:hover,\n    .mui-btn-accent.mui-btn-flat:focus,\n    .mui-btn-accent.mui-btn-flat:active,\n    .mui-open > .mui-btn-accent.mui-btn-flat.mui-dropdown-toggle {\n      color: #FF4081;\n      background-color: #f2f2f2; }\n    .mui-btn-accent.mui-btn-flat[disabled],\n    .mui-btn-accent.mui-btn-flat[disabled]:hover,\n    .mui-btn-accent.mui-btn-flat[disabled]:focus,\n    .mui-btn-accent.mui-btn-flat[disabled]:active,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat:hover,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat:focus,\n    fieldset[disabled] .mui-btn-accent.mui-btn-flat:active {\n      color: #FF4081;\n      background-color: transparent; }\n\n.mui-btn-floating {\n  position: relative;\n  z-index: 1;\n  width: 55px;\n  height: 55px;\n  line-height: 55px;\n  padding: 0;\n  border-radius: 50%;\n  color: #FFF;\n  background-color: #FF4081; }\n  .mui-btn-floating:hover,\n  .mui-btn-floating:focus,\n  .mui-btn-floating:active {\n    color: #FFF;\n    background-color: #ff5a92; }\n\n.mui-btn-floating-mini {\n  width: 40px;\n  height: 40px;\n  line-height: 40px; }\n\n/**\n * MUI Form styles\n * \n */\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 10px;\n  font-size: 21px;\n  color: rgba(0, 0, 0, 0.87);\n  line-height: inherit;\n  border: 0; }\n\ninput[type=\"search\"] {\n  box-sizing: border-box; }\n\ninput[type=\"file\"]:focus,\ninput[type=\"radio\"]:focus,\ninput[type=\"checkbox\"]:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px; }\n\ninput[type=\"radio\"]:disabled,\ninput[type=\"checkbox\"]:disabled {\n  cursor: not-allowed; }\n\n.mui-form-control {\n  animation-duration: 0.0001s;\n  animation-name: mui-node-inserted;\n  display: block;\n  background-color: transparent;\n  color: rgba(0, 0, 0, 0.87);\n  border: none;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.26);\n  outline: none;\n  height: 32px;\n  width: 100%;\n  font-size: 16px;\n  padding: 0;\n  box-shadow: none;\n  border-radius: 0px;\n  background-image: none; }\n  .mui-form-control:focus {\n    border-color: #2196F3;\n    border-width: 2px; }\n  .mui-form-control:disabled,\n  .mui-form-control:read-only {\n    cursor: not-allowed;\n    background-color: transparent;\n    opacity: 1; }\n  .mui-form-control::placeholder {\n    color: rgba(0, 0, 0, 0.26);\n    opacity: 1; }\n\ntextarea.mui-form-control {\n  height: auto; }\n\ninput.mui-form-control:focus {\n  height: 33px;\n  margin-bottom: -1px; }\n\ninput[type=\"search\"] {\n  -webkit-appearance: none; }\n\n.mui-form-group {\n  display: block;\n  width: 100%;\n  padding-top: 15px;\n  margin-bottom: 20px;\n  position: relative; }\n  .mui-form-group > label {\n    position: absolute;\n    top: 0;\n    display: block;\n    width: 100%;\n    color: rgba(0, 0, 0, 0.54);\n    font-size: 12px;\n    font-weight: 400;\n    line-height: 15px;\n    overflow-x: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap; }\n  .mui-form-group > .mui-form-floating-label {\n    position: absolute;\n    top: 15px;\n    font-size: 16px;\n    line-height: 32px;\n    color: rgba(0, 0, 0, 0.26);\n    text-overflow: clip;\n    cursor: text;\n    pointer-events: none; }\n  .mui-form-group > textarea {\n    padding-top: 5px;\n    min-height: 64px; }\n  .mui-form-group > .mui-form-control {\n    display: block; }\n  .mui-form-group > .mui-form-control:focus ~ label {\n    color: #2196F3; }\n  .mui-form-group[data-mui-wrap-label=\"true\"] {\n    display: table;\n    padding-top: 0px; }\n    .mui-form-group[data-mui-wrap-label=\"true\"] > label:not(.mui-form-floating-label) {\n      display: table-header-group;\n      position: static;\n      white-space: normal;\n      overflow-x: visible; }\n\n.mui-form-control:focus ~ .mui-form-floating-label {\n  top: 0px;\n  font-size: 12px;\n  line-height: 15px;\n  text-overflow: ellipsis; }\n\n.mui-form-control:not(:focus).mui-not-empty ~ .mui-form-floating-label,\n.mui-form-control:not(:focus)[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty) ~ .mui-form-floating-label,\n.mui-form-control:not(:focus):not(:empty):not(.mui-empty):not(.mui-not-empty) ~ .mui-form-floating-label {\n  color: rgba(0, 0, 0, 0.54);\n  font-size: 12px;\n  line-height: 15px;\n  top: 0px;\n  text-overflow: ellipsis; }\n\n.mui-radio,\n.mui-checkbox {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px; }\n  .mui-radio > label,\n  .mui-checkbox > label {\n    min-height: 20px;\n    padding-left: 20px;\n    margin-bottom: 0;\n    font-weight: normal;\n    cursor: pointer; }\n\n.mui-radio > label > input[type=\"radio\"],\n.mui-radio-inline > label > input[type=\"radio\"],\n.mui-checkbox > label > input[type=\"checkbox\"],\n.mui-checkbox-inline > label > input[type=\"checkbox\"] {\n  position: absolute;\n  margin-left: -20px;\n  margin-top: 4px; }\n\n.mui-radio + .mui-radio,\n.mui-checkbox + .mui-checkbox {\n  margin-top: -5px; }\n\n.mui-radio-inline,\n.mui-checkbox-inline {\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  vertical-align: middle;\n  font-weight: normal;\n  cursor: pointer; }\n  .mui-radio-inline > input[type=\"radio\"],\n  .mui-radio-inline > input[type=\"checkbox\"],\n  .mui-radio-inline > label > input[type=\"radio\"],\n  .mui-radio-inline > label > input[type=\"checkbox\"],\n  .mui-checkbox-inline > input[type=\"radio\"],\n  .mui-checkbox-inline > input[type=\"checkbox\"],\n  .mui-checkbox-inline > label > input[type=\"radio\"],\n  .mui-checkbox-inline > label > input[type=\"checkbox\"] {\n    margin: 4px 0 0;\n    line-height: normal; }\n\n.mui-radio-inline + .mui-radio-inline,\n.mui-checkbox-inline + .mui-checkbox-inline {\n  margin-top: 0;\n  margin-left: 10px; }\n\n.mui-select {\n  position: relative; }\n  .mui-select:focus {\n    outline: 0; }\n    .mui-select:focus > select {\n      height: 33px;\n      margin-bottom: -1px;\n      border-color: #2196F3;\n      border-width: 2px; }\n  .mui-select > select {\n    animation-duration: 0.0001s;\n    animation-name: mui-node-inserted;\n    display: block;\n    height: 32px;\n    width: 100%;\n    appearance: none;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    outline: none;\n    border: none;\n    border-bottom: 1px solid rgba(0, 0, 0, 0.26);\n    border-radius: 0px;\n    box-shadow: none;\n    background-color: transparent;\n    background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuMjQpOyIvPjwvc3ZnPg==\");\n    background-repeat: no-repeat;\n    background-position: right center;\n    cursor: pointer;\n    color: rgba(0, 0, 0, 0.87);\n    font-size: 16px;\n    padding: 0 25px 0 0; }\n    .mui-select > select::-ms-expand {\n      display: none; }\n    .mui-select > select:focus {\n      outline: 0;\n      height: 33px;\n      margin-bottom: -1px;\n      border-color: #2196F3;\n      border-width: 2px; }\n    .mui-select > select:disabled {\n      color: rgba(0, 0, 0, 0.26);\n      cursor: not-allowed;\n      background-color: transparent;\n      opacity: 1; }\n\n.mui-select-menu {\n  position: absolute;\n  z-index: 1;\n  min-width: 100%;\n  overflow-y: auto;\n  padding: 8px 0;\n  background-color: #FFF;\n  font-size: 16px; }\n  .mui-select-menu > div {\n    padding: 0 22px;\n    height: 42px;\n    line-height: 42px;\n    cursor: pointer;\n    white-space: nowrap; }\n    .mui-select-menu > div:hover {\n      background-color: #E0E0E0; }\n    .mui-select-menu > div[selected] {\n      background-color: #EEEEEE; }\n\n@media (min-width: 768px) {\n  .mui-form-inline > * {\n    vertical-align: bottom; }\n  .mui-form-inline > .mui-form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle; }\n  .mui-form-inline > .mui-form-control,\n  .mui-form-inline > .mui-form-group > .mui-form-group {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle; }\n  .mui-form-inline > .mui-radio,\n  .mui-form-inline > .mui-checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle; }\n    .mui-form-inline > .mui-radio > label,\n    .mui-form-inline > .mui-checkbox > label {\n      padding-left: 0; }\n  .mui-form-inline > .mui-radio > label > input[type=\"radio\"],\n  .mui-form-inline > .mui-checkbox > label > input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0; }\n  .mui-form-inline > .mui-select {\n    display: inline-block; }\n  .mui-form-inline > .mui-btn {\n    margin-bottom: 0;\n    margin-top: 0; } }\n\n.mui-form-control:invalid:not(:focus):not(:required),\n.mui-form-control:invalid:not(:focus):required.mui-not-empty,\n.mui-form-control:invalid:not(:focus):required.mui-empty.mui-dirty,\n.mui-form-control:invalid:not(:focus):required[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty),\n.mui-form-control:invalid:not(:focus):required:not(:empty):not(.mui-empty):not(.mui-not-empty) {\n  border-color: #F44336;\n  border-width: 2px; }\n\ninput.mui-form-control:invalid:not(:focus):not(:required),\ninput.mui-form-control:invalid:not(:focus):required.mui-not-empty,\ninput.mui-form-control:invalid:not(:focus):required.mui-empty.mui-dirty,\ninput.mui-form-control:invalid:not(:focus):required[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty),\ninput.mui-form-control:invalid:not(:focus):required:not(:empty):not(.mui-empty):not(.mui-not-empty) {\n  height: 33px;\n  margin-bottom: -1px; }\n\n.mui-form-group > .mui-form-control:invalid:not(:focus):not(:required) ~ label,\n.mui-form-group > .mui-form-control:invalid:not(:focus):required.mui-not-empty ~ label,\n.mui-form-group > .mui-form-control:invalid:not(:focus):required[value]:not([value=\"\"]):not(.mui-empty):not(.mui-not-empty) ~ label,\n.mui-form-group > .mui-form-control:invalid:not(:focus):required:not(:empty):not(.mui-empty):not(.mui-not-empty) ~ label {\n  color: #F44336; }\n\n.mui-form-group > .mui-form-control:invalid:not(:focus):required.mui-empty.mui-dirty ~ label:not(.mui-form-floating-label) {\n  color: #F44336; }\n\n/**\n * MUI Panel module\n */\n.mui-panel {\n  padding: 15px;\n  margin-bottom: 20px;\n  border-radius: 0;\n  background-color: #FFF;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0px 2px 0 rgba(0, 0, 0, 0.12); }\n  .mui-panel:before,\n  .mui-panel:after {\n    content: \" \";\n    display: table; }\n  .mui-panel:after {\n    clear: both; }\n\n.like-button {\n  background: #ffffff;\n  color: #333333;\n  border: 1px solid #b3b3b3;\n  border-radius: 3px;\n  cursor: pointer;\n  padding: 3px 6px 4px;\n  outline: 0;\n  margin: 5px 0; }\n  .like-button:hover {\n    border: 1px solid #666666; }\n  .like-button:active {\n    opacity: 0.5; }\n  .like-button.disabled {\n    background: #eeeeee;\n    color: #888888; }\n  .like-button:not(:first-child) {\n    margin-left: 5px; }\n\n.article {\n  font-family: 'Merriweather', serif;\n  font-size: 17px; }\n  .article > p > a {\n    text-decoration: none; }\n  .article:hover > p > a {\n    text-decoration: underline; }\n\n.chat-button {\n  background: #ffffff;\n  color: #333333;\n  border: 1px solid #b3b3b3;\n  border-radius: 3px;\n  cursor: pointer;\n  padding: 3px 6px 4px;\n  outline: 0;\n  margin: 5px 0; }\n  .chat-button:hover {\n    border: 1px solid #666666; }\n  .chat-button:active {\n    opacity: 0.5; }\n  .chat-button.disabled {\n    background: #eeeeee;\n    color: #888888; }\n  .chat-button:not(:first-child) {\n    margin-left: 5px; }\n\n.drag {\n  display: inline-block;\n  cursor: pointer;\n  margin-right: 0.2em; }\n\n.nav {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -moz-box-align: center;\n  box-align: center;\n  -webkit-align-items: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  -o-align-items: center;\n  align-items: center;\n  -ms-flex-align: center;\n  -webkit-box-pack: justify;\n  -moz-box-pack: justify;\n  box-pack: justify;\n  -webkit-justify-content: space-between;\n  -moz-justify-content: space-between;\n  -ms-justify-content: space-between;\n  -o-justify-content: space-between;\n  justify-content: space-between;\n  -ms-flex-pack: justify;\n  padding: 0 10px;\n  width: 100%;\n  height: 65px;\n  background: #4a366d;\n  border-bottom: 1px solid #d9d9d9; }\n  .nav .brand {\n    font-size: 1.3em;\n    font-weight: 700; }\n  .nav .link {\n    text-decoration: none;\n    color: white;\n    outline: 0; }\n    .nav .link:hover {\n      text-decoration: underline; }\n    .nav .link:not(:last-child) {\n      margin-right: 10px; }\n\n.index {\n  width: 100%;\n  max-width: 960px;\n  margin: 10px auto;\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  border: 1px solid #d9d9d9;\n  border-radius: 2px; }\n  .index > aside {\n    display: -webkit-box;\n    display: -moz-box;\n    display: box;\n    display: -webkit-flex;\n    display: -moz-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -moz-box-orient: vertical;\n    box-orient: vertical;\n    -webkit-box-direction: normal;\n    -moz-box-direction: normal;\n    box-direction: normal;\n    -webkit-flex-direction: column;\n    -moz-flex-direction: column;\n    flex-direction: column;\n    -ms-flex-direction: column;\n    -webkit-box-pack: start;\n    -moz-box-pack: start;\n    box-pack: start;\n    -webkit-justify-content: flex-start;\n    -moz-justify-content: flex-start;\n    -ms-justify-content: flex-start;\n    -o-justify-content: flex-start;\n    justify-content: flex-start;\n    -ms-flex-pack: start;\n    -webkit-box-flex: 1;\n    -moz-box-flex: 1;\n    box-flex: 1;\n    -webkit-flex: 1;\n    -moz-flex: 1;\n    -ms-flex: 1;\n    flex: 1;\n    padding: 10px; }\n    .index > aside > * {\n      margin-bottom: 10px; }\n  .index > main {\n    -webkit-box-flex: 1.618;\n    -moz-box-flex: 1.618;\n    box-flex: 1.618;\n    -webkit-flex: 1.618;\n    -moz-flex: 1.618;\n    -ms-flex: 1.618;\n    flex: 1.618; }\n  .index > * {\n    background: white; }\n    .index > *:not(:last-child) {\n      border-right: 1px solid #d9d9d9; }\n\n.button-group {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex; }\n  .button-group > .button {\n    height: 38px;\n    -webkit-box-flex: 1;\n    -moz-box-flex: 1;\n    box-flex: 1;\n    -webkit-flex: 1;\n    -moz-flex: 1;\n    -ms-flex: 1;\n    flex: 1; }\n\n.listing {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -moz-box-orient: vertical;\n  box-orient: vertical;\n  -webkit-box-direction: normal;\n  -moz-box-direction: normal;\n  box-direction: normal;\n  -webkit-flex-direction: column;\n  -moz-flex-direction: column;\n  flex-direction: column;\n  -ms-flex-direction: column;\n  padding: 10px; }\n  .listing header {\n    font-weight: 700; }\n  .listing:not(:last-child) {\n    border-bottom: 1px solid #d9d9d9; }\n\n.text {\n  cursor: text; }\n\n.pointer {\n  cursor: pointer; }\n\n.teach {\n  width: 100%;\n  max-width: 720px;\n  margin: 10px auto; }\n  .teach > header {\n    text-align: center; }\n  .teach > main > form {\n    display: -webkit-box;\n    display: -moz-box;\n    display: box;\n    display: -webkit-flex;\n    display: -moz-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -moz-box-orient: vertical;\n    box-orient: vertical;\n    -webkit-box-direction: normal;\n    -moz-box-direction: normal;\n    box-direction: normal;\n    -webkit-flex-direction: column;\n    -moz-flex-direction: column;\n    flex-direction: column;\n    -ms-flex-direction: column; }\n    .teach > main > form .left-side {\n      -webkit-box-flex: 2;\n      -moz-box-flex: 2;\n      box-flex: 2;\n      -webkit-flex: 2;\n      -moz-flex: 2;\n      -ms-flex: 2;\n      flex: 2; }\n    .teach > main > form .right-side {\n      -webkit-box-flex: 1;\n      -moz-box-flex: 1;\n      box-flex: 1;\n      -webkit-flex: 1;\n      -moz-flex: 1;\n      -ms-flex: 1;\n      flex: 1; }\n  .teach > * {\n    padding: 10px;\n    background: white;\n    border-radius: 2px;\n    border: 1px solid #d9d9d9;\n    margin-bottom: 10px; }\n\n.row {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex; }\n\n.flex-1 {\n  -webkit-box-flex: 1;\n  -moz-box-flex: 1;\n  box-flex: 1;\n  -webkit-flex: 1;\n  -moz-flex: 1;\n  -ms-flex: 1;\n  flex: 1; }\n\n.flex-2 {\n  -webkit-box-flex: 2;\n  -moz-box-flex: 2;\n  box-flex: 2;\n  -webkit-flex: 2;\n  -moz-flex: 2;\n  -ms-flex: 2;\n  flex: 2; }\n\n.login {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -moz-box-pack: center;\n  box-pack: center;\n  -webkit-justify-content: center;\n  -moz-justify-content: center;\n  -ms-justify-content: center;\n  -o-justify-content: center;\n  justify-content: center;\n  -ms-flex-pack: center;\n  -webkit-box-align: center;\n  -moz-box-align: center;\n  box-align: center;\n  -webkit-align-items: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  -o-align-items: center;\n  align-items: center;\n  -ms-flex-align: center;\n  height: 100%;\n  background-image: url(\"https://upload.wikimedia.org/wikipedia/commons/f/f5/The_port_of_Singapore.jpg\");\n  background-image: url(\"https://upload.wikimedia.org/wikipedia/commons/f/f5/The_port_of_Singapore.jpg\");\n  -webkit-filter: grayscale(50%);\n  filter: grayscale(50%); }\n  .login .login-form {\n    width: 100%;\n    max-width: 320px;\n    opacity: 0.95; }\n    .login .login-form .mui-form-group {\n      padding-top: 5px;\n      margin-bottom: 10px; }\n  .login .center {\n    text-align: center; }\n  .login .full-width {\n    width: 100%; }\n\n.messages {\n  width: 100%;\n  height: 100%;\n  max-width: 960px;\n  margin: 0 auto;\n  padding: 20px; }\n\n.message {\n  border: 1px solid #d9d9d9;\n  border-radius: 2px;\n  margin-bottom: 20px;\n  padding: 0 20px 10px; }\n\n.parser {\n  width: 100%;\n  height: 100%;\n  max-width: 960px;\n  margin: 0 auto;\n  padding: 20px; }\n\n.from-profile {\n  display: -webkit-box;\n  display: -moz-box;\n  display: box;\n  display: -webkit-flex;\n  display: -moz-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -moz-box-align: center;\n  box-align: center;\n  -webkit-align-items: center;\n  -moz-align-items: center;\n  -ms-align-items: center;\n  -o-align-items: center;\n  align-items: center;\n  -ms-flex-align: center;\n  -webkit-box-pack: justify;\n  -moz-box-pack: justify;\n  box-pack: justify;\n  -webkit-justify-content: space-between;\n  -moz-justify-content: space-between;\n  -ms-justify-content: space-between;\n  -o-justify-content: space-between;\n  justify-content: space-between;\n  -ms-flex-pack: justify; }\n  .from-profile .left, .from-profile .right {\n    display: -webkit-box;\n    display: -moz-box;\n    display: box;\n    display: -webkit-flex;\n    display: -moz-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -moz-box-align: center;\n    box-align: center;\n    -webkit-align-items: center;\n    -moz-align-items: center;\n    -ms-align-items: center;\n    -o-align-items: center;\n    align-items: center;\n    -ms-flex-align: center; }\n  .from-profile > .left > *, .from-profile > .right > * {\n    margin-right: 10px; }\n\n.from-profile-img {\n  border-radius: 20px;\n  width: 40px;\n  height: 40px;\n  background: url(\"https://lh5.googleusercontent.com/-zEgFJOorJ_Q/AAAAAAAAAAI/AAAAAAAAAAA/pWho2pWCoUg/s64-c/photo.jpg\"), no-repeat, center, center, fixed;\n  background: url(\"https://lh5.googleusercontent.com/-zEgFJOorJ_Q/AAAAAAAAAAI/AAAAAAAAAAA/pWho2pWCoUg/s64-c/photo.jpg\"), no-repeat, center, center, fixed;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover; }\n\n.from-profile-email {\n  color: gray; }\n\n.erp {\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  background: #cccccc; }\n\nhtml, body {\n  font-family: 'Lato', sans-serif;\n  box-sizing: border-box;\n  width: 100%;\n  height: 100%; }\n\n*, *:before, *:after {\n  box-sizing: inherit; }\n\n.tutori {\n  width: inherit;\n  height: inherit; }\n", ""]);
 
 	// exports
 
@@ -21729,14 +21729,14 @@
 	var Route = Router.Route;
 	var DefaultRoute = Router.DefaultRoute;
 	var Redirect = Router.Redirect;
-	var Main = __webpack_require__(202);
-	var Chat = __webpack_require__(226);
-	var Index = __webpack_require__(227);
+	var Main = __webpack_require__(233);
+	var Chat = __webpack_require__(236);
+	var Index = __webpack_require__(237);
 	var Messages = __webpack_require__(201);
-	var Parser = __webpack_require__(233);
-	var ERP = __webpack_require__(235);
-	var Teach = __webpack_require__(237);
-	var Login = __webpack_require__(204);
+	var Parser = __webpack_require__(242);
+	var ERP = __webpack_require__(244);
+	var Teach = __webpack_require__(246);
+	var Login = __webpack_require__(235);
 
 	var routes = React.createElement(
 	  Route,
@@ -21760,38 +21760,35 @@
 	'use strict';
 
 	var React = __webpack_require__(5);
-	var Article = __webpack_require__(229);
-	var Reflux = __webpack_require__(206);
-	var MessageStore = __webpack_require__(242);
-	var Actions = __webpack_require__(205);
+	var Navigation = __webpack_require__(161).Navigation;
+	var Article = __webpack_require__(227);
+	var Reflux = __webpack_require__(203);
+	var MessageStore = __webpack_require__(202);
+	var Actions = __webpack_require__(223);
 	var Link = __webpack_require__(161).Link;
 
 	var Messages = React.createClass({
 	  displayName: 'Messages',
 
-	  mixins: [Reflux.connect(MessageStore, "messages")],
+	  mixins: [Navigation, Reflux.connect(MessageStore, "messages")],
 	  render: function render() {
-	    var messages = this.state.messages;
 	    return React.createElement(
 	      'section',
 	      { className: 'messages' },
-	      React.createElement(
-	        'h3',
-	        null,
-	        'New messages to juangab31@gmail.com'
-	      ),
-	      messages && messages.map(function (message, i) {
+	      this.state.messages.map((function (message, i) {
+	        var _this = this;
+
 	        return React.createElement(
 	          'article',
 	          { key: i, className: 'message' },
 	          React.createElement(
 	            'header',
 	            null,
-	            React.createElement('i', { className: 'fa fa-archive' }),
-	            ' ',
 	            React.createElement(
-	              'strong',
+	              'h3',
 	              null,
+	              React.createElement('i', { className: 'fa fa-envelope' }),
+	              ' ',
 	              message.subject
 	            )
 	          ),
@@ -21800,13 +21797,17 @@
 	            null,
 	            React.createElement(Article, { text: message.content }),
 	            React.createElement(
-	              Link,
-	              { to: 'message', params: { id: message.id }, type: 'submit', className: 'mui-btn mui-btn-primary' },
+	              'button',
+	              { onClick: function () {
+	                  return _this.transitionTo('message', { id: message.id });
+	                },
+	                type: 'submit',
+	                className: 'mui-btn mui-btn-primary' },
 	              'View Message'
 	            )
 	          )
 	        );
-	      })
+	      }).bind(this))
 	    );
 	  }
 	});
@@ -21819,30 +21820,30 @@
 
 	'use strict';
 
-	var React = __webpack_require__(5);
-	var Router = __webpack_require__(161);
-	var Nav = __webpack_require__(203);
-	var Login = __webpack_require__(204);
-	var RouteHandler = Router.RouteHandler;
+	var Reflux = __webpack_require__(203);
+	var Actions = __webpack_require__(223);
+	var request = __webpack_require__(224);
 
-	var Main = React.createClass({
-	  displayName: 'Main',
-
-	  mixins: [Router.State],
-	  render: function render() {
-	    // this.isActive comes from Router.State mixin.
-	    var renderNav = this.isActive('login') || this.isActive('erp');
-
-	    return React.createElement(
-	      'main',
-	      { className: 'tutori' },
-	      !renderNav && React.createElement(Nav, null),
-	      React.createElement(RouteHandler, null)
-	    );
+	var MessageStore = Reflux.createStore({
+	  listenables: Actions,
+	  init: function init() {
+	    setInterval((function () {
+	      request.get('http://mpa-hack.tendtoinfinity.com/api/messages').end((function (err, res) {
+	        if (res.ok) {
+	          this.updateMessage(res.body);
+	        }
+	      }).bind(this));
+	    }).bind(this), 1000);
+	  },
+	  updateMessage: function updateMessage(data) {
+	    this.trigger(this.last = data || {});
+	  },
+	  getInitialState: function getInitialState() {
+	    return this.last || [];
 	  }
 	});
 
-	module.exports = Main;
+	module.exports = MessageStore;
 
 /***/ },
 /* 203 */
@@ -21850,39 +21851,19 @@
 
 	'use strict';
 
-	var React = __webpack_require__(5);
-	var Link = __webpack_require__(161).Link;
+	var Reflux = __webpack_require__(216);
 
-	var Nav = React.createClass({
-	  displayName: 'Nav',
+	Reflux.connect = __webpack_require__(219);
 
-	  render: function render() {
-	    return React.createElement(
-	      'nav',
-	      { className: 'nav' },
-	      React.createElement(
-	        'div',
-	        { className: 'brand' },
-	        React.createElement(
-	          'a',
-	          { className: 'link', href: '#' },
-	          'Pur.pl'
-	        )
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'navigation' },
-	        React.createElement(
-	          Link,
-	          { className: 'link', to: 'messages' },
-	          'Messages'
-	        )
-	      )
-	    );
-	  }
-	});
+	Reflux.connectFilter = __webpack_require__(220);
 
-	module.exports = Nav;
+	Reflux.ListenerMixin = __webpack_require__(204);
+
+	Reflux.listenTo = __webpack_require__(221);
+
+	Reflux.listenToMany = __webpack_require__(222);
+
+	module.exports = Reflux;
 
 /***/ },
 /* 204 */
@@ -21890,109 +21871,8 @@
 
 	'use strict';
 
-	var React = __webpack_require__(5);
-	var Navigation = __webpack_require__(161).Navigation;
-	var Actions = __webpack_require__(205);
-
-	var Login = React.createClass({
-	  displayName: 'Login',
-
-	  mixins: [Navigation],
-	  render: function render() {
-	    return React.createElement(
-	      'section',
-	      { className: 'login' },
-	      React.createElement(
-	        'form',
-	        { className: 'login-form mui-panel', onSubmit: this.handleSubmit },
-	        React.createElement(
-	          'h2',
-	          { className: 'center' },
-	          'Login to Purple'
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'mui-form-group' },
-	          React.createElement('input', { ref: 'phoneNumber', type: 'text', className: 'mui-form-control', placeholder: 'Phone number', required: true })
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'mui-form-group' },
-	          React.createElement('input', { ref: 'password', type: 'password', className: 'mui-form-control', placeholder: 'Password', required: true })
-	        ),
-	        React.createElement(
-	          'button',
-	          { type: 'submit', className: 'mui-btn mui-btn-primary full-width' },
-	          'Submit'
-	        ),
-	        React.createElement(
-	          'div',
-	          null,
-	          React.createElement(
-	            'small',
-	            null,
-	            'Don\'t have an account? ',
-	            React.createElement(
-	              'a',
-	              { href: 'javascript:void(0)' },
-	              'Register'
-	            ),
-	            '.'
-	          )
-	        )
-	      )
-	    );
-	  },
-	  handleSubmit: function handleSubmit(e) {
-	    e.preventDefault();
-	    var username = React.findDOMNode(this.refs.phoneNumber).value;
-	    var password = React.findDOMNode(this.refs.password).value;
-	    console.log(username, password);
-	  }
-	});
-
-	module.exports = Login;
-
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Reflux = __webpack_require__(206);
-
-	var Actions = Reflux.createActions(['login', 'fetchMessages']);
-
-	module.exports = Actions;
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Reflux = __webpack_require__(219);
-
-	Reflux.connect = __webpack_require__(222);
-
-	Reflux.connectFilter = __webpack_require__(223);
-
-	Reflux.ListenerMixin = __webpack_require__(207);
-
-	Reflux.listenTo = __webpack_require__(224);
-
-	Reflux.listenToMany = __webpack_require__(225);
-
-	module.exports = Reflux;
-
-/***/ },
-/* 207 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _ = __webpack_require__(208),
-	    ListenerMethods = __webpack_require__(211);
+	var _ = __webpack_require__(205),
+	    ListenerMethods = __webpack_require__(208);
 
 	/**
 	 * A module meant to be consumed as a mixin by a React component. Supplies the methods from
@@ -22010,7 +21890,7 @@
 	}, ListenerMethods);
 
 /***/ },
-/* 208 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate) {"use strict";
@@ -22088,7 +21968,7 @@
 	    return typeof value === "function";
 	}
 
-	exports.EventEmitter = __webpack_require__(210);
+	exports.EventEmitter = __webpack_require__(207);
 
 	if (environment.hasSetImmediate) {
 	    exports.nextTick = function (callback) {
@@ -22128,10 +22008,10 @@
 	        throw Error(msg || val);
 	    }
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(209).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(206).setImmediate))
 
 /***/ },
-/* 209 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {"use strict";
@@ -22212,10 +22092,10 @@
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function (id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(209).setImmediate, __webpack_require__(209).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(206).setImmediate, __webpack_require__(206).clearImmediate))
 
 /***/ },
-/* 210 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22474,13 +22354,13 @@
 	}
 
 /***/ },
-/* 211 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(208),
-	    maker = __webpack_require__(212).instanceJoinCreator;
+	var _ = __webpack_require__(205),
+	    maker = __webpack_require__(209).instanceJoinCreator;
 
 	/**
 	 * Extract child listenables from a parent from their
@@ -22712,7 +22592,7 @@
 	};
 
 /***/ },
-/* 212 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22721,8 +22601,8 @@
 
 	"use strict";
 
-	var createStore = __webpack_require__(213),
-	    _ = __webpack_require__(208);
+	var createStore = __webpack_require__(210),
+	    _ = __webpack_require__(205);
 
 	var slice = Array.prototype.slice,
 	    strategyMethodNames = {
@@ -22833,15 +22713,15 @@
 	}
 
 /***/ },
-/* 213 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(208),
-	    Keep = __webpack_require__(214),
-	    mixer = __webpack_require__(215),
-	    bindMethods = __webpack_require__(216);
+	var _ = __webpack_require__(205),
+	    Keep = __webpack_require__(211),
+	    mixer = __webpack_require__(212),
+	    bindMethods = __webpack_require__(213);
 
 	var allowed = { preEmit: 1, shouldEmit: 1 };
 
@@ -22855,9 +22735,9 @@
 	 */
 	module.exports = function (definition) {
 
-	    var StoreMethods = __webpack_require__(217),
-	        PublisherMethods = __webpack_require__(218),
-	        ListenerMethods = __webpack_require__(211);
+	    var StoreMethods = __webpack_require__(214),
+	        PublisherMethods = __webpack_require__(215),
+	        ListenerMethods = __webpack_require__(208);
 
 	    definition = definition || {};
 
@@ -22902,7 +22782,7 @@
 	};
 
 /***/ },
-/* 214 */
+/* 211 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22921,12 +22801,12 @@
 	};
 
 /***/ },
-/* 215 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(208);
+	var _ = __webpack_require__(205);
 
 	module.exports = function mix(def) {
 	    var composed = {
@@ -22985,7 +22865,7 @@
 	};
 
 /***/ },
-/* 216 */
+/* 213 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23015,7 +22895,7 @@
 	};
 
 /***/ },
-/* 217 */
+/* 214 */
 /***/ function(module, exports) {
 
 	/**
@@ -23027,12 +22907,12 @@
 	module.exports = {};
 
 /***/ },
-/* 218 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(208);
+	var _ = __webpack_require__(205);
 
 	/**
 	 * A module of methods for object that you want to be able to listen to.
@@ -23215,7 +23095,7 @@
 	};
 
 /***/ },
-/* 219 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23229,19 +23109,19 @@
 	    }
 	};
 
-	Reflux.ActionMethods = __webpack_require__(220);
+	Reflux.ActionMethods = __webpack_require__(217);
 
-	Reflux.ListenerMethods = __webpack_require__(211);
+	Reflux.ListenerMethods = __webpack_require__(208);
 
-	Reflux.PublisherMethods = __webpack_require__(218);
+	Reflux.PublisherMethods = __webpack_require__(215);
 
-	Reflux.StoreMethods = __webpack_require__(217);
+	Reflux.StoreMethods = __webpack_require__(214);
 
-	Reflux.createAction = __webpack_require__(221);
+	Reflux.createAction = __webpack_require__(218);
 
-	Reflux.createStore = __webpack_require__(213);
+	Reflux.createStore = __webpack_require__(210);
 
-	var maker = __webpack_require__(212).staticJoinCreator;
+	var maker = __webpack_require__(209).staticJoinCreator;
 
 	Reflux.joinTrailing = Reflux.all = maker("last"); // Reflux.all alias for backward compatibility
 
@@ -23251,7 +23131,7 @@
 
 	Reflux.joinConcat = maker("all");
 
-	var _ = Reflux.utils = __webpack_require__(208);
+	var _ = Reflux.utils = __webpack_require__(205);
 
 	Reflux.EventEmitter = _.EventEmitter;
 
@@ -23325,7 +23205,7 @@
 	 * Provides the set of created actions and stores for introspection
 	 */
 	/*eslint-disable no-underscore-dangle*/
-	Reflux.__keep = __webpack_require__(214);
+	Reflux.__keep = __webpack_require__(211);
 	/*eslint-enable no-underscore-dangle*/
 
 	/**
@@ -23339,7 +23219,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 220 */
+/* 217 */
 /***/ function(module, exports) {
 
 	/**
@@ -23351,15 +23231,15 @@
 	module.exports = {};
 
 /***/ },
-/* 221 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(208),
-	    ActionMethods = __webpack_require__(220),
-	    PublisherMethods = __webpack_require__(218),
-	    Keep = __webpack_require__(214);
+	var _ = __webpack_require__(205),
+	    ActionMethods = __webpack_require__(217),
+	    PublisherMethods = __webpack_require__(215),
+	    Keep = __webpack_require__(211);
 
 	var allowed = { preEmit: 1, shouldEmit: 1 };
 
@@ -23422,14 +23302,14 @@
 	module.exports = createAction;
 
 /***/ },
-/* 222 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var ListenerMethods = __webpack_require__(211),
-	    ListenerMixin = __webpack_require__(207),
-	    _ = __webpack_require__(208);
+	var ListenerMethods = __webpack_require__(208),
+	    ListenerMixin = __webpack_require__(204),
+	    _ = __webpack_require__(205);
 
 	module.exports = function (listenable, key) {
 	    return {
@@ -23457,14 +23337,14 @@
 	};
 
 /***/ },
-/* 223 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var ListenerMethods = __webpack_require__(211),
-	    ListenerMixin = __webpack_require__(207),
-	    _ = __webpack_require__(208);
+	var ListenerMethods = __webpack_require__(208),
+	    ListenerMixin = __webpack_require__(204),
+	    _ = __webpack_require__(205);
 
 	module.exports = function (listenable, key, filterFunc) {
 	    filterFunc = _.isFunction(key) ? key : filterFunc;
@@ -23503,12 +23383,12 @@
 	};
 
 /***/ },
-/* 224 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var ListenerMethods = __webpack_require__(211);
+	var ListenerMethods = __webpack_require__(208);
 
 	/**
 	 * A mixin factory for a React component. Meant as a more convenient way of using the `ListenerMixin`,
@@ -23545,12 +23425,12 @@
 	};
 
 /***/ },
-/* 225 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var ListenerMethods = __webpack_require__(211);
+	var ListenerMethods = __webpack_require__(208);
 
 	/**
 	 * A mixin factory for a React component. Meant as a more convenient way of using the `listenerMixin`,
@@ -23585,1420 +23465,19 @@
 	};
 
 /***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var React = __webpack_require__(5);
-
-	var Chat = React.createClass({
-	  displayName: "Chat",
-
-	  render: function render() {
-	    return React.createElement(
-	      "section",
-	      { className: "chat" },
-	      React.createElement(
-	        "aside",
-	        null,
-	        React.createElement(
-	          "div",
-	          { className: "thread-list" },
-	          React.createElement(
-	            "div",
-	            { className: "thread-item" },
-	            React.createElement("img", { src: "", alt: "", className: "profile-picture" }),
-	            React.createElement(
-	              "div",
-	              { className: "profile-info" },
-	              React.createElement("div", { className: "username" }),
-	              React.createElement("div", { className: "last-time" })
-	            ),
-	            React.createElement("div", { className: "last-message" })
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        "main",
-	        null,
-	        React.createElement(
-	          "div",
-	          { className: "thread-contents" },
-	          React.createElement("div", { className: "message" })
-	        )
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Chat;
-
-/***/ },
-/* 227 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var React = __webpack_require__(5);
-	var Listing = __webpack_require__(228);
+	var Reflux = __webpack_require__(203);
 
-	var Index = React.createClass({
-	  displayName: 'Index',
+	var Actions = Reflux.createActions(['login', 'fetchMessages']);
 
-	  render: function render() {
-	    var x = [{
-	      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda consectetur doloribus esse exercitationem fuga id necessitatibus qui quis voluptate. Accusamus ad asperiores autem blanditiis dicta doloribus ea eius eum fugiat incidunt laboriosam, laborum magni, modi, praesentium quae quas tempora tempore unde velit vitae. Aperiam enim eos eum fugit id laborum minima, reiciendis, repellendus reprehenderit sequi ut vitae voluptates voluptatum? A accusantium amet asperiores, aspernatur cumque cupiditate deleniti dolore earum eos eum id incidunt ipsum labore laudantium magnam magni nemo nesciunt officiis pariatur perferendis placeat quae quas qui, quia quibusdam quisquam quod repellendus sint, tempore totam veniam veritatis vero voluptatem. Cum deleniti, mollitia nesciunt numquam quisquam ut voluptatum. At corporis ducimus in non perspiciatis praesentium quae quam quos, voluptas. Aperiam aut autem dolor, eligendi, et excepturi inventore iusto laborum natus neque non placeat quae voluptatem? Aperiam autem eligendi laboriosam sapiente!',
-	      liked: false
-	    }, {
-	      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda consectetur doloribus esse exercitationem fuga id necessitatibus qui quis voluptate. Accusamus ad asperiores autem blanditiis dicta doloribus ea eius eum fugiat incidunt laboriosam, laborum magni, modi, praesentium quae quas tempora tempore unde velit vitae. Aperiam enim eos eum fugit id laborum minima, reiciendis, repellendus reprehenderit sequi ut vitae voluptates voluptatum? A accusantium amet asperiores, aspernatur cumque cupiditate deleniti dolore earum eos eum id incidunt ipsum labore laudantium magnam magni nemo nesciunt officiis pariatur perferendis placeat quae quas qui, quia quibusdam quisquam quod repellendus sint, tempore totam veniam veritatis vero voluptatem. Cum deleniti, mollitia nesciunt numquam quisquam ut voluptatum. At corporis ducimus in non perspiciatis praesentium quae quam quos, voluptas. Aperiam aut autem dolor, eligendi, et excepturi inventore iusto laborum natus neque non placeat quae voluptatem? Aperiam autem eligendi laboriosam sapiente!',
-	      liked: false
-	    }];
-	    return React.createElement(
-	      'section',
-	      { className: 'index' },
-	      React.createElement('aside', null),
-	      React.createElement(
-	        'main',
-	        null,
-	        x.map(function (val) {
-	          return React.createElement(Listing, { listing: val });
-	        })
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Index;
+	module.exports = Actions;
 
 /***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(5);
-	var Article = __webpack_require__(229);
-	var LikeButton = __webpack_require__(230);
-	var ChatButton = __webpack_require__(232);
-
-	var Listing = React.createClass({
-	  displayName: 'Listing',
-
-	  propTypes: {
-	    listing: React.PropTypes.object.isRequired
-	  },
-
-	  render: function render() {
-	    return React.createElement(
-	      'section',
-	      { className: 'listing' },
-	      React.createElement(
-	        'header',
-	        null,
-	        React.createElement(
-	          'h2',
-	          null,
-	          'Lorem ipsum dolor.'
-	        ),
-	        React.createElement(
-	          'div',
-	          null,
-	          'Lorem ipsum dolor sit amet, consectetur.'
-	        )
-	      ),
-	      React.createElement(Article, { text: this.props.listing.text }),
-	      React.createElement(
-	        'footer',
-	        null,
-	        React.createElement(LikeButton, { liked: false,
-	          createLike: this.createLike,
-	          deleteLike: this.deleteLike }),
-	        React.createElement(ChatButton, null)
-	      )
-	    );
-	  },
-
-	  createLike: function createLike() {
-	    console.log('I like!');
-	  },
-
-	  deleteLike: function deleteLike() {
-	    console.log('I dislike!');
-	  }
-	});
-
-	module.exports = Listing;
-
-/***/ },
-/* 229 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(5);
-	var markdown = __webpack_require__(246).markdown;
-
-	var Article = React.createClass({
-	  displayName: 'Article',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      expanded: false
-	    };
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'article',
-	      { className: 'article' },
-	      !this.state.expanded && this.props.text.length > 140 ? React.createElement(
-	        'p',
-	        { className: 'pointer', onClick: this.handleClick },
-	        this.props.text.slice(0, 240),
-	        '... ',
-	        React.createElement(
-	          'a',
-	          { href: 'javascript:void(0)' },
-	          '(more)'
-	        )
-	      ) : React.createElement(
-	        'p',
-	        { className: 'text' },
-	        React.DOM.div({ dangerouslySetInnerHTML: {
-	            __html: markdown.toHTML(this.props.text.toString())
-	          } })
-	      )
-	    );
-	  },
-	  handleClick: function handleClick(e) {
-	    this.setState({
-	      expanded: !this.state.expanded
-	    });
-	  }
-	});
-
-	module.exports = Article;
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(5);
-	var classNames = __webpack_require__(231);
-
-	var LikeButton = React.createClass({
-	  displayName: 'LikeButton',
-
-	  propTypes: {
-	    liked: React.PropTypes.bool.isRequired,
-	    createLike: React.PropTypes.func.isRequired,
-	    deleteLike: React.PropTypes.func.isRequired
-	  },
-
-	  render: function render() {
-	    var buttonClass = classNames({
-	      'like-button': true,
-	      'liked': this.props.liked
-	    });
-	    var iconClass = classNames({
-	      'fa': true,
-	      'fa-heart-o': !this.props.liked,
-	      'fa-heart': this.props.liked
-	    });
-	    return React.createElement(
-	      'button',
-	      { className: buttonClass, onClick: this.handleClick },
-	      React.createElement('i', { className: iconClass })
-	    );
-	  },
-
-	  handleClick: function handleClick() {
-	    this.props.liked ? this.props.createLike() : this.props.deleteLike();
-	  }
-	});
-
-	module.exports = LikeButton;
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-
-	'use strict';
-
-	(function () {
-		'use strict';
-
-		function classNames() {
-
-			var classes = '';
-
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-
-				var argType = typeof arg;
-
-				if ('string' === argType || 'number' === argType) {
-					classes += ' ' + arg;
-				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
-				} else if ('object' === argType) {
-					for (var key in arg) {
-						if (arg.hasOwnProperty(key) && arg[key]) {
-							classes += ' ' + key;
-						}
-					}
-				}
-			}
-
-			return classes.substr(1);
-		}
-
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// AMD. Register as an anonymous module.
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	})();
-
-/***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var React = __webpack_require__(5);
-
-	var ChatButton = React.createClass({
-	  displayName: "ChatButton",
-
-	  render: function render() {
-	    return React.createElement(
-	      "button",
-	      { className: "chat-button" },
-	      "Lorem ipsum dolor."
-	    );
-	  }
-	});
-
-	module.exports = ChatButton;
-
-/***/ },
-/* 233 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(5);
-	var Drag = __webpack_require__(234);
-	var Reflux = __webpack_require__(206);
-	var MessageStore = __webpack_require__(242);
-
-	var Parser = React.createClass({
-	  displayName: 'Parser',
-
-	  mixins: [Reflux.connect(MessageStore, 'messages')],
-	  render: function render() {
-
-	    var message = this.state.messages && this.state.messages.filter((function (message) {
-	      return message.id === this.props.params.id;
-	    }).bind(this))[0];
-
-	    message && console.log(message.content);
-
-	    var wordList = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, veniam.".split(" ");
-	    return React.createElement(
-	      'section',
-	      { className: 'parser' },
-	      React.createElement(
-	        'header',
-	        null,
-	        React.createElement(
-	          'div',
-	          { className: 'from-profile' },
-	          React.createElement(
-	            'div',
-	            { className: 'left' },
-	            React.createElement('div', { className: 'from-profile-img' }),
-	            React.createElement(
-	              'div',
-	              { className: 'from-profile-name' },
-	              React.createElement(
-	                'h4',
-	                null,
-	                'Juan Gabriel'
-	              )
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'from-profile-email' },
-	              '(juangab31@gmail.com)'
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'right' },
-	            React.createElement(
-	              'div',
-	              null,
-	              React.createElement(
-	                'small',
-	                null,
-	                '14th August 2015'
-	              )
-	            ),
-	            React.createElement(
-	              'time',
-	              null,
-	              React.createElement(
-	                'small',
-	                null,
-	                '(11h ago)'
-	              )
-	            )
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'main',
-	        null,
-	        React.createElement(
-	          'h3',
-	          null,
-	          message && message.subject
-	        ),
-	        message && message.content.split("\n").map(function (word) {
-	          return React.createElement(Drag, { text: word });
-	        })
-	      ),
-	      React.createElement('br', null),
-	      React.createElement(
-	        'footer',
-	        null,
-	        React.createElement(
-	          'button',
-	          { type: 'submit', className: 'mui-btn mui-btn-primary' },
-	          'Download'
-	        )
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Parser;
-
-/***/ },
-/* 234 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var React = __webpack_require__(5);
-
-	var Drag = React.createClass({
-	  displayName: "Drag",
-
-	  propTypes: {
-	    text: React.PropTypes.string.isRequired
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      "span",
-	      { ref: "span",
-	        className: "drag",
-	        draggable: "true",
-	        onDragStart: this.onDragStart },
-	      this.props.text
-	    );
-	  },
-	  onDragStart: function onDragStart(event) {
-	    event.dataTransfer.setData('text', JSON.stringify(this.props.text));
-	  }
-	});
-
-	module.exports = Drag;
-
-/***/ },
-/* 235 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(5);
-	var Drop = __webpack_require__(236);
-
-	var ERP = React.createClass({
-	  displayName: 'ERP',
-
-	  render: function render() {
-	    return React.createElement(
-	      'section',
-	      { className: 'erp' },
-	      React.createElement(
-	        'table',
-	        null,
-	        React.createElement(
-	          'thead',
-	          null,
-	          React.createElement(
-	            'h2',
-	            null,
-	            'Sample ERP'
-	          )
-	        ),
-	        React.createElement(
-	          'tbody',
-	          null,
-	          React.createElement(
-	            'tr',
-	            null,
-	            React.createElement(
-	              'td',
-	              null,
-	              'Item code:'
-	            ),
-	            React.createElement(
-	              'td',
-	              null,
-	              React.createElement(Drop, { placeholder: 'Item code', type: 'text' })
-	            )
-	          ),
-	          React.createElement(
-	            'tr',
-	            null,
-	            React.createElement(
-	              'td',
-	              null,
-	              'Item description:'
-	            ),
-	            React.createElement(
-	              'td',
-	              null,
-	              React.createElement(Drop, { type: 'textarea', placeholder: 'Item description' })
-	            )
-	          ),
-	          React.createElement(
-	            'tr',
-	            null,
-	            React.createElement(
-	              'td',
-	              null,
-	              'Category:'
-	            ),
-	            React.createElement(
-	              'td',
-	              null,
-	              React.createElement(
-	                'select',
-	                { name: 'CategoryID', onchange: 'ReloadForm(ItemForm.UpdateCategories)' },
-	                React.createElement(
-	                  'option',
-	                  { selected: 'selected', value: '345345' },
-	                  '345345345'
-	                ),
-	                React.createElement(
-	                  'option',
-	                  { selected: 'selected', value: 'AC' },
-	                  'ACCESSORIES CELLULARI'
-	                ),
-	                React.createElement(
-	                  'option',
-	                  { selected: 'selected', value: 'ARTE' },
-	                  'Art'
-	                ),
-	                React.createElement(
-	                  'option',
-	                  { selected: 'selected', value: 'ASSY' },
-	                  'assembly'
-	                ),
-	                React.createElement(
-	                  'option',
-	                  { selected: 'selected', value: 'ASSETS' },
-	                  'Asset Disposals'
-	                )
-	              ),
-	              React.createElement(
-	                'a',
-	                { href: 'javascript: void(0)' },
-	                'Add or change inventory categories'
-	              )
-	            )
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-	module.exports = ERP;
-
-/***/ },
-/* 236 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var React = __webpack_require__(5);
-
-	var Drop = React.createClass({
-	  displayName: 'Drop',
-
-	  render: function render() {
-	    if (this.props.type == 'textarea') return React.createElement('textarea', _extends({}, this.props, {
-	      ref: 'input',
-	      onDragOver: function (event) {
-	        return event.preventDefault();
-	      },
-	      onDrop: this.onDrop }));
-
-	    return React.createElement('input', _extends({}, this.props, {
-	      ref: 'input',
-	      onDragOver: function (event) {
-	        return event.preventDefault();
-	      },
-	      onDrop: this.onDrop }));
-	  },
-	  onDrop: function onDrop(event) {
-	    event.preventDefault();
-
-	    var data;
-
-	    try {
-	      data = JSON.parse(event.dataTransfer.getData('text'));
-	    } catch (e) {
-	      return;
-	    }
-
-	    React.findDOMNode(this.refs.input).value = React.findDOMNode(this.refs.input).value + data;
-	  }
-	});
-
-	module.exports = Drop;
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var React = __webpack_require__(5);
-	var MUIFormGroup = __webpack_require__(238).FormGroup;
-
-	var Teach = React.createClass({
-	  displayName: "Teach",
-
-	  render: function render() {
-	    return React.createElement(
-	      "section",
-	      { className: "teach" },
-	      React.createElement(
-	        "header",
-	        null,
-	        React.createElement(
-	          "h1",
-	          null,
-	          "Lorem ipsum dolor sit amet."
-	        )
-	      ),
-	      React.createElement(
-	        "main",
-	        null,
-	        React.createElement(
-	          "form",
-	          { onSubmit: this.handleSubmit },
-	          React.createElement(
-	            "div",
-	            { className: "row" },
-	            React.createElement(
-	              "div",
-	              { className: "mui-form-group" },
-	              React.createElement("input", { type: "text", className: "mui-form-control" }),
-	              React.createElement(
-	                "label",
-	                null,
-	                "Input 1"
-	              )
-	            ),
-	            React.createElement(
-	              "div",
-	              { className: "mui-form-group" },
-	              React.createElement("input", { type: "text", className: "mui-form-control" }),
-	              React.createElement(
-	                "label",
-	                null,
-	                "Input 2"
-	              )
-	            ),
-	            React.createElement(
-	              "div",
-	              { className: "mui-form-group" },
-	              React.createElement("textarea", { className: "mui-form-control" }),
-	              React.createElement(
-	                "label",
-	                null,
-	                "Textarea"
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            "button",
-	            { type: "submit", className: "mui-btn mui-btn-primary" },
-	            "Submit"
-	          )
-	        )
-	      )
-	    );
-	  },
-	  handleSubmit: function handleSubmit(e) {
-	    e.preventDefault();
-	    console.log('submitted');
-	  }
-	});
-
-	module.exports = Teach;
-
-/***/ },
-/* 238 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * MUI React forms module
-	 * @module react/forms
-	 */
-
-	'use strict';
-
-	var React = __webpack_require__(5);
-	var util = __webpack_require__(239);
-
-	var formControlClass = 'mui-form-control',
-	    formGroupClass = 'mui-form-group',
-	    floatingLabelBaseClass = 'mui-form-floating-label',
-	    floatingLabelActiveClass = floatingLabelBaseClass + '-active';
-
-	/**
-	 * FormControl constructor
-	 * @class
-	 */
-	var FormControl = React.createClass({
-	  displayName: 'FormControl',
-
-	  render: function render() {
-	    return React.createElement('input', {
-	      type: this.props.type || 'text',
-	      className: formControlClass,
-	      value: this.props.value,
-	      autoFocus: this.props.autofocus,
-	      onInput: this.props.onInput
-	    });
-	  }
-	});
-
-	/**
-	 * FormLabel constructor
-	 * @class
-	 */
-	var FormLabel = React.createClass({
-	  displayName: 'FormLabel',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      style: {}
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    setTimeout((function () {
-	      var s = '.15s ease-out',
-	          style;
-
-	      style = {
-	        transition: s,
-	        WebkitTransition: s,
-	        MozTransition: s,
-	        OTransition: s,
-	        msTransform: s
-	      };
-
-	      this.setState({
-	        style: style
-	      });
-	    }).bind(this), 150);
-	  },
-	  render: function render() {
-	    var labelText = this.props.text,
-	        labelClass;
-
-	    if (labelText) {
-	      labelClass = {};
-	      labelClass[floatingLabelBaseClass] = this.props.floating;
-	      labelClass[floatingLabelActiveClass] = this.props.active;
-	      labelClass = util.classNames(labelClass);
-	    }
-
-	    return React.createElement(
-	      'label',
-	      {
-	        className: labelClass,
-	        style: this.state.style,
-	        onClick: this.props.onClick
-	      },
-	      labelText
-	    );
-	  }
-	});
-
-	/**
-	 * FormGroup constructor
-	 * @class
-	 */
-	var FormGroup = React.createClass({
-	  displayName: 'FormGroup',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      hasInput: false
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.value) {
-	      this.setState({
-	        hasInput: true
-	      });
-	    }
-	  },
-	  render: function render() {
-	    var labelText = this.props.label;
-	    return React.createElement(
-	      'div',
-	      { className: formGroupClass },
-	      React.createElement(FormControl, {
-	        type: this.props.type,
-	        value: this.props.value,
-	        autoFocus: this.props.autofocus,
-	        onInput: this._input
-	      }),
-	      labelText && React.createElement(FormLabel, {
-	        text: labelText,
-	        onClick: this._focus,
-	        active: this.state.hasInput,
-	        floating: this.props.isLabelFloating
-	      })
-	    );
-	  },
-	  _focus: function _focus(e) {
-	    // pointer-events shim
-	    if (util.supportsPointerEvents() === false) {
-	      var labelEl = e.target;
-	      labelEl.style.cursor = 'text';
-
-	      if (!this.state.hasInput) {
-	        var inputEl = React.findDOMNode(this.refs.input);
-	        inputEl.focus();
-	      }
-	    }
-	  },
-	  _input: function _input(e) {
-	    if (e.target.value) {
-	      this.setState({
-	        hasInput: true
-	      });
-	    } else {
-	      this.setState({
-	        hasInput: false
-	      });
-	    }
-
-	    if (this.props.onClick) {
-	      this.props.onClick(e);
-	    }
-	  }
-	});
-
-	/** Define module API */
-	module.exports = {
-	  FormControl: FormControl,
-	  FormGroup: FormGroup
-	};
-
-/***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * MUI CSS/JS utilities module
-	 * @module lib/util
-	 */
-
-	'use strict';
-
-	var config = __webpack_require__(240),
-	    jqLite = __webpack_require__(241),
-	    win = window,
-	    doc = window.document,
-	    nodeInsertedCallbacks = [],
-	    head,
-	    _supportsPointerEvents;
-
-	head = doc.head || doc.getElementsByTagName('head')[0] || doc.documentElement;
-
-	/**
-	 * Logging function
-	 */
-	function logFn() {
-	  if (config.debug && typeof win.console !== "undefined") {
-	    try {
-	      win.console.log.apply(win.console, arguments);
-	    } catch (a) {
-	      var e = Array.prototype.slice.call(arguments);
-	      win.console.log(e.join("\n"));
-	    }
-	  }
-	}
-
-	/**
-	 * Load CSS text in new stylesheet
-	 * @param {string} cssText - The css text.
-	 */
-	function loadStyleFn(cssText) {
-	  if (doc.createStyleSheet) {
-	    doc.createStyleSheet().cssText = cssText;
-	  } else {
-	    var e = doc.createElement('style');
-	    e.type = 'text/css';
-
-	    if (e.styleSheet) e.styleSheet.cssText = cssText;else e.appendChild(doc.createTextNode(cssText));
-
-	    // add to document
-	    head.insertBefore(e, head.firstChild);
-	  }
-	}
-
-	/**
-	 * Raise an error
-	 * @param {string} msg - The error message.
-	 */
-	function raiseErrorFn(msg) {
-	  throw new Error("MUI: " + msg);
-	}
-
-	/**
-	 * Register callbacks on muiNodeInserted event
-	 * @param {function} callbackFn - The callback function.
-	 */
-	function onNodeInsertedFn(callbackFn) {
-	  nodeInsertedCallbacks.push(callbackFn);
-
-	  // initalize listeners
-	  if (nodeInsertedCallbacks._initialized === undefined) {
-	    jqLite.on(doc, 'animationstart', animationHandlerFn);
-	    jqLite.on(doc, 'mozAnimationStart', animationHandlerFn);
-	    jqLite.on(doc, 'webkitAnimationStart', animationHandlerFn);
-
-	    nodeInsertedCallbacks._initialized = true;
-	  }
-	}
-
-	/**
-	 * Execute muiNodeInserted callbacks
-	 * @param {Event} ev - The DOM event.
-	 */
-	function animationHandlerFn(ev) {
-	  // check animation name
-	  if (ev.animationName !== 'mui-node-inserted') return;
-
-	  var el = ev.target;
-
-	  // iterate through callbacks
-	  for (var i = nodeInsertedCallbacks.length - 1; i >= 0; i--) {
-	    nodeInsertedCallbacks[i](el);
-	  }
-	}
-
-	/**
-	 * Convert Classname object, with class as key and true/false as value, to an
-	 * class string.
-	 * @param  {Object} classes The classes
-	 * @return {String}         class string
-	 */
-	function classNamesFn(classes) {
-	  var cs = '';
-	  for (var i in classes) {
-	    cs += classes[i] ? i + ' ' : '';
-	  }
-	  return cs.trim();
-	}
-
-	/**
-	 * Check if client supports pointer events.
-	 */
-	function supportsPointerEventsFn() {
-	  // check cache
-	  if (_supportsPointerEvents !== undefined) return _supportsPointerEvents;
-
-	  var element = document.createElement('x');
-	  element.style.cssText = 'pointer-events:auto';
-	  _supportsPointerEvents = element.style.pointerEvents === 'auto';
-	  return _supportsPointerEvents;
-	}
-
-	/**
-	 * Create callback closure.
-	 * @param {Object} instance - The object instance.
-	 * @param {String} funcName - The name of the callback function.
-	 */
-	function callbackFn(instance, funcName) {
-	  return function () {
-	    instance[funcName].apply(instance, arguments);
-	  };
-	}
-
-	/**
-	 * Dispatch event.
-	 * @param {Element} element - The DOM element.
-	 * @param {String} eventType - The event type.
-	 * @param {Boolean} bubbles=true - If true, event bubbles.
-	 * @param {Boolean} cancelable=true = If true, event is cancelable
-	 */
-	function dispatchEventFn(element, eventType, bubbles, cancelable) {
-	  var ev = document.createEvent('HTMLEvents'),
-	      bubbles = bubbles !== undefined ? bubbles : true,
-	      cancelable = cancelable !== undefined ? cancelable : true;
-
-	  ev.initEvent(eventType, bubbles, cancelable);
-	  element.dispatchEvent(ev);
-	}
-
-	/**
-	 * Define the module API
-	 */
-	module.exports = {
-	  /** Create callback closures */
-	  callback: callbackFn,
-
-	  /** Classnames object to string */
-	  classNames: classNamesFn,
-
-	  /** Dispatch event */
-	  dispatchEvent: dispatchEventFn,
-
-	  /** Log messages to the console when debug is turned on */
-	  log: logFn,
-
-	  /** Load CSS text as new stylesheet */
-	  loadStyle: loadStyleFn,
-
-	  /** Register muiNodeInserted handler */
-	  onNodeInserted: onNodeInsertedFn,
-
-	  /** Raise MUI error */
-	  raiseError: raiseErrorFn,
-
-	  /** Support Pointer Events check */
-	  supportsPointerEvents: supportsPointerEventsFn
-	};
-
-/***/ },
-/* 240 */
-/***/ function(module, exports) {
-
-	/**
-	 * MUI config module
-	 * @module config
-	 */
-
-	/** Define module API */
-	"use strict";
-
-	module.exports = {
-	  /** Use debug mode */
-	  debug: true
-	};
-
-/***/ },
-/* 241 */
-/***/ function(module, exports) {
-
-	/**
-	 * MUI CSS/JS jqLite module
-	 * @module lib/jqLite
-	 */
-
-	'use strict';
-
-	/**
-	 * Add a class to an element.
-	 * @param {Element} element - The DOM element.
-	 * @param {string} cssClasses - Space separated list of class names.
-	 */
-	function jqLiteAddClass(element, cssClasses) {
-	  if (!cssClasses || !element.setAttribute) return;
-
-	  var existingClasses = _getExistingClasses(element),
-	      splitClasses = cssClasses.split(' '),
-	      cssClass;
-
-	  for (var i = 0; i < splitClasses.length; i++) {
-	    cssClass = splitClasses[i].trim();
-	    if (existingClasses.indexOf(' ' + cssClass + ' ') === -1) {
-	      existingClasses += cssClass + ' ';
-	    }
-	  }
-
-	  element.setAttribute('class', existingClasses.trim());
-	}
-
-	/**
-	 * Get or set CSS properties.
-	 * @param {Element} element - The DOM element.
-	 * @param {string} [name] - The property name.
-	 * @param {string} [value] - The property value.
-	 */
-	function jqLiteCss(element, name, value) {
-	  // Return full style object
-	  if (name === undefined) {
-	    return getComputedStyle(element);
-	  }
-
-	  var nameType = jqLiteType(name);
-
-	  // Set multiple values
-	  if (nameType === 'object') {
-	    for (var key in name) element.style[_camelCase(key)] = name[key];
-	    return;
-	  }
-
-	  // Set a single value
-	  if (nameType === 'string' && value !== undefined) {
-	    element.style[_camelCase(name)] = value;
-	  }
-
-	  var styleObj = getComputedStyle(element),
-	      isArray = jqLiteType(name) === 'array';
-
-	  // Read single value
-	  if (!isArray) return _getCurrCssProp(element, name, styleObj);
-
-	  // Read multiple values
-	  var outObj = {},
-	      key;
-
-	  for (var i = 0; i < name.length; i++) {
-	    key = name[i];
-	    outObj[key] = _getCurrCssProp(element, key, styleObj);
-	  }
-
-	  return outObj;
-	}
-
-	/**
-	 * Check if element has class.
-	 * @param {Element} element - The DOM element.
-	 * @param {string} cls - The class name string.
-	 */
-	function jqLiteHasClass(element, cls) {
-	  if (!cls || !element.getAttribute) return false;
-	  return _getExistingClasses(element).indexOf(' ' + cls + ' ') > -1;
-	}
-
-	/**
-	 * Return the type of a variable.
-	 * @param {} somevar - The JavaScript variable.
-	 */
-	function jqLiteType(somevar) {
-	  // handle undefined
-	  if (somevar === undefined) return 'undefined';
-
-	  // handle others (of type [object <Type>])
-	  var typeStr = Object.prototype.toString.call(somevar);
-	  if (typeStr.indexOf('[object ') === 0) {
-	    return typeStr.slice(8, -1).toLowerCase();
-	  } else {
-	    throw new Error("MUI: Could not understand type: " + typeStr);
-	  }
-	}
-
-	/**
-	 * Attach an event handler to a DOM element
-	 * @param {Element} element - The DOM element.
-	 * @param {string} type - The event type name.
-	 * @param {Function} callback - The callback function.
-	 * @param {Boolean} useCapture - Use capture flag.
-	 */
-	function jqLiteOn(element, type, callback, useCapture) {
-	  useCapture = useCapture === undefined ? false : useCapture;
-
-	  // add to DOM
-	  element.addEventListener(type, callback, useCapture);
-
-	  // add to cache
-	  var cache = element._muiEventCache = element._muiEventCache || {};
-	  cache[type] = cache[type] || [];
-	  cache[type].push([callback, useCapture]);
-	}
-
-	/**
-	 * Remove an event handler from a DOM element
-	 * @param {Element} element - The DOM element.
-	 * @param {string} type - The event type name.
-	 * @param {Function} callback - The callback function.
-	 * @param {Boolean} useCapture - Use capture flag.
-	 */
-	function jqLiteOff(element, type, callback, useCapture) {
-	  useCapture = useCapture === undefined ? false : useCapture;
-
-	  // remove from cache
-	  var cache = element._muiEventCache = element._muiEventCache || {},
-	      argsList = cache[type] || [],
-	      args,
-	      i;
-
-	  i = argsList.length;
-	  while (i--) {
-	    args = argsList[i];
-
-	    // remove all events if callback is undefined
-	    if (callback === undefined || args[0] === callback && args[1] === useCapture) {
-
-	      // remove from cache
-	      argsList.splice(i, 1);
-
-	      // remove from DOM
-	      element.removeEventListener(type, args[0], args[1]);
-	    }
-	  }
-	}
-
-	/**
-	 * Attach an event hander which will only execute once
-	 * @param {Element} element - The DOM element.
-	 * @param {string} type - The event type name.
-	 * @param {Function} callback - The callback function.
-	 * @param {Boolean} useCapture - Use capture flag.
-	 */
-	function jqLiteOne(element, type, callback, useCapture) {
-	  jqLiteOn(element, type, function onFn(ev) {
-	    // execute callback
-	    if (callback) callback.apply(this, arguments);
-
-	    // remove wrapper
-	    jqLiteOff(element, type, onFn);
-	  }, useCapture);
-	}
-
-	/**
-	 * Return object representing top/left offset and element height/width.
-	 * @param {Element} element - The DOM element.
-	 */
-	function jqLiteOffset(element) {
-	  var win = window,
-	      docEl = document.documentElement,
-	      rect = element.getBoundingClientRect(),
-	      viewLeft,
-	      viewTop;
-
-	  viewLeft = (win.pageXOffset || docEl.scrollLeft) - (docEl.clientLeft || 0);
-	  viewTop = (win.pageYOffset || docEl.scrollTop) - (docEl.clientTop || 0);
-
-	  return {
-	    top: rect.top + viewTop,
-	    left: rect.left + viewLeft,
-	    height: rect.height,
-	    width: rect.width
-	  };
-	}
-
-	/**
-	 * Attach a callback to the DOM ready event listener
-	 * @param {Function} fn - The callback function.
-	 */
-	function jqLiteReady(fn) {
-	  var done = false,
-	      top = true,
-	      doc = document,
-	      win = doc.defaultView,
-	      root = doc.documentElement,
-	      add = doc.addEventListener ? 'addEventListener' : 'attachEvent',
-	      rem = doc.addEventListener ? 'removeEventListener' : 'detachEvent',
-	      pre = doc.addEventListener ? '' : 'on';
-
-	  var init = function init(e) {
-	    if (e.type == 'readystatechange' && doc.readyState != 'complete') {
-	      return;
-	    }
-
-	    (e.type == 'load' ? win : doc)[rem](pre + e.type, init, false);
-	    if (!done && (done = true)) fn.call(win, e.type || e);
-	  };
-
-	  var poll = function poll() {
-	    try {
-	      root.doScroll('left');
-	    } catch (e) {
-	      setTimeout(poll, 50);return;
-	    }
-	    init('poll');
-	  };
-
-	  if (doc.readyState == 'complete') {
-	    fn.call(win, 'lazy');
-	  } else {
-	    if (doc.createEventObject && root.doScroll) {
-	      try {
-	        top = !win.frameElement;
-	      } catch (e) {}
-	      if (top) poll();
-	    }
-	    doc[add](pre + 'DOMContentLoaded', init, false);
-	    doc[add](pre + 'readystatechange', init, false);
-	    win[add](pre + 'load', init, false);
-	  }
-	}
-
-	/**
-	 * Remove classes from a DOM element
-	 * @param {Element} element - The DOM element.
-	 * @param {string} cssClasses - Space separated list of class names.
-	 */
-	function jqLiteRemoveClass(element, cssClasses) {
-	  if (!cssClasses || !element.setAttribute) return;
-
-	  var existingClasses = _getExistingClasses(element),
-	      splitClasses = cssClasses.split(' '),
-	      cssClass;
-
-	  for (var i = 0; i < splitClasses.length; i++) {
-	    cssClass = splitClasses[i].trim();
-	    while (existingClasses.indexOf(' ' + cssClass + ' ') >= 0) {
-	      existingClasses = existingClasses.replace(' ' + cssClass + ' ', ' ');
-	    }
-	  }
-
-	  element.setAttribute('class', existingClasses.trim());
-	}
-
-	// ------------------------------
-	// Utilities
-	// ------------------------------
-	var SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g,
-	    MOZ_HACK_REGEXP = /^moz([A-Z])/,
-	    ESCAPE_REGEXP = /([.*+?^=!:${}()|\[\]\/\\])/g,
-	    BOOLEAN_ATTRS;
-
-	BOOLEAN_ATTRS = {
-	  multiple: true,
-	  selected: true,
-	  checked: true,
-	  disabled: true,
-	  readonly: true,
-	  required: true,
-	  open: true
-	};
-
-	function _getExistingClasses(element) {
-	  var classes = (element.getAttribute('class') || '').replace(/[\n\t]/g, '');
-	  return ' ' + classes + ' ';
-	}
-
-	function _camelCase(name) {
-	  return name.replace(SPECIAL_CHARS_REGEXP, function (_, separator, letter, offset) {
-	    return offset ? letter.toUpperCase() : letter;
-	  }).replace(MOZ_HACK_REGEXP, 'Moz$1');
-	}
-
-	function _escapeRegExp(string) {
-	  return string.replace(ESCAPE_REGEXP, "\\$1");
-	}
-
-	function _getCurrCssProp(elem, name, computed) {
-	  var ret;
-
-	  // try computed style
-	  ret = computed.getPropertyValue(name);
-
-	  // try style attribute (if element is not attached to document)
-	  if (ret === '' && !elem.ownerDocument) ret = elem.style[_camelCase(name)];
-
-	  return ret;
-	}
-
-	/**
-	 * Module API
-	 */
-	module.exports = {
-	  /** Add classes */
-	  addClass: jqLiteAddClass,
-
-	  /** Get or set CSS properties */
-	  css: jqLiteCss,
-
-	  /** Check for class */
-	  hasClass: jqLiteHasClass,
-
-	  /** Remove event handlers */
-	  off: jqLiteOff,
-
-	  /** Return offset values */
-	  offset: jqLiteOffset,
-
-	  /** Add event handlers */
-	  on: jqLiteOn,
-
-	  /** Add an execute-once event handler */
-	  one: jqLiteOne,
-
-	  /** DOM ready event handler */
-	  ready: jqLiteReady,
-
-	  /** Remove classes */
-	  removeClass: jqLiteRemoveClass,
-
-	  /** Check JavaScript variable instance type */
-	  type: jqLiteType
-	};
-
-/***/ },
-/* 242 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Reflux = __webpack_require__(206);
-	var Actions = __webpack_require__(205);
-	var request = __webpack_require__(243);
-
-	var MessageStore = Reflux.createStore({
-	  listenables: Actions,
-	  getInitialState: function getInitialState() {
-	    this.onFetchMessages();
-	  },
-	  onFetchMessages: function onFetchMessages() {
-	    request.get('http://mpa-hack.tendtoinfinity.com/api/messages').end((function (err, res) {
-	      if (res.ok) {
-	        this.trigger(res.body);
-	      }
-	    }).bind(this));
-	  }
-	});
-
-	module.exports = MessageStore;
-
-/***/ },
-/* 243 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25007,8 +23486,8 @@
 
 	'use strict';
 
-	var Emitter = __webpack_require__(244);
-	var reduce = __webpack_require__(245);
+	var Emitter = __webpack_require__(225);
+	var reduce = __webpack_require__(226);
 
 	/**
 	 * Root reference for iframes.
@@ -26139,7 +24618,7 @@
 	module.exports = request;
 
 /***/ },
-/* 244 */
+/* 225 */
 /***/ function(module, exports) {
 
 	
@@ -26305,7 +24784,7 @@
 	};
 
 /***/ },
-/* 245 */
+/* 226 */
 /***/ function(module, exports) {
 
 	
@@ -26334,17 +24813,74 @@
 	};
 
 /***/ },
-/* 246 */
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var markdown = __webpack_require__(228).markdown;
+
+	var Article = React.createClass({
+	  displayName: 'Article',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      expanded: false
+	    };
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'article',
+	      { className: 'article' },
+	      !this.state.expanded && this.props.text.length > 140 ? React.createElement(
+	        'small',
+	        null,
+	        React.createElement(
+	          'p',
+	          { className: 'pointer', onClick: this.handleClick },
+	          this.props.text.slice(0, 240),
+	          '... ',
+	          React.createElement(
+	            'a',
+	            { href: 'javascript:void(0)' },
+	            '(more)'
+	          )
+	        )
+	      ) : React.createElement(
+	        'small',
+	        null,
+	        React.createElement(
+	          'p',
+	          { className: 'text' },
+	          React.DOM.div({ dangerouslySetInnerHTML: {
+	              __html: markdown.toHTML(this.props.text.toString())
+	            } })
+	        )
+	      )
+	    );
+	  },
+	  handleClick: function handleClick(e) {
+	    this.setState({
+	      expanded: !this.state.expanded
+	    });
+	  }
+	});
+
+	module.exports = Article;
+
+/***/ },
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// super simple module for the most common nodejs use case.
 	"use strict";
 
-	exports.markdown = __webpack_require__(247);
+	exports.markdown = __webpack_require__(229);
 	exports.parse = exports.markdown.toHTML;
 
 /***/ },
-/* 247 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Released under MIT license
@@ -26469,7 +25005,7 @@
 
 	  // node
 	  function mk_block_inspect() {
-	    var util = __webpack_require__(248);
+	    var util = __webpack_require__(230);
 	    return "Markdown.mk_block( " + util.inspect(this.toString()) + ", " + util.inspect(this.trailing) + ", " + util.inspect(this.lineNumber) + " )";
 	  }
 
@@ -27991,7 +26527,7 @@
 	/*jshint browser:true, devel:true */
 
 /***/ },
-/* 248 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -28486,7 +27022,7 @@
 	}
 	exports.isPrimitive = isPrimitive;
 
-	exports.isBuffer = __webpack_require__(249);
+	exports.isBuffer = __webpack_require__(231);
 
 	function objectToString(o) {
 	  return Object.prototype.toString.call(o);
@@ -28523,7 +27059,7 @@
 	 *     prototype.
 	 * @param {function} superCtor Constructor function to inherit prototype from.
 	 */
-	exports.inherits = __webpack_require__(250);
+	exports.inherits = __webpack_require__(232);
 
 	exports._extend = function (origin, add) {
 	  // Don't do anything if add isn't an object
@@ -28543,7 +27079,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(7)))
 
 /***/ },
-/* 249 */
+/* 231 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28553,7 +27089,7 @@
 	};
 
 /***/ },
-/* 250 */
+/* 232 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28581,6 +27117,1545 @@
 	    ctor.prototype.constructor = ctor;
 	  };
 	}
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var Router = __webpack_require__(161);
+	var Nav = __webpack_require__(234);
+	var Login = __webpack_require__(235);
+	var RouteHandler = Router.RouteHandler;
+
+	var Main = React.createClass({
+	  displayName: 'Main',
+
+	  mixins: [Router.State],
+	  render: function render() {
+	    // this.isActive comes from Router.State mixin.
+	    var renderNav = this.isActive('login') || this.isActive('erp');
+
+	    return React.createElement(
+	      'main',
+	      { className: 'tutori' },
+	      !renderNav && React.createElement(Nav, null),
+	      React.createElement(RouteHandler, null)
+	    );
+	  }
+	});
+
+	module.exports = Main;
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var Link = __webpack_require__(161).Link;
+
+	var Nav = React.createClass({
+	  displayName: 'Nav',
+
+	  render: function render() {
+	    return React.createElement(
+	      'nav',
+	      { className: 'nav' },
+	      React.createElement(
+	        'div',
+	        { className: 'brand' },
+	        React.createElement(
+	          'a',
+	          { className: 'link', href: '#' },
+	          'Pur.pl'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'navigation' },
+	        React.createElement(
+	          Link,
+	          { className: 'link', to: 'messages' },
+	          'Messages'
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Nav;
+
+/***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var Navigation = __webpack_require__(161).Navigation;
+	var Actions = __webpack_require__(223);
+
+	var Login = React.createClass({
+	  displayName: 'Login',
+
+	  mixins: [Navigation],
+	  getInitialState: function getInitialState() {
+	    return {
+	      loading: false
+	    };
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'section',
+	      { className: 'login' },
+	      React.createElement(
+	        'form',
+	        { className: 'login-form mui-panel', onSubmit: this.handleSubmit },
+	        React.createElement(
+	          'h2',
+	          { className: 'center' },
+	          'Login to Pur.pl'
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'mui-form-group' },
+	          React.createElement('input', { ref: 'phoneNumber', type: 'text', className: 'mui-form-control', placeholder: 'Phone number', required: true })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'mui-form-group' },
+	          React.createElement('input', { ref: 'password', type: 'password', className: 'mui-form-control', placeholder: 'Password', required: true })
+	        ),
+	        React.createElement(
+	          'button',
+	          { type: 'submit',
+	            className: 'mui-btn mui-btn-primary full-width disabled',
+	            disabled: this.state.loading },
+	          this.state.loading && React.createElement('i', { className: 'fa fa-spinner fa-spin' }),
+	          ' Submit'
+	        ),
+	        React.createElement(
+	          'div',
+	          null,
+	          React.createElement(
+	            'small',
+	            null,
+	            'Don\'t have an account? ',
+	            React.createElement(
+	              'a',
+	              { href: 'javascript:void(0)' },
+	              'Register'
+	            ),
+	            '.'
+	          )
+	        )
+	      )
+	    );
+	  },
+	  handleSubmit: function handleSubmit(e) {
+	    e.preventDefault();
+	    var username = React.findDOMNode(this.refs.phoneNumber).value;
+	    var password = React.findDOMNode(this.refs.password).value;
+
+	    this.setState({ loading: true });
+
+	    var loading = setInterval((function () {
+	      clearInterval(loading);
+	      this.transitionTo('messages');
+	    }).bind(this), 2000);
+	  }
+	});
+
+	module.exports = Login;
+
+/***/ },
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(5);
+
+	var Chat = React.createClass({
+	  displayName: "Chat",
+
+	  render: function render() {
+	    return React.createElement(
+	      "section",
+	      { className: "chat" },
+	      React.createElement(
+	        "aside",
+	        null,
+	        React.createElement(
+	          "div",
+	          { className: "thread-list" },
+	          React.createElement(
+	            "div",
+	            { className: "thread-item" },
+	            React.createElement("img", { src: "", alt: "", className: "profile-picture" }),
+	            React.createElement(
+	              "div",
+	              { className: "profile-info" },
+	              React.createElement("div", { className: "username" }),
+	              React.createElement("div", { className: "last-time" })
+	            ),
+	            React.createElement("div", { className: "last-message" })
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "main",
+	        null,
+	        React.createElement(
+	          "div",
+	          { className: "thread-contents" },
+	          React.createElement("div", { className: "message" })
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Chat;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var Listing = __webpack_require__(238);
+
+	var Index = React.createClass({
+	  displayName: 'Index',
+
+	  render: function render() {
+	    var x = [{
+	      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda consectetur doloribus esse exercitationem fuga id necessitatibus qui quis voluptate. Accusamus ad asperiores autem blanditiis dicta doloribus ea eius eum fugiat incidunt laboriosam, laborum magni, modi, praesentium quae quas tempora tempore unde velit vitae. Aperiam enim eos eum fugit id laborum minima, reiciendis, repellendus reprehenderit sequi ut vitae voluptates voluptatum? A accusantium amet asperiores, aspernatur cumque cupiditate deleniti dolore earum eos eum id incidunt ipsum labore laudantium magnam magni nemo nesciunt officiis pariatur perferendis placeat quae quas qui, quia quibusdam quisquam quod repellendus sint, tempore totam veniam veritatis vero voluptatem. Cum deleniti, mollitia nesciunt numquam quisquam ut voluptatum. At corporis ducimus in non perspiciatis praesentium quae quam quos, voluptas. Aperiam aut autem dolor, eligendi, et excepturi inventore iusto laborum natus neque non placeat quae voluptatem? Aperiam autem eligendi laboriosam sapiente!',
+	      liked: false
+	    }, {
+	      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda consectetur doloribus esse exercitationem fuga id necessitatibus qui quis voluptate. Accusamus ad asperiores autem blanditiis dicta doloribus ea eius eum fugiat incidunt laboriosam, laborum magni, modi, praesentium quae quas tempora tempore unde velit vitae. Aperiam enim eos eum fugit id laborum minima, reiciendis, repellendus reprehenderit sequi ut vitae voluptates voluptatum? A accusantium amet asperiores, aspernatur cumque cupiditate deleniti dolore earum eos eum id incidunt ipsum labore laudantium magnam magni nemo nesciunt officiis pariatur perferendis placeat quae quas qui, quia quibusdam quisquam quod repellendus sint, tempore totam veniam veritatis vero voluptatem. Cum deleniti, mollitia nesciunt numquam quisquam ut voluptatum. At corporis ducimus in non perspiciatis praesentium quae quam quos, voluptas. Aperiam aut autem dolor, eligendi, et excepturi inventore iusto laborum natus neque non placeat quae voluptatem? Aperiam autem eligendi laboriosam sapiente!',
+	      liked: false
+	    }];
+	    return React.createElement(
+	      'section',
+	      { className: 'index' },
+	      React.createElement('aside', null),
+	      React.createElement(
+	        'main',
+	        null,
+	        x.map(function (val) {
+	          return React.createElement(Listing, { listing: val });
+	        })
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Index;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var Article = __webpack_require__(227);
+	var LikeButton = __webpack_require__(239);
+	var ChatButton = __webpack_require__(241);
+
+	var Listing = React.createClass({
+	  displayName: 'Listing',
+
+	  propTypes: {
+	    listing: React.PropTypes.object.isRequired
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'section',
+	      { className: 'listing' },
+	      React.createElement(
+	        'header',
+	        null,
+	        React.createElement(
+	          'h2',
+	          null,
+	          'Lorem ipsum dolor.'
+	        ),
+	        React.createElement(
+	          'div',
+	          null,
+	          'Lorem ipsum dolor sit amet, consectetur.'
+	        )
+	      ),
+	      React.createElement(Article, { text: this.props.listing.text }),
+	      React.createElement(
+	        'footer',
+	        null,
+	        React.createElement(LikeButton, { liked: false,
+	          createLike: this.createLike,
+	          deleteLike: this.deleteLike }),
+	        React.createElement(ChatButton, null)
+	      )
+	    );
+	  },
+
+	  createLike: function createLike() {
+	    console.log('I like!');
+	  },
+
+	  deleteLike: function deleteLike() {
+	    console.log('I dislike!');
+	  }
+	});
+
+	module.exports = Listing;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var classNames = __webpack_require__(240);
+
+	var LikeButton = React.createClass({
+	  displayName: 'LikeButton',
+
+	  propTypes: {
+	    liked: React.PropTypes.bool.isRequired,
+	    createLike: React.PropTypes.func.isRequired,
+	    deleteLike: React.PropTypes.func.isRequired
+	  },
+
+	  render: function render() {
+	    var buttonClass = classNames({
+	      'like-button': true,
+	      'liked': this.props.liked
+	    });
+	    var iconClass = classNames({
+	      'fa': true,
+	      'fa-heart-o': !this.props.liked,
+	      'fa-heart': this.props.liked
+	    });
+	    return React.createElement(
+	      'button',
+	      { className: buttonClass, onClick: this.handleClick },
+	      React.createElement('i', { className: iconClass })
+	    );
+	  },
+
+	  handleClick: function handleClick() {
+	    this.props.liked ? this.props.createLike() : this.props.deleteLike();
+	  }
+	});
+
+	module.exports = LikeButton;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+
+	'use strict';
+
+	(function () {
+		'use strict';
+
+		function classNames() {
+
+			var classes = '';
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if ('string' === argType || 'number' === argType) {
+					classes += ' ' + arg;
+				} else if (Array.isArray(arg)) {
+					classes += ' ' + classNames.apply(null, arg);
+				} else if ('object' === argType) {
+					for (var key in arg) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
+							classes += ' ' + key;
+						}
+					}
+				}
+			}
+
+			return classes.substr(1);
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	})();
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(5);
+
+	var ChatButton = React.createClass({
+	  displayName: "ChatButton",
+
+	  render: function render() {
+	    return React.createElement(
+	      "button",
+	      { className: "chat-button" },
+	      "Lorem ipsum dolor."
+	    );
+	  }
+	});
+
+	module.exports = ChatButton;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var Drag = __webpack_require__(243);
+	var Reflux = __webpack_require__(203);
+	var MessageStore = __webpack_require__(202);
+	var markdown = __webpack_require__(228).markdown;
+
+	var Parser = React.createClass({
+	  displayName: 'Parser',
+
+	  mixins: [Reflux.connect(MessageStore, 'messages')],
+	  render: function render() {
+
+	    var message = this.state.messages.filter((function (message) {
+	      return message.id === this.props.params.id;
+	    }).bind(this))[0] || {};
+
+	    message.content && console.log(message.content.split("\n"));
+
+	    message.attachments && message.attachments.map(function (entry) {
+	      for (var key in entry) {
+	        console.log(key, entry[key]);
+	      }
+	    });
+
+	    return React.createElement(
+	      'section',
+	      { className: 'parser' },
+	      React.createElement(
+	        'header',
+	        null,
+	        React.createElement(
+	          'div',
+	          { className: 'from-profile' },
+	          React.createElement(
+	            'div',
+	            { className: 'left' },
+	            React.createElement('div', { className: 'from-profile-img' }),
+	            React.createElement(
+	              'div',
+	              { className: 'from-profile-name' },
+	              React.createElement(
+	                'h4',
+	                null,
+	                'Juan Gabriel'
+	              )
+	            ),
+	            React.createElement(
+	              'div',
+	              { className: 'from-profile-email' },
+	              '(juangab31@gmail.com)'
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'right' },
+	            React.createElement(
+	              'div',
+	              null,
+	              React.createElement(
+	                'small',
+	                null,
+	                '14th August 2015'
+	              )
+	            ),
+	            React.createElement(
+	              'time',
+	              null,
+	              React.createElement(
+	                'small',
+	                null,
+	                '(11h ago)'
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        'main',
+	        null,
+	        React.createElement(
+	          'h3',
+	          null,
+	          message.subject
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'article' },
+	          message.content && message.content.split(" ").map(function (word) {
+	            return React.createElement(Drag, { text: word });
+	          })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'attachment' },
+	          React.createElement(
+	            'table',
+	            null,
+	            React.createElement(
+	              'tbody',
+	              null,
+	              message.attachments && message.attachments.map(function (entry) {
+	                var tr = [];
+	                for (var key in entry) {
+	                  tr.push(React.createElement(
+	                    'tr',
+	                    null,
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      React.createElement(Drag, { text: key })
+	                    ),
+	                    React.createElement(
+	                      'td',
+	                      null,
+	                      React.createElement(Drag, { text: entry[key] })
+	                    )
+	                  ));
+	                }
+	                tr.push(React.createElement('hr', null));
+	                return { tr: tr };
+	              })
+	            )
+	          )
+	        )
+	      ),
+	      React.createElement('br', null),
+	      React.createElement(
+	        'footer',
+	        null,
+	        React.createElement(
+	          'button',
+	          { type: 'submit', className: 'mui-btn mui-btn-primary' },
+	          'Download'
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Parser;
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(5);
+
+	var Drag = React.createClass({
+	  displayName: "Drag",
+
+	  propTypes: {
+	    text: React.PropTypes.string.isRequired
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      "span",
+	      { ref: "span",
+	        className: "drag",
+	        draggable: "true",
+	        onDragStart: this.onDragStart },
+	      React.createElement(
+	        "small",
+	        null,
+	        this.props.text
+	      )
+	    );
+	  },
+	  onDragStart: function onDragStart(event) {
+	    event.dataTransfer.setData('text', JSON.stringify(this.props.text));
+	  }
+	});
+
+	module.exports = Drag;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var Drop = __webpack_require__(245);
+
+	var ERP = React.createClass({
+	  displayName: 'ERP',
+
+	  render: function render() {
+	    return React.createElement(
+	      'section',
+	      { className: 'erp' },
+	      React.createElement(
+	        'table',
+	        null,
+	        React.createElement(
+	          'thead',
+	          null,
+	          React.createElement(
+	            'h2',
+	            null,
+	            'Sample ERP'
+	          )
+	        ),
+	        React.createElement(
+	          'tbody',
+	          null,
+	          React.createElement(
+	            'tr',
+	            null,
+	            React.createElement(
+	              'td',
+	              null,
+	              'Item code:'
+	            ),
+	            React.createElement(
+	              'td',
+	              null,
+	              React.createElement(Drop, { placeholder: 'Item code', type: 'text' })
+	            )
+	          ),
+	          React.createElement(
+	            'tr',
+	            null,
+	            React.createElement(
+	              'td',
+	              null,
+	              'Item description:'
+	            ),
+	            React.createElement(
+	              'td',
+	              null,
+	              React.createElement(Drop, { type: 'textarea', placeholder: 'Item description' })
+	            )
+	          ),
+	          React.createElement(
+	            'tr',
+	            null,
+	            React.createElement(
+	              'td',
+	              null,
+	              'Category:'
+	            ),
+	            React.createElement(
+	              'td',
+	              null,
+	              React.createElement(
+	                'select',
+	                { name: 'CategoryID', onchange: 'ReloadForm(ItemForm.UpdateCategories)' },
+	                React.createElement(
+	                  'option',
+	                  { selected: 'selected', value: '345345' },
+	                  '345345345'
+	                ),
+	                React.createElement(
+	                  'option',
+	                  { selected: 'selected', value: 'AC' },
+	                  'ACCESSORIES CELLULARI'
+	                ),
+	                React.createElement(
+	                  'option',
+	                  { selected: 'selected', value: 'ARTE' },
+	                  'Art'
+	                ),
+	                React.createElement(
+	                  'option',
+	                  { selected: 'selected', value: 'ASSY' },
+	                  'assembly'
+	                ),
+	                React.createElement(
+	                  'option',
+	                  { selected: 'selected', value: 'ASSETS' },
+	                  'Asset Disposals'
+	                )
+	              ),
+	              React.createElement(
+	                'a',
+	                { href: 'javascript: void(0)' },
+	                'Add or change inventory categories'
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = ERP;
+
+/***/ },
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(5);
+
+	var Drop = React.createClass({
+	  displayName: 'Drop',
+
+	  render: function render() {
+	    if (this.props.type == 'textarea') return React.createElement('textarea', _extends({}, this.props, {
+	      ref: 'input',
+	      onDragOver: function (event) {
+	        return event.preventDefault();
+	      },
+	      onDrop: this.onDrop }));
+
+	    return React.createElement('input', _extends({}, this.props, {
+	      ref: 'input',
+	      onDragOver: function (event) {
+	        return event.preventDefault();
+	      },
+	      onDrop: this.onDrop }));
+	  },
+	  onDrop: function onDrop(event) {
+	    event.preventDefault();
+
+	    var data;
+
+	    try {
+	      data = JSON.parse(event.dataTransfer.getData('text'));
+	    } catch (e) {
+	      return;
+	    }
+
+	    React.findDOMNode(this.refs.input).value = React.findDOMNode(this.refs.input).value + data;
+	  }
+	});
+
+	module.exports = Drop;
+
+/***/ },
+/* 246 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(5);
+	var MUIFormGroup = __webpack_require__(247).FormGroup;
+
+	var Teach = React.createClass({
+	  displayName: "Teach",
+
+	  render: function render() {
+	    return React.createElement(
+	      "section",
+	      { className: "teach" },
+	      React.createElement(
+	        "header",
+	        null,
+	        React.createElement(
+	          "h1",
+	          null,
+	          "Lorem ipsum dolor sit amet."
+	        )
+	      ),
+	      React.createElement(
+	        "main",
+	        null,
+	        React.createElement(
+	          "form",
+	          { onSubmit: this.handleSubmit },
+	          React.createElement(
+	            "div",
+	            { className: "row" },
+	            React.createElement(
+	              "div",
+	              { className: "mui-form-group" },
+	              React.createElement("input", { type: "text", className: "mui-form-control" }),
+	              React.createElement(
+	                "label",
+	                null,
+	                "Input 1"
+	              )
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "mui-form-group" },
+	              React.createElement("input", { type: "text", className: "mui-form-control" }),
+	              React.createElement(
+	                "label",
+	                null,
+	                "Input 2"
+	              )
+	            ),
+	            React.createElement(
+	              "div",
+	              { className: "mui-form-group" },
+	              React.createElement("textarea", { className: "mui-form-control" }),
+	              React.createElement(
+	                "label",
+	                null,
+	                "Textarea"
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            "button",
+	            { type: "submit", className: "mui-btn mui-btn-primary" },
+	            "Submit"
+	          )
+	        )
+	      )
+	    );
+	  },
+	  handleSubmit: function handleSubmit(e) {
+	    e.preventDefault();
+	    console.log('submitted');
+	  }
+	});
+
+	module.exports = Teach;
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * MUI React forms module
+	 * @module react/forms
+	 */
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+	var util = __webpack_require__(248);
+
+	var formControlClass = 'mui-form-control',
+	    formGroupClass = 'mui-form-group',
+	    floatingLabelBaseClass = 'mui-form-floating-label',
+	    floatingLabelActiveClass = floatingLabelBaseClass + '-active';
+
+	/**
+	 * FormControl constructor
+	 * @class
+	 */
+	var FormControl = React.createClass({
+	  displayName: 'FormControl',
+
+	  render: function render() {
+	    return React.createElement('input', {
+	      type: this.props.type || 'text',
+	      className: formControlClass,
+	      value: this.props.value,
+	      autoFocus: this.props.autofocus,
+	      onInput: this.props.onInput
+	    });
+	  }
+	});
+
+	/**
+	 * FormLabel constructor
+	 * @class
+	 */
+	var FormLabel = React.createClass({
+	  displayName: 'FormLabel',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      style: {}
+	    };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    setTimeout((function () {
+	      var s = '.15s ease-out',
+	          style;
+
+	      style = {
+	        transition: s,
+	        WebkitTransition: s,
+	        MozTransition: s,
+	        OTransition: s,
+	        msTransform: s
+	      };
+
+	      this.setState({
+	        style: style
+	      });
+	    }).bind(this), 150);
+	  },
+	  render: function render() {
+	    var labelText = this.props.text,
+	        labelClass;
+
+	    if (labelText) {
+	      labelClass = {};
+	      labelClass[floatingLabelBaseClass] = this.props.floating;
+	      labelClass[floatingLabelActiveClass] = this.props.active;
+	      labelClass = util.classNames(labelClass);
+	    }
+
+	    return React.createElement(
+	      'label',
+	      {
+	        className: labelClass,
+	        style: this.state.style,
+	        onClick: this.props.onClick
+	      },
+	      labelText
+	    );
+	  }
+	});
+
+	/**
+	 * FormGroup constructor
+	 * @class
+	 */
+	var FormGroup = React.createClass({
+	  displayName: 'FormGroup',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      hasInput: false
+	    };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    if (this.props.value) {
+	      this.setState({
+	        hasInput: true
+	      });
+	    }
+	  },
+	  render: function render() {
+	    var labelText = this.props.label;
+	    return React.createElement(
+	      'div',
+	      { className: formGroupClass },
+	      React.createElement(FormControl, {
+	        type: this.props.type,
+	        value: this.props.value,
+	        autoFocus: this.props.autofocus,
+	        onInput: this._input
+	      }),
+	      labelText && React.createElement(FormLabel, {
+	        text: labelText,
+	        onClick: this._focus,
+	        active: this.state.hasInput,
+	        floating: this.props.isLabelFloating
+	      })
+	    );
+	  },
+	  _focus: function _focus(e) {
+	    // pointer-events shim
+	    if (util.supportsPointerEvents() === false) {
+	      var labelEl = e.target;
+	      labelEl.style.cursor = 'text';
+
+	      if (!this.state.hasInput) {
+	        var inputEl = React.findDOMNode(this.refs.input);
+	        inputEl.focus();
+	      }
+	    }
+	  },
+	  _input: function _input(e) {
+	    if (e.target.value) {
+	      this.setState({
+	        hasInput: true
+	      });
+	    } else {
+	      this.setState({
+	        hasInput: false
+	      });
+	    }
+
+	    if (this.props.onClick) {
+	      this.props.onClick(e);
+	    }
+	  }
+	});
+
+	/** Define module API */
+	module.exports = {
+	  FormControl: FormControl,
+	  FormGroup: FormGroup
+	};
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * MUI CSS/JS utilities module
+	 * @module lib/util
+	 */
+
+	'use strict';
+
+	var config = __webpack_require__(249),
+	    jqLite = __webpack_require__(250),
+	    win = window,
+	    doc = window.document,
+	    nodeInsertedCallbacks = [],
+	    head,
+	    _supportsPointerEvents;
+
+	head = doc.head || doc.getElementsByTagName('head')[0] || doc.documentElement;
+
+	/**
+	 * Logging function
+	 */
+	function logFn() {
+	  if (config.debug && typeof win.console !== "undefined") {
+	    try {
+	      win.console.log.apply(win.console, arguments);
+	    } catch (a) {
+	      var e = Array.prototype.slice.call(arguments);
+	      win.console.log(e.join("\n"));
+	    }
+	  }
+	}
+
+	/**
+	 * Load CSS text in new stylesheet
+	 * @param {string} cssText - The css text.
+	 */
+	function loadStyleFn(cssText) {
+	  if (doc.createStyleSheet) {
+	    doc.createStyleSheet().cssText = cssText;
+	  } else {
+	    var e = doc.createElement('style');
+	    e.type = 'text/css';
+
+	    if (e.styleSheet) e.styleSheet.cssText = cssText;else e.appendChild(doc.createTextNode(cssText));
+
+	    // add to document
+	    head.insertBefore(e, head.firstChild);
+	  }
+	}
+
+	/**
+	 * Raise an error
+	 * @param {string} msg - The error message.
+	 */
+	function raiseErrorFn(msg) {
+	  throw new Error("MUI: " + msg);
+	}
+
+	/**
+	 * Register callbacks on muiNodeInserted event
+	 * @param {function} callbackFn - The callback function.
+	 */
+	function onNodeInsertedFn(callbackFn) {
+	  nodeInsertedCallbacks.push(callbackFn);
+
+	  // initalize listeners
+	  if (nodeInsertedCallbacks._initialized === undefined) {
+	    jqLite.on(doc, 'animationstart', animationHandlerFn);
+	    jqLite.on(doc, 'mozAnimationStart', animationHandlerFn);
+	    jqLite.on(doc, 'webkitAnimationStart', animationHandlerFn);
+
+	    nodeInsertedCallbacks._initialized = true;
+	  }
+	}
+
+	/**
+	 * Execute muiNodeInserted callbacks
+	 * @param {Event} ev - The DOM event.
+	 */
+	function animationHandlerFn(ev) {
+	  // check animation name
+	  if (ev.animationName !== 'mui-node-inserted') return;
+
+	  var el = ev.target;
+
+	  // iterate through callbacks
+	  for (var i = nodeInsertedCallbacks.length - 1; i >= 0; i--) {
+	    nodeInsertedCallbacks[i](el);
+	  }
+	}
+
+	/**
+	 * Convert Classname object, with class as key and true/false as value, to an
+	 * class string.
+	 * @param  {Object} classes The classes
+	 * @return {String}         class string
+	 */
+	function classNamesFn(classes) {
+	  var cs = '';
+	  for (var i in classes) {
+	    cs += classes[i] ? i + ' ' : '';
+	  }
+	  return cs.trim();
+	}
+
+	/**
+	 * Check if client supports pointer events.
+	 */
+	function supportsPointerEventsFn() {
+	  // check cache
+	  if (_supportsPointerEvents !== undefined) return _supportsPointerEvents;
+
+	  var element = document.createElement('x');
+	  element.style.cssText = 'pointer-events:auto';
+	  _supportsPointerEvents = element.style.pointerEvents === 'auto';
+	  return _supportsPointerEvents;
+	}
+
+	/**
+	 * Create callback closure.
+	 * @param {Object} instance - The object instance.
+	 * @param {String} funcName - The name of the callback function.
+	 */
+	function callbackFn(instance, funcName) {
+	  return function () {
+	    instance[funcName].apply(instance, arguments);
+	  };
+	}
+
+	/**
+	 * Dispatch event.
+	 * @param {Element} element - The DOM element.
+	 * @param {String} eventType - The event type.
+	 * @param {Boolean} bubbles=true - If true, event bubbles.
+	 * @param {Boolean} cancelable=true = If true, event is cancelable
+	 */
+	function dispatchEventFn(element, eventType, bubbles, cancelable) {
+	  var ev = document.createEvent('HTMLEvents'),
+	      bubbles = bubbles !== undefined ? bubbles : true,
+	      cancelable = cancelable !== undefined ? cancelable : true;
+
+	  ev.initEvent(eventType, bubbles, cancelable);
+	  element.dispatchEvent(ev);
+	}
+
+	/**
+	 * Define the module API
+	 */
+	module.exports = {
+	  /** Create callback closures */
+	  callback: callbackFn,
+
+	  /** Classnames object to string */
+	  classNames: classNamesFn,
+
+	  /** Dispatch event */
+	  dispatchEvent: dispatchEventFn,
+
+	  /** Log messages to the console when debug is turned on */
+	  log: logFn,
+
+	  /** Load CSS text as new stylesheet */
+	  loadStyle: loadStyleFn,
+
+	  /** Register muiNodeInserted handler */
+	  onNodeInserted: onNodeInsertedFn,
+
+	  /** Raise MUI error */
+	  raiseError: raiseErrorFn,
+
+	  /** Support Pointer Events check */
+	  supportsPointerEvents: supportsPointerEventsFn
+	};
+
+/***/ },
+/* 249 */
+/***/ function(module, exports) {
+
+	/**
+	 * MUI config module
+	 * @module config
+	 */
+
+	/** Define module API */
+	"use strict";
+
+	module.exports = {
+	  /** Use debug mode */
+	  debug: true
+	};
+
+/***/ },
+/* 250 */
+/***/ function(module, exports) {
+
+	/**
+	 * MUI CSS/JS jqLite module
+	 * @module lib/jqLite
+	 */
+
+	'use strict';
+
+	/**
+	 * Add a class to an element.
+	 * @param {Element} element - The DOM element.
+	 * @param {string} cssClasses - Space separated list of class names.
+	 */
+	function jqLiteAddClass(element, cssClasses) {
+	  if (!cssClasses || !element.setAttribute) return;
+
+	  var existingClasses = _getExistingClasses(element),
+	      splitClasses = cssClasses.split(' '),
+	      cssClass;
+
+	  for (var i = 0; i < splitClasses.length; i++) {
+	    cssClass = splitClasses[i].trim();
+	    if (existingClasses.indexOf(' ' + cssClass + ' ') === -1) {
+	      existingClasses += cssClass + ' ';
+	    }
+	  }
+
+	  element.setAttribute('class', existingClasses.trim());
+	}
+
+	/**
+	 * Get or set CSS properties.
+	 * @param {Element} element - The DOM element.
+	 * @param {string} [name] - The property name.
+	 * @param {string} [value] - The property value.
+	 */
+	function jqLiteCss(element, name, value) {
+	  // Return full style object
+	  if (name === undefined) {
+	    return getComputedStyle(element);
+	  }
+
+	  var nameType = jqLiteType(name);
+
+	  // Set multiple values
+	  if (nameType === 'object') {
+	    for (var key in name) element.style[_camelCase(key)] = name[key];
+	    return;
+	  }
+
+	  // Set a single value
+	  if (nameType === 'string' && value !== undefined) {
+	    element.style[_camelCase(name)] = value;
+	  }
+
+	  var styleObj = getComputedStyle(element),
+	      isArray = jqLiteType(name) === 'array';
+
+	  // Read single value
+	  if (!isArray) return _getCurrCssProp(element, name, styleObj);
+
+	  // Read multiple values
+	  var outObj = {},
+	      key;
+
+	  for (var i = 0; i < name.length; i++) {
+	    key = name[i];
+	    outObj[key] = _getCurrCssProp(element, key, styleObj);
+	  }
+
+	  return outObj;
+	}
+
+	/**
+	 * Check if element has class.
+	 * @param {Element} element - The DOM element.
+	 * @param {string} cls - The class name string.
+	 */
+	function jqLiteHasClass(element, cls) {
+	  if (!cls || !element.getAttribute) return false;
+	  return _getExistingClasses(element).indexOf(' ' + cls + ' ') > -1;
+	}
+
+	/**
+	 * Return the type of a variable.
+	 * @param {} somevar - The JavaScript variable.
+	 */
+	function jqLiteType(somevar) {
+	  // handle undefined
+	  if (somevar === undefined) return 'undefined';
+
+	  // handle others (of type [object <Type>])
+	  var typeStr = Object.prototype.toString.call(somevar);
+	  if (typeStr.indexOf('[object ') === 0) {
+	    return typeStr.slice(8, -1).toLowerCase();
+	  } else {
+	    throw new Error("MUI: Could not understand type: " + typeStr);
+	  }
+	}
+
+	/**
+	 * Attach an event handler to a DOM element
+	 * @param {Element} element - The DOM element.
+	 * @param {string} type - The event type name.
+	 * @param {Function} callback - The callback function.
+	 * @param {Boolean} useCapture - Use capture flag.
+	 */
+	function jqLiteOn(element, type, callback, useCapture) {
+	  useCapture = useCapture === undefined ? false : useCapture;
+
+	  // add to DOM
+	  element.addEventListener(type, callback, useCapture);
+
+	  // add to cache
+	  var cache = element._muiEventCache = element._muiEventCache || {};
+	  cache[type] = cache[type] || [];
+	  cache[type].push([callback, useCapture]);
+	}
+
+	/**
+	 * Remove an event handler from a DOM element
+	 * @param {Element} element - The DOM element.
+	 * @param {string} type - The event type name.
+	 * @param {Function} callback - The callback function.
+	 * @param {Boolean} useCapture - Use capture flag.
+	 */
+	function jqLiteOff(element, type, callback, useCapture) {
+	  useCapture = useCapture === undefined ? false : useCapture;
+
+	  // remove from cache
+	  var cache = element._muiEventCache = element._muiEventCache || {},
+	      argsList = cache[type] || [],
+	      args,
+	      i;
+
+	  i = argsList.length;
+	  while (i--) {
+	    args = argsList[i];
+
+	    // remove all events if callback is undefined
+	    if (callback === undefined || args[0] === callback && args[1] === useCapture) {
+
+	      // remove from cache
+	      argsList.splice(i, 1);
+
+	      // remove from DOM
+	      element.removeEventListener(type, args[0], args[1]);
+	    }
+	  }
+	}
+
+	/**
+	 * Attach an event hander which will only execute once
+	 * @param {Element} element - The DOM element.
+	 * @param {string} type - The event type name.
+	 * @param {Function} callback - The callback function.
+	 * @param {Boolean} useCapture - Use capture flag.
+	 */
+	function jqLiteOne(element, type, callback, useCapture) {
+	  jqLiteOn(element, type, function onFn(ev) {
+	    // execute callback
+	    if (callback) callback.apply(this, arguments);
+
+	    // remove wrapper
+	    jqLiteOff(element, type, onFn);
+	  }, useCapture);
+	}
+
+	/**
+	 * Return object representing top/left offset and element height/width.
+	 * @param {Element} element - The DOM element.
+	 */
+	function jqLiteOffset(element) {
+	  var win = window,
+	      docEl = document.documentElement,
+	      rect = element.getBoundingClientRect(),
+	      viewLeft,
+	      viewTop;
+
+	  viewLeft = (win.pageXOffset || docEl.scrollLeft) - (docEl.clientLeft || 0);
+	  viewTop = (win.pageYOffset || docEl.scrollTop) - (docEl.clientTop || 0);
+
+	  return {
+	    top: rect.top + viewTop,
+	    left: rect.left + viewLeft,
+	    height: rect.height,
+	    width: rect.width
+	  };
+	}
+
+	/**
+	 * Attach a callback to the DOM ready event listener
+	 * @param {Function} fn - The callback function.
+	 */
+	function jqLiteReady(fn) {
+	  var done = false,
+	      top = true,
+	      doc = document,
+	      win = doc.defaultView,
+	      root = doc.documentElement,
+	      add = doc.addEventListener ? 'addEventListener' : 'attachEvent',
+	      rem = doc.addEventListener ? 'removeEventListener' : 'detachEvent',
+	      pre = doc.addEventListener ? '' : 'on';
+
+	  var init = function init(e) {
+	    if (e.type == 'readystatechange' && doc.readyState != 'complete') {
+	      return;
+	    }
+
+	    (e.type == 'load' ? win : doc)[rem](pre + e.type, init, false);
+	    if (!done && (done = true)) fn.call(win, e.type || e);
+	  };
+
+	  var poll = function poll() {
+	    try {
+	      root.doScroll('left');
+	    } catch (e) {
+	      setTimeout(poll, 50);return;
+	    }
+	    init('poll');
+	  };
+
+	  if (doc.readyState == 'complete') {
+	    fn.call(win, 'lazy');
+	  } else {
+	    if (doc.createEventObject && root.doScroll) {
+	      try {
+	        top = !win.frameElement;
+	      } catch (e) {}
+	      if (top) poll();
+	    }
+	    doc[add](pre + 'DOMContentLoaded', init, false);
+	    doc[add](pre + 'readystatechange', init, false);
+	    win[add](pre + 'load', init, false);
+	  }
+	}
+
+	/**
+	 * Remove classes from a DOM element
+	 * @param {Element} element - The DOM element.
+	 * @param {string} cssClasses - Space separated list of class names.
+	 */
+	function jqLiteRemoveClass(element, cssClasses) {
+	  if (!cssClasses || !element.setAttribute) return;
+
+	  var existingClasses = _getExistingClasses(element),
+	      splitClasses = cssClasses.split(' '),
+	      cssClass;
+
+	  for (var i = 0; i < splitClasses.length; i++) {
+	    cssClass = splitClasses[i].trim();
+	    while (existingClasses.indexOf(' ' + cssClass + ' ') >= 0) {
+	      existingClasses = existingClasses.replace(' ' + cssClass + ' ', ' ');
+	    }
+	  }
+
+	  element.setAttribute('class', existingClasses.trim());
+	}
+
+	// ------------------------------
+	// Utilities
+	// ------------------------------
+	var SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g,
+	    MOZ_HACK_REGEXP = /^moz([A-Z])/,
+	    ESCAPE_REGEXP = /([.*+?^=!:${}()|\[\]\/\\])/g,
+	    BOOLEAN_ATTRS;
+
+	BOOLEAN_ATTRS = {
+	  multiple: true,
+	  selected: true,
+	  checked: true,
+	  disabled: true,
+	  readonly: true,
+	  required: true,
+	  open: true
+	};
+
+	function _getExistingClasses(element) {
+	  var classes = (element.getAttribute('class') || '').replace(/[\n\t]/g, '');
+	  return ' ' + classes + ' ';
+	}
+
+	function _camelCase(name) {
+	  return name.replace(SPECIAL_CHARS_REGEXP, function (_, separator, letter, offset) {
+	    return offset ? letter.toUpperCase() : letter;
+	  }).replace(MOZ_HACK_REGEXP, 'Moz$1');
+	}
+
+	function _escapeRegExp(string) {
+	  return string.replace(ESCAPE_REGEXP, "\\$1");
+	}
+
+	function _getCurrCssProp(elem, name, computed) {
+	  var ret;
+
+	  // try computed style
+	  ret = computed.getPropertyValue(name);
+
+	  // try style attribute (if element is not attached to document)
+	  if (ret === '' && !elem.ownerDocument) ret = elem.style[_camelCase(name)];
+
+	  return ret;
+	}
+
+	/**
+	 * Module API
+	 */
+	module.exports = {
+	  /** Add classes */
+	  addClass: jqLiteAddClass,
+
+	  /** Get or set CSS properties */
+	  css: jqLiteCss,
+
+	  /** Check for class */
+	  hasClass: jqLiteHasClass,
+
+	  /** Remove event handlers */
+	  off: jqLiteOff,
+
+	  /** Return offset values */
+	  offset: jqLiteOffset,
+
+	  /** Add event handlers */
+	  on: jqLiteOn,
+
+	  /** Add an execute-once event handler */
+	  one: jqLiteOne,
+
+	  /** DOM ready event handler */
+	  ready: jqLiteReady,
+
+	  /** Remove classes */
+	  removeClass: jqLiteRemoveClass,
+
+	  /** Check JavaScript variable instance type */
+	  type: jqLiteType
+	};
 
 /***/ }
 /******/ ]);

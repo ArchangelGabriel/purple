@@ -11,11 +11,15 @@ var Article = React.createClass({
     return (
       <article className="article">
         {!this.state.expanded && this.props.text.length > 140 ? (
-          <p className="pointer" onClick={this.handleClick}>{this.props.text.slice(0, 240)}... <a href="javascript:void(0)">(more)</a></p>
+          <small>
+            <p className="pointer" onClick={this.handleClick}>{this.props.text.slice(0, 240)}... <a href="javascript:void(0)">(more)</a></p>
+          </small>
         ) : (
-          <p className="text">{React.DOM.div({ dangerouslySetInnerHTML: {
-            __html: markdown.toHTML(this.props.text.toString())
-          } })}</p>
+          <small>
+            <p className="text">{React.DOM.div({ dangerouslySetInnerHTML: {
+              __html: markdown.toHTML(this.props.text.toString())
+            } })}</p>
+          </small>
         )}
       </article>
     )

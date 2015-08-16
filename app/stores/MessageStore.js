@@ -4,17 +4,22 @@ var request = require('superagent');
 
 var MessageStore = Reflux.createStore({
   listenables: Actions,
-  getInitialState: function() {
-    this.onFetchMessages();
+  init: function() {
+    setInterval(function() {
+      request
+        .get('http://mpa-hack.tendtoinfinity.com/api/messages')
+        .end(function(err, res) {
+          if (res.ok) {
+            this.updateMessage(res.body);
+          }
+        }.bind(this));
+    }.bind(this), 1000);
   },
-  onFetchMessages: function() {
-    request
-      .get('http://mpa-hack.tendtoinfinity.com/api/messages')
-      .end(function(err, res) {
-        if (res.ok) {
-          this.trigger(res.body);
-        }
-      }.bind(this))
+  updateMessage: function(data) {
+    this.trigger((this.last = data || {}));
+  },
+  getInitialState: function() {
+    return this.last || [];
   }
 });
 

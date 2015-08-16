@@ -9,7 +9,7 @@ var Drag = React.createClass({
       <span ref="span"
             className="drag"
             draggable="true"
-            onDragStart={this.onDragStart}>{this.props.text}</span>
+            onDragStart={this.onDragStart}><small>{this.props.text}</small></span>
     )
   },
   onDragStart: function(event) {

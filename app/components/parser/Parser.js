@@ -2,18 +2,24 @@ var React = require('react');
 var Drag = require('../common/Drag');
 var Reflux = require('reflux');
 var MessageStore = require('../../stores/MessageStore.js');
+var markdown = require('markdown').markdown;
 
 var Parser = React.createClass({
   mixins: [Reflux.connect(MessageStore, 'messages')],
   render: function() {
 
-    var message = this.state.messages && this.state.messages.filter(function(message) {
+    var message = this.state.messages.filter(function(message) {
         return message.id === this.props.params.id;
-      }.bind(this))[0];
+      }.bind(this))[0] || {};
 
-    message && console.log(message.content);
+    message.content && console.log(message.content.split("\n"));
 
-    var wordList = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, veniam.".split(" ");
+    message.attachments && message.attachments.map(function(entry) {
+      for (var key in entry) {
+        console.log(key, entry[key]);
+      }
+    });
+
     return (
       <section className="parser">
         <header>
@@ -32,12 +38,31 @@ var Parser = React.createClass({
           </div>
         </header>
         <main>
-          <h3>{message && message.subject}</h3>
-          {message && message.content.split("\n").map(function(word) {
-            return (
-              <Drag text={word} />
-            )
-          })}
+          <h3>{message.subject}</h3>
+          <div className="article">
+            {message.content && message.content.split(" ").map(function(word) {
+              return (
+                <Drag text={word} />
+              )
+            })}
+          </div>
+          <div className="attachment">
+            <table>
+              <tbody>
+                {message.attachments && message.attachments.map(function(entry) {
+                  var tr = [];
+                  for (var key in entry) {
+                    tr.push(<tr><td><Drag text={key}/></td><td><Drag text={entry[key]} /></td></tr>)
+                  }
+                  tr.push(<hr/>);
+                  return (
+                    {tr}
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+
         </main>
         <br/>
         <footer>
